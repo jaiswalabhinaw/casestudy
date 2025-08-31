@@ -24,8 +24,10 @@
     <header class="bg-white sticky top-0 z-50 shadow-md">
         <!-- I've added space-x-8 to create a gap between the logo and the navigation links -->
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center space-x-8">
-            <a href="#" class="text-2xl font-bold text-sky-700">
-                CASESTUDY
+            <!-- I've added a simple SVG icon for branding -->
+            <a href="#" class="text-2xl font-bold text-sky-700 flex items-center space-x-2">
+                <svg class="w-8 h-8 text-sky-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 22h20L12 2zm0 4.96L18.06 19H5.94L12 6.96z"/></svg>
+                <span>CASESTUDY</span>
             </a>
             <div class="hidden md:flex items-center space-x-12">
                 <a href="#home" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Home</a>
@@ -178,33 +180,49 @@
             </div>
         </section>
 
-        <!-- Success Stories Section -->
+        <!-- Success Stories Section - Now a Testimonial Slider -->
         <section id="success-stories" class="py-24 bg-slate-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-20">
+                <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Real Success Stories</h2>
                     <p class="text-base text-slate-500 max-w-2xl mx-auto">
                         See how our clients have achieved remarkable growth and transformed their organizations with our coaching.
                     </p>
                 </div>
-                <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-12">
-                    <!-- Story 1 -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-                        <p class="italic text-base text-slate-600 mb-4">"The team at casestudy completely changed our perspective. Their analysis was spot-on, and the leadership training led to a 40% increase in team productivity within six months. It's been a game-changer for our company."</p>
-                        <p class="font-semibold text-sky-700">Jane Doe</p>
-                        <p class="text-slate-500 text-sm">CEO, Innovate Corp</p>
+                <!-- Testimonial Slider Container -->
+                <div class="relative w-full max-w-4xl mx-auto overflow-hidden">
+                    <div id="testimonial-container" class="flex transition-transform duration-500 ease-in-out">
+                        <!-- Story 1 -->
+                        <div class="testimonial-card flex-shrink-0 w-full bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                            <p class="italic text-base text-slate-600 mb-4">"The team at casestudy completely changed our perspective. Their analysis was spot-on, and the leadership training led to a 40% increase in team productivity within six months. It's been a game-changer for our company."</p>
+                            <p class="font-semibold text-sky-700">Jane Doe</p>
+                            <p class="text-slate-500 text-sm">CEO, Innovate Corp</p>
+                        </div>
+                        <!-- Story 2 -->
+                        <div class="testimonial-card flex-shrink-0 w-full bg-white p-8 rounded-xl shadow-lg border border-slate-200 hidden">
+                            <p class="italic text-base text-slate-600 mb-4">"Our sales team was struggling with collaboration. After our sessions with casestudy, they are more cohesive and effective. We've seen a noticeable improvement in our quarterly numbers."</p>
+                            <p class="font-semibold text-sky-700">John Smith</p>
+                            <p class="text-slate-500 text-sm">VP of Sales, Global Solutions</p>
+                        </div>
+                        <!-- Story 3 -->
+                        <div class="testimonial-card flex-shrink-0 w-full bg-white p-8 rounded-xl shadow-lg border border-slate-200 hidden">
+                            <p class="italic text-base text-slate-600 mb-4">"The personalized coaching was exactly what we needed. Our new managers are now confident leaders, and our overall company culture has never been better. Highly recommend!"</p>
+                            <p class="font-semibold text-sky-700">Emily Chen</p>
+                            <p class="text-slate-500 text-sm">HR Director, Tech Horizons</p>
+                        </div>
                     </div>
-                    <!-- Story 2 -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-                        <p class="italic text-base text-slate-600 mb-4">"Our sales team was struggling with collaboration. After our sessions with casestudy, they are more cohesive and effective. We've seen a noticeable improvement in our quarterly numbers."</p>
-                        <p class="font-semibold text-sky-700">John Smith</p>
-                        <p class="text-slate-500 text-sm">VP of Sales, Global Solutions</p>
-                    </div>
-                    <!-- Story 3 -->
-                    <div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
-                        <p class="italic text-base text-slate-600 mb-4">"The personalized coaching was exactly what we needed. Our new managers are now confident leaders, and our overall company culture has never been better. Highly recommend!"</p>
-                        <p class="font-semibold text-sky-700">Emily Chen</p>
-                        <p class="text-slate-500 text-sm">HR Director, Tech Horizons</p>
+                    <!-- Navigation Buttons -->
+                    <button id="prev-btn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-sky-500 text-white p-2 rounded-full shadow-lg hover:bg-sky-600 transition-colors duration-300 focus:outline-none ml-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="next-btn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-sky-500 text-white p-2 rounded-full shadow-lg hover:bg-sky-600 transition-colors duration-300 focus:outline-none mr-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Dots for navigation -->
+                    <div id="testimonial-dots" class="flex justify-center mt-4 space-x-2">
+                        <span class="dot w-3 h-3 bg-sky-500 rounded-full cursor-pointer transition-colors duration-300" data-index="0"></span>
+                        <span class="dot w-3 h-3 bg-slate-300 rounded-full cursor-pointer transition-colors duration-300" data-index="1"></span>
+                        <span class="dot w-3 h-3 bg-slate-300 rounded-full cursor-pointer transition-colors duration-300" data-index="2"></span>
                     </div>
                 </div>
             </div>
@@ -217,10 +235,14 @@
                 <p class="text-lg font-light mb-8 max-w-2xl mx-auto">
                     Take the first step towards a more productive and prosperous future. Contact us today to schedule your free consultation.
                 </p>
-                <form class="max-w-xl mx-auto space-y-4">
-                    <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300">
-                    <input type="email" placeholder="Your Email Address" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300">
-                    <textarea placeholder="Tell us about your company and needs" rows="4" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300"></textarea>
+                <!-- I've added a message box for form feedback -->
+                <div id="message-box" class="hidden bg-green-500 text-white p-4 rounded-lg shadow-md mb-4 max-w-xl mx-auto">
+                    <p id="message-text">Your inquiry has been submitted successfully!</p>
+                </div>
+                <form id="contact-form" class="max-w-xl mx-auto space-y-4">
+                    <input type="text" id="name-input" name="name" placeholder="Your Name" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300" required>
+                    <input type="email" id="email-input" name="email" placeholder="Your Email Address" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300" required>
+                    <textarea id="message-input" name="message" placeholder="Tell us about your company and needs" rows="4" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300" required></textarea>
                     <button type="submit" class="w-full bg-white text-sky-700 px-8 py-3 rounded-lg text-lg font-semibold shadow-md hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
                         Submit Inquiry
                     </button>
@@ -258,12 +280,24 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu and Smooth Scrolling -->
+    <!-- JavaScript for Mobile Menu, Testimonial Slider, and Form Validation -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const testimonialContainer = document.getElementById('testimonial-container');
+            const testimonials = document.querySelectorAll('.testimonial-card');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dotsContainer = document.getElementById('testimonial-dots');
+            const contactForm = document.getElementById('contact-form');
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
 
+            let currentIndex = 0;
+            const totalTestimonials = testimonials.length;
+
+            // Mobile Menu functionality
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
@@ -280,6 +314,82 @@
                         mobileMenu.classList.add('hidden');
                     }
                 });
+            });
+
+            // Testimonial Slider functionality
+            const showTestimonial = (index) => {
+                // Hide all testimonials and remove 'active' class from dots
+                testimonials.forEach(testimonial => testimonial.classList.add('hidden'));
+                document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('bg-sky-500', 'bg-slate-300'));
+                document.querySelectorAll('.dot').forEach(dot => dot.classList.add('bg-slate-300'));
+
+                // Show the selected testimonial and update dot color
+                testimonials[index].classList.remove('hidden');
+                document.querySelector(`.dot[data-index="${index}"]`).classList.add('bg-sky-500');
+                document.querySelector(`.dot[data-index="${index}"]`).classList.remove('bg-slate-300');
+            };
+
+            const nextTestimonial = () => {
+                currentIndex = (currentIndex + 1) % totalTestimonials;
+                showTestimonial(currentIndex);
+            };
+
+            const prevTestimonial = () => {
+                currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+                showTestimonial(currentIndex);
+            };
+
+            nextBtn.addEventListener('click', nextTestimonial);
+            prevBtn.addEventListener('click', prevTestimonial);
+
+            dotsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('dot')) {
+                    currentIndex = parseInt(e.target.dataset.index);
+                    showTestimonial(currentIndex);
+                }
+            });
+
+            // Initial state
+            showTestimonial(currentIndex);
+
+            // Contact Form Validation
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const nameInput = document.getElementById('name-input');
+                const emailInput = document.getElementById('email-input');
+                const messageInput = document.getElementById('message-input');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                let isValid = true;
+                let errorMessage = '';
+
+                // Name validation
+                if (nameInput.value.trim() === '') {
+                    isValid = false;
+                    errorMessage = 'Please enter your name.';
+                }
+                // Email validation
+                else if (!emailRegex.test(emailInput.value.trim())) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid email address.';
+                }
+                // Message validation
+                else if (messageInput.value.trim() === '') {
+                    isValid = false;
+                    errorMessage = 'Please tell us about your needs.';
+                }
+
+                if (isValid) {
+                    messageBox.classList.remove('hidden', 'bg-red-500');
+                    messageBox.classList.add('bg-green-500');
+                    messageText.textContent = 'Thank you for your inquiry! We will get back to you shortly.';
+                    contactForm.reset();
+                } else {
+                    messageBox.classList.remove('hidden', 'bg-green-500');
+                    messageBox.classList.add('bg-red-500');
+                    messageText.textContent = errorMessage;
+                }
             });
         });
     </script>
