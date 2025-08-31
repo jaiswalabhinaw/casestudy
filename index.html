@@ -133,40 +133,52 @@
             const videoUrlInput = document.getElementById('video-url-input');
             const statusMessage = document.getElementById('status-message');
 
-            updateVideoBtn.addEventListener('click', () => {
-                videoUploaderModal.classList.remove('hidden');
-                statusMessage.textContent = '';
-            });
+            if (updateVideoBtn) {
+                updateVideoBtn.addEventListener('click', () => {
+                    videoUploaderModal.classList.remove('hidden');
+                    statusMessage.textContent = '';
+                });
+            }
 
-            closeModalBtn.addEventListener('click', () => {
-                videoUploaderModal.classList.add('hidden');
-            });
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', () => {
+                    videoUploaderModal.classList.add('hidden');
+                });
+            }
 
-            saveBtn.addEventListener('click', () => {
-                const url = videoUrlInput.value;
-                if (url) {
-                    saveVideoUrl(url);
-                } else {
-                    statusMessage.textContent = "Please enter a valid video URL.";
-                    statusMessage.classList.add('text-red-600');
-                }
-            });
+            if (saveBtn) {
+                saveBtn.addEventListener('click', () => {
+                    const url = videoUrlInput.value;
+                    if (url) {
+                        saveVideoUrl(url);
+                    } else {
+                        statusMessage.textContent = "Please enter a valid video URL.";
+                        statusMessage.classList.add('text-red-600');
+                    }
+                });
+            }
 
-            // --- Mobile Menu Toggle FIX ---
+            // --- Mobile Menu Toggle Fix ---
             const mobileMenuBtn = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-            
-            // Add a click listener to the mobile menu button
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    console.log('Mobile menu button clicked!');
+                    mobileMenu.classList.toggle('hidden');
+                });
+            } else {
+                console.error('Mobile menu elements not found in the DOM.');
+            }
 
             // Close the menu when a link is clicked
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
+            if (mobileMenu) {
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
                 });
-            });
+            }
 
             // --- Testimonial Slider Functionality ---
             const testimonialContainer = document.getElementById('testimonial-container');
@@ -194,23 +206,29 @@
                 });
             }
 
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
-                updateSlider(currentIndex);
-            });
-
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalTestimonials;
-                updateSlider(currentIndex);
-            });
-
-            dotsContainer.addEventListener('click', (e) => {
-                if (e.target.classList.contains('dot')) {
-                    const dotIndex = parseInt(e.target.dataset.index, 10);
-                    currentIndex = dotIndex;
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
                     updateSlider(currentIndex);
-                }
-            });
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % totalTestimonials;
+                    updateSlider(currentIndex);
+                });
+            }
+
+            if (dotsContainer) {
+                dotsContainer.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('dot')) {
+                        const dotIndex = parseInt(e.target.dataset.index, 10);
+                        currentIndex = dotIndex;
+                        updateSlider(currentIndex);
+                    }
+                });
+            }
 
             // Call the sign-in function to start the auth process
             signIn();
