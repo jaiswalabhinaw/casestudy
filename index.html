@@ -12,248 +12,41 @@
             font-family: 'Poppins', sans-serif;
             background-color: #f8fafc;
         }
-        .bg-pattern {
-            background-image: linear-gradient(to bottom, transparent, #e2e8f0),
-                             url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23cbd5e1" stroke-width="0.5"/></pattern><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
-        }
-        .modal {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
     </style>
 </head>
 <body class="text-slate-800">
-    <!-- Firebase Imports for Firestore & Auth -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        
-        // --- Firestore Initialization ---
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
-        
-        let userId = null;
-
-        async function signIn() {
-            try {
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (error) {
-                console.error("Firebase Auth Error:", error);
-            }
-        }
-
-        onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                userId = user.uid;
-                document.getElementById('user-id-display').textContent = `User ID: ${userId}`;
-                initializeVideoListener(db, appId);
-            } else {
-                document.getElementById('user-id-display').textContent = 'Signed out';
-                signIn();
-            }
-        });
-
-        const videoDocPath = `artifacts/${appId}/public/data/site_content/main_video`;
-
-        function initializeVideoListener(db, appId) {
-            const videoPlayer = document.getElementById('site-video-player');
-            const videoUrlInput = document.getElementById('video-url-input');
-            onSnapshot(doc(db, videoDocPath), (docSnapshot) => {
-                if (docSnapshot.exists()) {
-                    const data = docSnapshot.data();
-                    if (data && data.url) {
-                        videoPlayer.src = data.url;
-                        videoUrlInput.value = data.url;
-                    }
-                } else {
-                    const defaultUrl = 'https://www.w3schools.com/html/mov_bbb.mp4';
-                    videoPlayer.src = defaultUrl;
-                    videoUrlInput.value = defaultUrl;
-                }
-            }, (error) => {
-                console.error("Error getting real-time document:", error);
-            });
-        }
-        
-        async function saveVideoUrl(url) {
-            const statusMessage = document.getElementById('status-message');
-            try {
-                await setDoc(doc(db, videoDocPath), { url: url });
-                statusMessage.textContent = "Video URL saved successfully!";
-                statusMessage.classList.add('text-green-600');
-                statusMessage.classList.remove('text-red-600');
-            } catch (error) {
-                statusMessage.textContent = `Error saving URL: ${error.message}`;
-                statusMessage.classList.add('text-red-600');
-                statusMessage.classList.remove('text-green-600');
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            // Video Modal Logic
-            const updateVideoBtn = document.getElementById('update-video-btn');
-            const videoUploaderModal = document.getElementById('video-uploader-modal');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-            const saveBtn = document.getElementById('save-btn');
-            const videoUrlInput = document.getElementById('video-url-input');
-            const statusMessage = document.getElementById('status-message');
-
-            if (updateVideoBtn) {
-                updateVideoBtn.addEventListener('click', () => {
-                    videoUploaderModal.classList.remove('hidden');
-                    statusMessage.textContent = '';
-                });
-            }
-            if (closeModalBtn) {
-                closeModalBtn.addEventListener('click', () => {
-                    videoUploaderModal.classList.add('hidden');
-                });
-            }
-            if (saveBtn) {
-                saveBtn.addEventListener('click', () => {
-                    const url = videoUrlInput.value;
-                    if (url) {
-                        saveVideoUrl(url);
-                    } else {
-                        statusMessage.textContent = "Please enter a valid video URL.";
-                        statusMessage.classList.add('text-red-600');
-                    }
-                });
-            }
-
-            // --- Mobile Menu Toggle Fix ---
-            const mobileMenuBtn = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            let isMenuOpen = false;
-            const hamburgerIcon = `
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            `;
-            const closeIcon = `
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            `;
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.innerHTML = hamburgerIcon;
-                const toggleMenu = (e) => {
-                    if (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                    isMenuOpen = !isMenuOpen;
-                    if (isMenuOpen) {
-                        mobileMenu.classList.remove('hidden');
-                        mobileMenuBtn.innerHTML = closeIcon;
-                    } else {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenuBtn.innerHTML = hamburgerIcon;
-                    }
-                };
-                mobileMenuBtn.addEventListener('click', toggleMenu);
-                mobileMenuBtn.addEventListener('touchstart', toggleMenu, { passive: false });
-                mobileMenu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        isMenuOpen = false;
-                        mobileMenu.classList.add('hidden');
-                        mobileMenuBtn.innerHTML = hamburgerIcon;
-                    });
-                });
-                document.addEventListener('click', (e) => {
-                    if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                        isMenuOpen = false;
-                        mobileMenu.classList.add('hidden');
-                        mobileMenuBtn.innerHTML = hamburgerIcon;
-                    }
-                });
-            }
-            signIn();
-        });
-    </script>
-
     <!-- Header & Navigation -->
     <header class="bg-white sticky top-0 z-50 shadow-md">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <a href="#" class="text-2xl font-bold text-sky-700 flex items-center space-x-2">
-                <svg class="w-8 h-8 text-sky-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 22h20L12 2zm0 4.96L18.06 19H5.94L12 6.96z"/></svg>
+                <svg class="w-8 h-8 text-sky-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.96L18.06 19H5.94L12 6.96z"/></svg>
                 <span>CASESTUDY</span>
             </a>
             <div class="hidden md:flex items-center space-x-6 lg:space-x-12">
                 <a href="#home" class="text-sm lg:text-base font-medium hover:text-sky-600 transition-colors duration-300">Home</a>
+                <a href="#services" class="text-sm lg:text-base font-medium hover:text-sky-600 transition-colors duration-300">Services</a>
                 <a href="#learning" class="text-sm lg:text-base font-medium hover:text-sky-600 transition-colors duration-300">Learning</a>
                 <a href="#clients" class="text-sm lg:text-base font-medium hover:text-sky-600 transition-colors duration-300">Our Clients</a>
                 <a href="#pricing" class="text-sm lg:text-base font-medium hover:text-sky-600 transition-colors duration-300">Pricing</a>
                 <a href="#contact" class="text-sm lg:text-base font-medium hover:text-sky-600 transition-colors duration-300">Contact</a>
             </div>
-            <div class="hidden md:flex ml-auto items-center space-x-4">
-                <button id="update-video-btn" class="bg-sky-500 text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors duration-300">Update Video</button>
-                <button id="member-btn" class="bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition-colors duration-300">Become a Member</button>
-                <button id="search-btn" class="bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition-colors duration-300">Search</button>
-            </div>
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-slate-600 hover:text-sky-600 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
             </button>
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2 transition-all duration-300 ease-in-out">
             <a href="#home" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100 transition-colors duration-300">Home</a>
+            <a href="#services" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100 transition-colors duration-300">Services</a>
             <a href="#learning" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100 transition-colors duration-300">Learning</a>
             <a href="#clients" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100 transition-colors duration-300">Our Clients</a>
             <a href="#pricing" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100 transition-colors duration-300">Pricing</a>
             <a href="#contact" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100 transition-colors duration-300">Contact</a>
         </div>
     </header>
-
-    <!-- User Info Section -->
-    <div class="fixed bottom-4 left-4 z-50 text-xs text-gray-500 bg-gray-100 rounded-lg p-2 shadow-lg">
-        <span id="user-id-display">Connecting...</span>
-    </div>
-
-    <!-- Video Uploader Modal -->
-    <div id="video-uploader-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 hidden">
-        <div class="w-full max-w-xl p-8 bg-white rounded-xl shadow-lg border border-gray-200">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-2xl font-bold text-gray-800">Update Video URL</h2>
-                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-            <div class="mb-4">
-                <label for="video-url-input" class="block text-sm font-medium text-gray-700 mb-2">Enter a direct video URL (must end in .mp4, .webm, etc.):</label>
-                <input type="url" id="video-url-input" placeholder="e.g., https://example.com/videos/demo.mp4" required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors duration-300">
-            </div>
-            <button id="save-btn" class="w-full px-4 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transition-colors duration-300">
-                Save Video URL
-            </button>
-            <div id="status-area" class="mt-6">
-                <p id="status-message" class="text-sm text-gray-600 text-center"></p>
-            </div>
-        </div>
-    </div>
 
     <main>
         <!-- Hero Section -->
@@ -271,22 +64,6 @@
             </div>
         </section>
 
-        <!-- Video Demo Section -->
-        <section id="video-demo" class="py-12 sm:py-24 bg-slate-50">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Watch a Demo</h2>
-                <p class="text-base text-slate-600 max-w-2xl mx-auto mb-10">
-                    See our approach in action and discover how we can help your business thrive with a brief video demonstration.
-                </p>
-                <div class="mx-auto max-w-4xl rounded-xl shadow-xl overflow-hidden video-container">
-                    <video id="site-video-player"
-                           class="w-full h-full"
-                           controls muted playsinline>
-                    </video>
-                </div>
-            </div>
-        </section>
-
         <!-- Services Section -->
         <section id="services" class="py-12 sm:py-24 bg-gray-100">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -300,7 +77,7 @@
                     <!-- Service Card 1 -->
                     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200 transition-transform duration-300 hover:scale-105">
                         <div class="text-sky-700 mb-4 flex justify-center">
-                            <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2zm0 0v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0a2 2 0 002 2h2a2 2 0 002-2z"></path></svg>
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2zm0 0v-6a2 2 0 012-2h2a2 2 0 012 2v6m-6 0a2 2 0 002 2h2a2 2 0 002-2z"></path></svg>
                         </div>
                         <h3 class="text-lg font-bold text-center mb-2">Company Case Study & Analysis</h3>
                         <p class="text-center text-slate-500 text-sm">A full analysis of your growth, downfalls, and market position to identify key areas for improvement.</p>
@@ -308,7 +85,7 @@
                     <!-- Service Card 2 -->
                     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200 transition-transform duration-300 hover:scale-105">
                         <div class="text-sky-700 mb-4 flex justify-center">
-                            <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6a2 2 0 002-2v-3.354M15 15H3m12-2H9"></path></svg>
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6a2 2 0 002-2v-3.354M15 15H3m12-2H9"></path></svg>
                         </div>
                         <h3 class="text-lg font-bold text-center mb-2">Leadership & Communication Training</h3>
                         <p class="text-center text-slate-500 text-sm">Hands-on coaching to groom your leaders and improve communication across all teams.</p>
@@ -316,7 +93,7 @@
                     <!-- Service Card 3 -->
                     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200 transition-transform duration-300 hover:scale-105">
                         <div class="text-sky-700 mb-4 flex justify-center">
-                            <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
                         <h3 class="text-lg font-bold text-center mb-2">Sales & Productivity Growth</h3>
                         <p class="text-center text-slate-500 text-sm">Tailored workshops to enhance sales promotion, relationship building, and overall team productivity.</p>
@@ -324,7 +101,7 @@
                     <!-- Service Card 4 -->
                     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-slate-200 transition-transform duration-300 hover:scale-105">
                         <div class="text-sky-700 mb-4 flex justify-center">
-                            <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h-5m5 0a2 2 0 112-2v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a2 2 0 112 2m5 0H9m12-3a2 2 0 01-2-2V7m2-3a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h2m-6-4l4 4m3-4a2 2 0 01-2-2V7m2-3a2 2 0 012-2h10a2 2 0 012 2v3m-2 0H7"></path></svg>
+                            <svg class="w-10 h-10 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h-5m5 0a2 2 0 112-2v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a2 2 0 112 2m5 0H9m12-3a2 2 0 01-2-2V7m2-3a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h2m-6-4l4 4m3-4a2 2 0 01-2-2V7m2-3a2 2 0 012-2h10a2 2 0 012 2v3m-2 0H7"></path></svg>
                         </div>
                         <h3 class="text-lg font-bold text-center mb-2">On-site In-person Training</h3>
                         <p class="text-center text-slate-500 text-sm">Our coaches meet your team in person to provide focused, hands-on training and mentorship.</p>
@@ -512,5 +289,54 @@
             <p class="text-sm">&copy; 2024 CASESTUDY. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle logic
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let isMenuOpen = false;
+            const hamburgerIcon = `
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            `;
+            const closeIcon = `
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            `;
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.innerHTML = hamburgerIcon;
+                function toggleMenu(e) {
+                    if (e) { e.preventDefault(); e.stopPropagation(); }
+                    isMenuOpen = !isMenuOpen;
+                    if (isMenuOpen) {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenuBtn.innerHTML = closeIcon;
+                    } else {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.innerHTML = hamburgerIcon;
+                    }
+                }
+                mobileMenuBtn.addEventListener('click', toggleMenu);
+                mobileMenuBtn.addEventListener('touchstart', toggleMenu, { passive: false });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        isMenuOpen = false;
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.innerHTML = hamburgerIcon;
+                    });
+                });
+                document.addEventListener('click', (e) => {
+                    if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        isMenuOpen = false;
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuBtn.innerHTML = hamburgerIcon;
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
