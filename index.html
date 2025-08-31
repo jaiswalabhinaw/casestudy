@@ -22,20 +22,23 @@
 
     <!-- Header & Navigation -->
     <header class="bg-white sticky top-0 z-50 shadow-md">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center">
+        <!-- I've added space-x-8 to create a gap between the logo and the navigation links -->
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center space-x-8">
             <a href="#" class="text-2xl font-bold text-sky-700">
                 CASESTUDY
             </a>
-            <!-- I've added ml-auto to push this group to the right -->
-            <div class="hidden md:flex items-center space-x-12 ml-auto">
+            <div class="hidden md:flex items-center space-x-12">
                 <a href="#home" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Home</a>
                 <a href="#learning" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Learning</a>
                 <a href="#who-we-are" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Who we are</a>
                 <a href="#clients" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Our Clients</a>
                 <a href="#success-stories" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Success Stories</a>
                 <a href="#contact" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Contact</a>
-                <button class="bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors duration-300">Become a Member</button>
-                <button class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition-colors duration-300">Search</button>
+            </div>
+            <!-- I've also moved these buttons and the mobile menu button to keep them separate -->
+            <div class="ml-auto hidden md:flex space-x-4">
+                 <button class="bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors duration-300">Become a Member</button>
+                 <button class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition-colors duration-300">Search</button>
             </div>
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-slate-600 hover:text-sky-600 focus:outline-none ml-auto">
