@@ -123,8 +123,9 @@
             }
         }
 
-        // Add event listeners for the video modal
+        // Add event listeners for the video modal and mobile menu
         document.addEventListener('DOMContentLoaded', () => {
+            // Video Modal Logic
             const updateVideoBtn = document.getElementById('update-video-btn');
             const videoUploaderModal = document.getElementById('video-uploader-modal');
             const closeModalBtn = document.getElementById('close-modal-btn');
@@ -132,18 +133,15 @@
             const videoUrlInput = document.getElementById('video-url-input');
             const statusMessage = document.getElementById('status-message');
 
-            // Open the modal
             updateVideoBtn.addEventListener('click', () => {
                 videoUploaderModal.classList.remove('hidden');
                 statusMessage.textContent = '';
             });
 
-            // Close the modal
             closeModalBtn.addEventListener('click', () => {
                 videoUploaderModal.classList.add('hidden');
             });
 
-            // Save button click handler
             saveBtn.addEventListener('click', () => {
                 const url = videoUrlInput.value;
                 if (url) {
@@ -154,29 +152,23 @@
                 }
             });
 
-            // Call the sign-in function to start the auth process
-            signIn();
-        });
-
-        // --- Mobile Menu Toggle ---
-        document.addEventListener('DOMContentLoaded', () => {
+            // --- Mobile Menu Toggle FIX ---
             const mobileMenuBtn = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
-
+            
+            // Add a click listener to the mobile menu button
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Close menu when a link is clicked
+            // Close the menu when a link is clicked
             mobileMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
                 });
             });
-        });
 
-        // --- Testimonial Slider Functionality ---
-        document.addEventListener('DOMContentLoaded', () => {
+            // --- Testimonial Slider Functionality ---
             const testimonialContainer = document.getElementById('testimonial-container');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
@@ -219,6 +211,9 @@
                     updateSlider(currentIndex);
                 }
             });
+
+            // Call the sign-in function to start the auth process
+            signIn();
         });
     </script>
 
