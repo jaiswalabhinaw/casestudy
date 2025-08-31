@@ -1,243 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CASESTUDY | Turning Case Studies Into Growth Stories.</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-    body { font-family: "Poppins", sans-serif; background-color: #f8fafc; }
-    .modal { background-color: rgba(0,0,0,0.5); }
-    .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-    .video-container video { position: absolute; top:0; left:0; width:100%; height:100%; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASESTUDY | Turning Case Studies Into Growth Stories.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #f8fafc; }
+    </style>
 </head>
 <body class="text-slate-800">
-
-<!-- ========== HEADER ========== -->
-<header class="bg-white sticky top-0 z-50 shadow-md">
-  <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-    <a href="#home" class="text-2xl font-bold text-sky-700 flex items-center space-x-2">
-      <svg class="w-8 h-8 text-sky-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.96L18.06 19H5.94L12 6.96z"/></svg>
-      <span>CASESTUDY</span>
-    </a>
-    <div class="hidden md:flex items-center space-x-6 lg:space-x-12">
-      <a href="#home" class="hover:text-sky-600">Home</a>
-      <a href="#learning" class="hover:text-sky-600">Learning</a>
-      <a href="#clients" class="hover:text-sky-600">Our Clients</a>
-      <a href="#pricing" class="hover:text-sky-600">Pricing</a>
-      <a href="#contact" class="hover:text-sky-600">Contact</a>
-    </div>
-    <div class="hidden md:flex ml-auto items-center space-x-4">
-      <button id="update-video-btn" class="bg-sky-500 text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600">Update Video</button>
-      <button class="bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300">Become a Member</button>
-      <button class="bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300">Search</button>
-    </div>
-    <!-- Mobile button -->
-    <button id="mobile-menu-button" class="md:hidden text-slate-600 hover:text-sky-600 focus:outline-none">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-    </button>
-  </nav>
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
-    <a href="#home" class="block px-4 py-2 hover:bg-slate-100">Home</a>
-    <a href="#learning" class="block px-4 py-2 hover:bg-slate-100">Learning</a>
-    <a href="#clients" class="block px-4 py-2 hover:bg-slate-100">Our Clients</a>
-    <a href="#pricing" class="block px-4 py-2 hover:bg-slate-100">Pricing</a>
-    <a href="#contact" class="block px-4 py-2 hover:bg-slate-100">Contact</a>
-  </div>
-</header>
-
-<!-- ========== HERO SECTION ========== -->
-<section id="home" class="bg-pattern">
-  <div class="container mx-auto px-6 py-20 lg:py-32 flex flex-col-reverse lg:flex-row items-center gap-12">
-    <div class="lg:w-1/2 space-y-6">
-      <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900">Turning Case Studies Into <span class="text-sky-600">Growth Stories</span>.</h1>
-      <p class="text-lg text-slate-600">We provide real-world, practical case study learning for IT professionals, corporate teams, and startups. Learn by doing, not just theory.</p>
-      <div class="flex space-x-4">
-        <a href="#learning" class="bg-sky-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-sky-700">Get Started</a>
-        <a href="#services" class="bg-slate-200 text-slate-800 px-6 py-3 rounded-lg font-semibold hover:bg-slate-300">Our Services</a>
-      </div>
-    </div>
-    <div class="lg:w-1/2">
-      <div class="video-container rounded-xl shadow-lg overflow-hidden">
-        <video id="site-video-player" controls autoplay loop muted></video>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ======= SERVICES SECTION ======= -->
-<section id="services" class="py-20 bg-white">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl lg:text-4xl font-bold mb-12 text-slate-900">Our Services</h2>
-    <div class="grid md:grid-cols-3 gap-10">
-      <div class="p-6 bg-slate-50 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-4">Enterprise Case Studies</h3>
-        <p class="text-slate-600">Deep dive into real enterprise scenarios with hands-on workshops.</p>
-      </div>
-      <div class="p-6 bg-slate-50 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-4">Corporate Coaching</h3>
-        <p class="text-slate-600">Upskill your team with structured learning programs built on case studies.</p>
-      </div>
-      <div class="p-6 bg-slate-50 rounded-2xl shadow hover:shadow-lg transition">
-        <h3 class="text-xl font-semibold mb-4">Startup Advisory</h3>
-        <p class="text-slate-600">Learn how successful startups scaled by solving real-world problems.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====== TESTIMONIALS ====== -->
-<section id="testimonials" class="py-20 bg-slate-50">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl lg:text-4xl font-bold mb-12">What Our Clients Say</h2>
-    <div class="overflow-hidden relative">
-      <div id="testimonial-container" class="flex transition-transform duration-500">
-        <div class="w-full flex-shrink-0 px-6">
-          <div class="bg-white shadow rounded-xl p-6">
-            <p class="text-slate-600">“CaseStudy helped our IT team adapt real-life cloud migration practices.”</p>
-            <h4 class="mt-4 font-semibold">- CTO, TechCorp</h4>
-          </div>
+    <!-- Header & Navigation -->
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold text-sky-700 flex items-center space-x-2">
+                <svg class="w-8 h-8 text-sky-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 4.96L18.06 19H5.94L12 6.96z"/></svg>
+                <span>CASESTUDY</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="hover:text-sky-600">Home</a>
+                <a href="#learning" class="hover:text-sky-600">Learning</a>
+                <a href="#clients" class="hover:text-sky-600">Our Clients</a>
+                <a href="#pricing" class="hover:text-sky-600">Pricing</a>
+                <a href="#contact" class="hover:text-sky-600">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-600 hover:text-sky-600 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+            <a href="#home" class="block px-4 py-2 hover:bg-slate-100">Home</a>
+            <a href="#learning" class="block px-4 py-2 hover:bg-slate-100">Learning</a>
+            <a href="#clients" class="block px-4 py-2 hover:bg-slate-100">Our Clients</a>
+            <a href="#pricing" class="block px-4 py-2 hover:bg-slate-100">Pricing</a>
+            <a href="#contact" class="block px-4 py-2 hover:bg-slate-100">Contact</a>
         </div>
-        <div class="w-full flex-shrink-0 px-6">
-          <div class="bg-white shadow rounded-xl p-6">
-            <p class="text-slate-600">“The training was practical and impactful. Our productivity jumped.”</p>
-            <h4 class="mt-4 font-semibold">- HR Head, FinServe</h4>
-          </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-sky-700 text-white py-24 text-center">
+            <h1 class="text-4xl font-bold mb-4">Turning Case Studies Into Growth Stories.</h1>
+            <p class="text-xl mb-8">Data-driven analysis and personalized coaching to transform your business.</p>
+            <a href="#contact" class="bg-white text-sky-700 px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100 transition">Schedule a Free Consultation</a>
+        </section>
+
+        <!-- Learning Section -->
+        <section id="learning" class="py-16 bg-slate-50 text-center">
+            <h2 class="text-2xl font-bold mb-4">Continuous Learning Center</h2>
+            <p class="mb-8">Explore our resources, articles, and workshops to keep your team at the forefront.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg flex-1">
+                    <h3 class="font-semibold mb-2">Resource Guides</h3>
+                    <p>Download in-depth guides on leadership, productivity, and market analysis.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg flex-1">
+                    <h3 class="font-semibold mb-2">On-Demand Workshops</h3>
+                    <p>Access video workshops led by our expert coaches.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg flex-1">
+                    <h3 class="font-semibold mb-2">Case Study Library</h3>
+                    <p>Read inspiring stories and analyses of companies we've helped transform.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clients Section -->
+        <section id="clients" class="py-16 bg-gray-100 text-center">
+            <h2 class="text-2xl font-bold mb-8">Trusted by Industry Leaders</h2>
+            <div class="flex flex-wrap justify-center gap-8">
+                <img src="https://placehold.co/200x80/94a3b8/e2e8f0?text=Company+A" alt="Company A" class="rounded-lg shadow-sm w-40">
+                <img src="https://placehold.co/200x80/94a3b8/e2e8f0?text=Company+B" alt="Company B" class="rounded-lg shadow-sm w-40">
+                <img src="https://placehold.co/200x80/94a3b8/e2e8f0?text=Company+C" alt="Company C" class="rounded-lg shadow-sm w-40">
+                <img src="https://placehold.co/200x80/94a3b8/e2e8f0?text=Company+D" alt="Company D" class="rounded-lg shadow-sm w-40">
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-16 bg-slate-50 text-center">
+            <h2 class="text-2xl font-bold mb-4">Our Pricing</h2>
+            <p class="mb-8">Choose the plan that's right for your organization.</p>
+            <div class="flex flex-col md:flex-row justify-center gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-lg flex-1">
+                    <h3 class="font-bold text-sky-700 mb-2">Standard</h3>
+                    <div class="text-3xl font-bold mb-2">$1,500 <span class="text-base font-normal">/mo</span></div>
+                    <ul class="mb-6 text-left list-disc list-inside">
+                        <li>Initial Case Study & Analysis</li>
+                        <li>Monthly Check-in Calls</li>
+                        <li>Access to Learning Center</li>
+                    </ul>
+                    <button class="w-full px-4 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transition">Get Started</button>
+                </div>
+                <div class="bg-sky-700 text-white p-8 rounded-xl shadow-lg flex-1 border-4 border-sky-400">
+                    <h3 class="font-bold mb-2">Pro</h3>
+                    <div class="text-3xl font-bold mb-2">$3,500 <span class="text-base font-normal">/mo</span></div>
+                    <ul class="mb-6 text-left list-disc list-inside">
+                        <li>Everything in Standard</li>
+                        <li>Quarterly On-site Training</li>
+                        <li>Dedicated Coach & Support</li>
+                        <li>Advanced Sales & Leadership Modules</li>
+                    </ul>
+                    <button class="w-full px-4 py-3 bg-white text-sky-700 font-semibold rounded-lg hover:bg-gray-100 transition">Get Started</button>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg flex-1">
+                    <h3 class="font-bold text-sky-700 mb-2">Enterprise</h3>
+                    <div class="text-3xl font-bold mb-2">Custom</div>
+                    <ul class="mb-6 text-left list-disc list-inside">
+                        <li>Tailored Solutions & Strategy</li>
+                        <li>Unlimited On-site Training</li>
+                        <li>24/7 Priority Support</li>
+                    </ul>
+                    <button class="w-full px-4 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transition">Contact Us</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-gray-100 text-center">
+            <h2 class="text-2xl font-bold mb-4">Get in Touch</h2>
+            <p class="mb-8">Ready to turn your case study into a growth story? Contact us today!</p>
+            <form class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow-lg space-y-6">
+                <input type="text" placeholder="Full Name" class="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-sky-500">
+                <input type="email" placeholder="Email Address" class="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-sky-500">
+                <textarea placeholder="Message" rows="4" class="w-full p-3 border border-slate-300 rounded-md focus:ring-2 focus:ring-sky-500"></textarea>
+                <button type="submit" class="w-full px-6 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transition">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 py-10 text-center">
+        <div class="container mx-auto">
+            <div class="mb-4 text-xl font-bold text-sky-400">CASESTUDY</div>
+            <div class="mb-2">
+                <a href="#" class="hover:text-white mx-2">Privacy Policy</a>
+                <a href="#" class="hover:text-white mx-2">Terms of Service</a>
+            </div>
+            <p class="text-sm">&copy; 2024 CASESTUDY. All rights reserved.</p>
         </div>
-      </div>
-      <div class="flex justify-center space-x-3 mt-6" id="testimonial-dots">
-        <span class="dot w-3 h-3 rounded-full bg-sky-500 cursor-pointer" data-index="0"></span>
-        <span class="dot w-3 h-3 rounded-full bg-slate-300 cursor-pointer" data-index="1"></span>
-      </div>
-      <div class="flex justify-between mt-4">
-        <button id="prev-btn" class="px-4 py-2 bg-sky-500 text-white rounded-lg">Prev</button>
-        <button id="next-btn" class="px-4 py-2 bg-sky-500 text-white rounded-lg">Next</button>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<!-- ====== CONTACT ====== -->
-<section id="contact" class="py-20 bg-white">
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-3xl lg:text-4xl font-bold mb-12">Contact Us</h2>
-    <p class="text-slate-600">Email us at <a href="mailto:info@casestudy.com" class="text-sky-600">info@casestudy.com</a></p>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-slate-900 text-slate-200 py-6 text-center">
-  <p>&copy; 2025 CaseStudy. All Rights Reserved.</p>
-</footer>
-
-<!-- ========== SCRIPT ========== -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-  import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-  import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-  const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-  const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-  const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  const auth = getAuth(app);
-
-  let userId = null;
-
-  async function signIn() {
-    try {
-      if (initialAuthToken) await signInWithCustomToken(auth, initialAuthToken);
-      else await signInAnonymously(auth);
-    } catch (e) { console.error("Firebase Auth Error:", e); }
-  }
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      userId = user.uid;
-      initializeVideoListener();
-    } else { signIn(); }
-  });
-
-  const videoDocPath = `artifacts/${appId}/public/data/site_content/main_video`;
-  function initializeVideoListener() {
-    const videoPlayer = document.getElementById('site-video-player');
-    const videoUrlInput = document.getElementById('video-url-input');
-    onSnapshot(doc(db, videoDocPath), (docSnapshot) => {
-      if (docSnapshot.exists()) {
-        const data = docSnapshot.data();
-        if (data && data.url) {
-          videoPlayer.src = data.url;
-          if (videoUrlInput) videoUrlInput.value = data.url;
-        }
-      } else {
-        const defaultUrl = 'https://www.w3schools.com/html/mov_bbb.mp4';
-        videoPlayer.src = defaultUrl;
-        if (videoUrlInput) videoUrlInput.value = defaultUrl;
-      }
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // ✅ Fixed Mobile Menu
-    const mobileMenuBtn = document.getElementById("mobile-menu-button");
-    const mobileMenu = document.getElementById("mobile-menu");
-    if (mobileMenuBtn && mobileMenu) {
-      mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        if (mobileMenu.classList.contains("hidden")) {
-          mobileMenuBtn.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>`;
-        } else {
-          mobileMenuBtn.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>`;
-        }
-      });
-      mobileMenu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
-          mobileMenuBtn.innerHTML = `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>`;
+    <script>
+        // Mobile menu toggle logic
+        document.addEventListener('DOMContentLoaded', function () {
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            let isMenuOpen = false;
+            const hamburgerIcon = `
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            `;
+            const closeIcon = `
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            `;
+            mobileMenuBtn.innerHTML = hamburgerIcon;
+            function toggleMenu(e) {
+                if (e) { e.preventDefault(); e.stopPropagation(); }
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    mobileMenu.classList.remove('hidden');
+                    mobileMenuBtn.innerHTML = closeIcon;
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.innerHTML = hamburgerIcon;
+                }
+            }
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            mobileMenuBtn.addEventListener('touchstart', toggleMenu, { passive: false });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    isMenuOpen = false;
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.innerHTML = hamburgerIcon;
+                });
+            });
+            document.addEventListener('click', (e) => {
+                if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    isMenuOpen = false;
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.innerHTML = hamburgerIcon;
+                }
+            });
         });
-      });
-    }
-
-    // Testimonial slider
-    const testimonialContainer = document.getElementById('testimonial-container');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const dotsContainer = document.getElementById('testimonial-dots');
-    const testimonials = Array.from(testimonialContainer.children);
-    const total = testimonials.length;
-    let currentIndex = 0;
-
-    function updateSlider(i) {
-      testimonialContainer.style.transform = `translateX(-${i * 100}%)`;
-      Array.from(dotsContainer.children).forEach((dot, j) => {
-        dot.classList.toggle('bg-sky-500', j === i);
-        dot.classList.toggle('bg-slate-300', j !== i);
-      });
-    }
-
-    prevBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + total) % total;
-      updateSlider(currentIndex);
-    });
-    nextBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % total;
-      updateSlider(currentIndex);
-    });
-    dotsContainer.addEventListener("click", (e) => {
-      if (e.target.classList.contains("dot")) {
-        currentIndex = parseInt(e.target.dataset.index, 10);
-        updateSlider(currentIndex);
-      }
-    });
-
-    signIn();
-  });
-</script>
-
+    </script>
 </body>
 </html>
