@@ -163,10 +163,13 @@
             const mobileMenu = document.getElementById('mobile-menu');
 
             if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    console.log('Mobile menu button clicked!');
+                const toggleMenu = () => {
                     mobileMenu.classList.toggle('hidden');
-                });
+                };
+                
+                // Listen for both click and touchstart events for better mobile compatibility
+                mobileMenuBtn.addEventListener('click', toggleMenu);
+                mobileMenuBtn.addEventListener('touchstart', toggleMenu);
             } else {
                 console.error('Mobile menu elements not found in the DOM.');
             }
