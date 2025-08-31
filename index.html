@@ -47,16 +47,16 @@
       </a>
       <!-- Desktop Menu -->
       <div class="hidden md:flex items-center space-x-6 lg:space-x-12">
-        <a href="#home" class="text-sm lg:text-base font-medium hover:text-sky-600 transition">Home</a>
-        <a href="#learning" class="text-sm lg:text-base font-medium hover:text-sky-600 transition">Learning</a>
-        <a href="#clients" class="text-sm lg:text-base font-medium hover:text-sky-600 transition">Our Clients</a>
-        <a href="#pricing" class="text-sm lg:text-base font-medium hover:text-sky-600 transition">Pricing</a>
-        <a href="#contact" class="text-sm lg:text-base font-medium hover:text-sky-600 transition">Contact</a>
+        <a href="#home" class="hover:text-sky-600">Home</a>
+        <a href="#learning" class="hover:text-sky-600">Learning</a>
+        <a href="#clients" class="hover:text-sky-600">Our Clients</a>
+        <a href="#pricing" class="hover:text-sky-600">Pricing</a>
+        <a href="#contact" class="hover:text-sky-600">Contact</a>
       </div>
       <div class="hidden md:flex ml-auto items-center space-x-4">
-        <button id="update-video-btn" class="bg-sky-500 text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition">Update Video</button>
-        <button class="bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition">Become a Member</button>
-        <button class="bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition">Search</button>
+        <button id="update-video-btn" class="bg-sky-500 text-white px-3 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600">Update Video</button>
+        <button class="bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300">Become a Member</button>
+        <button class="bg-slate-200 text-slate-800 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300">Search</button>
       </div>
       <!-- Mobile Menu Button -->
       <button id="mobile-menu-button" class="md:hidden text-slate-600 hover:text-sky-600 focus:outline-none">
@@ -66,66 +66,129 @@
       </button>
     </nav>
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2 transition-all duration-300 ease-in-out">
-      <a href="#home" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100">Home</a>
-      <a href="#learning" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100">Learning</a>
-      <a href="#clients" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100">Our Clients</a>
-      <a href="#pricing" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100">Pricing</a>
-      <a href="#contact" class="block px-4 py-2 text-base text-slate-600 hover:bg-slate-100">Contact</a>
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2">
+      <a href="#home" class="block px-4 py-2 hover:bg-slate-100">Home</a>
+      <a href="#learning" class="block px-4 py-2 hover:bg-slate-100">Learning</a>
+      <a href="#clients" class="block px-4 py-2 hover:bg-slate-100">Our Clients</a>
+      <a href="#pricing" class="block px-4 py-2 hover:bg-slate-100">Pricing</a>
+      <a href="#contact" class="block px-4 py-2 hover:bg-slate-100">Contact</a>
     </div>
   </header>
 
-  <!-- User Info Section -->
-  <div class="fixed bottom-4 left-4 z-50 text-xs text-gray-500 bg-gray-100 rounded-lg p-2 shadow-lg">
-    <span id="user-id-display">Connecting...</span>
-  </div>
+  <!-- Hero Section -->
+  <section id="home" class="bg-sky-700 text-white py-24 lg:py-40">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold mb-4">Turning Case Studies Into Growth Stories.</h1>
+      <p class="text-base sm:text-xl font-light mb-8">We provide data-driven analysis and personalized corporate coaching to transform your business.</p>
+      <a href="#contact" class="inline-block bg-white text-sky-700 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-gray-100 transition">Schedule a Free Consultation</a>
+    </div>
+  </section>
 
-  <!-- Video Uploader Modal -->
-  <div id="video-uploader-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 hidden">
-    <div class="w-full max-w-xl p-8 bg-white rounded-xl shadow-lg border border-gray-200">
-      <div class="flex justify-between items-center mb-6">
-        <h2 class="text-2xl font-bold text-gray-800">Update Video URL</h2>
-        <button id="close-modal-btn" class="text-gray-500 hover:text-gray-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-      <div class="mb-4">
-        <label for="video-url-input" class="block text-sm font-medium text-gray-700 mb-2">Enter a direct video URL:</label>
-        <input type="url" id="video-url-input" placeholder="e.g., https://example.com/videos/demo.mp4" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500"/>
-      </div>
-      <button id="save-btn" class="w-full px-4 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transition">Save Video URL</button>
-      <div id="status-area" class="mt-6">
-        <p id="status-message" class="text-sm text-gray-600 text-center"></p>
+  <!-- Video Demo Section -->
+  <section id="video-demo" class="py-12 sm:py-24 bg-slate-50">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Watch a Demo</h2>
+      <p class="text-base text-slate-600 max-w-2xl mx-auto mb-10">See our approach in action.</p>
+      <div class="mx-auto max-w-4xl rounded-xl shadow-xl overflow-hidden video-container">
+        <video id="site-video-player" class="w-full h-full" controls muted playsinline></video>
       </div>
     </div>
-  </div>
+  </section>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="home" class="bg-sky-700 text-white py-24 lg:py-40">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl sm:text-5xl font-bold mb-4">Turning Case Studies Into Growth Stories.</h1>
-        <p class="text-base sm:text-xl font-light mb-8">We provide data-driven analysis and personalized corporate coaching to transform your business.</p>
-        <a href="#contact" class="inline-block bg-white text-sky-700 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-gray-100 transition">Schedule a Free Consultation</a>
+  <!-- Services Section -->
+  <section id="services" class="py-12 sm:py-24 bg-gray-100">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Our Core Services</h2>
+      <p class="text-slate-500 max-w-2xl mx-auto mb-10">We don't just identify problems; we partner with you to implement lasting solutions.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-lg">Case Study & Analysis</div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">Leadership Training</div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">Sales & Productivity</div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">On-site Training</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Video Demo Section -->
-    <section id="video-demo" class="py-12 sm:py-24 bg-slate-50">
-      <div class="container mx-auto px-4 text-center">
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Watch a Demo</h2>
-        <p class="text-base text-slate-600 max-w-2xl mx-auto mb-10">See our approach in action.</p>
-        <div class="mx-auto max-w-4xl rounded-xl shadow-xl overflow-hidden video-container">
-          <video id="site-video-player" class="w-full h-full" controls muted playsinline></video>
-        </div>
+  <!-- Learning Section -->
+  <section id="learning" class="py-12 sm:py-24 bg-slate-50">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Continuous Learning Center</h2>
+      <p class="text-slate-600 max-w-2xl mx-auto mb-10">Explore our comprehensive library of resources, articles, and workshops.</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-xl shadow-lg">Resource Guides</div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">On-Demand Workshops</div>
+        <div class="bg-white p-6 rounded-xl shadow-lg">Case Study Library</div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Add back your Services, Learning, Who we are, Clients, Testimonials, Pricing, FAQs, Contact ... -->
-    <!-- (omitted here due to length but keep them as in your original file) -->
-  </main>
+  <!-- Who We Are -->
+  <section id="who-we-are" class="py-12 sm:py-24 bg-gray-100">
+    <div class="container mx-auto px-4 lg:flex lg:items-center lg:space-x-12">
+      <div class="lg:w-1/2 mb-8">
+        <img src="https://placehold.co/600x400" class="rounded-xl shadow-xl"/>
+      </div>
+      <div class="lg:w-1/2">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4">Who We Are</h2>
+        <p class="text-slate-600">At casestudy, we believe business success is built on people. We provide in-depth case study analysis and personalized training to build strong teams.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients" class="py-12 sm:py-24 bg-slate-50 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-8">Trusted by Industry Leaders</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+      <img src="https://placehold.co/200x80" class="mx-auto"/>
+      <img src="https://placehold.co/200x80" class="mx-auto"/>
+      <img src="https://placehold.co/200x80" class="mx-auto"/>
+      <img src="https://placehold.co/200x80" class="mx-auto"/>
+      <img src="https://placehold.co/200x80" class="mx-auto"/>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="success-stories" class="py-12 sm:py-24 bg-gray-100 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-8">Real Success Stories</h2>
+    <div class="max-w-3xl mx-auto space-y-6">
+      <blockquote class="bg-white p-6 rounded-xl shadow">“The team at casestudy completely changed our perspective.”</blockquote>
+      <blockquote class="bg-white p-6 rounded-xl shadow">“Our sales team is more cohesive and effective.”</blockquote>
+      <blockquote class="bg-white p-6 rounded-xl shadow">“The personalized coaching was exactly what we needed.”</blockquote>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-12 sm:py-24 bg-slate-50 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-4">Our Pricing</h2>
+    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      <div class="bg-white p-6 rounded-xl shadow">Standard Plan</div>
+      <div class="bg-sky-700 text-white p-6 rounded-xl shadow">Pro Plan</div>
+      <div class="bg-white p-6 rounded-xl shadow">Enterprise Plan</div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section id="faqs" class="py-12 sm:py-24 bg-gray-100 text-center">
+    <h2 class="text-2xl sm:text-3xl font-bold mb-4">Frequently Asked Questions</h2>
+    <div class="max-w-3xl mx-auto space-y-4">
+      <div class="bg-white p-6 rounded-lg shadow">How do you conduct your case studies?</div>
+      <div class="bg-white p-6 rounded-lg shadow">What makes your coaching different?</div>
+      <div class="bg-white p-6 rounded-lg shadow">Do you work with remote teams?</div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-12 sm:py-24 bg-slate-50">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4">Get in Touch</h2>
+      <form class="max-w-lg mx-auto bg-white p-8 rounded-xl shadow space-y-4">
+        <input type="text" placeholder="Full Name" class="w-full p-3 border rounded"/>
+        <input type="email" placeholder="Email Address" class="w-full p-3 border rounded"/>
+        <textarea placeholder="Message" rows="4" class="w-full p-3 border rounded"></textarea>
+        <button type="submit" class="w-full px-6 py-3 bg-sky-600 text-white rounded-lg hover:bg-sky-700">Send Message</button>
+      </form>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-slate-800 text-slate-300 py-10">
@@ -156,7 +219,6 @@
           }
         });
 
-        // Close menu on link click
         mobileMenu.querySelectorAll("a").forEach(link => {
           link.addEventListener("click", () => {
             mobileMenu.classList.add("hidden");
