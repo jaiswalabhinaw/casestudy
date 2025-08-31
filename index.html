@@ -14,7 +14,10 @@
         }
         .bg-pattern {
             background-image: linear-gradient(to bottom, transparent, #e2e8f0),
-                              url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23cbd5e1" stroke-width="0.5"/></pattern><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
+                             url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="%23cbd5e1" stroke-width="0.5"/></pattern><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
+        }
+        .modal {
+            background-color: rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
@@ -35,8 +38,9 @@
                 <a href="#success-stories" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Success Stories</a>
                 <a href="#contact" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Contact</a>
             </div>
-            <div class="ml-auto hidden md:flex space-x-4">
-                 <button id="member-btn" class="bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors duration-300">Become a Member</button>
+            <div class="ml-auto flex space-x-4">
+                 <button id="update-video-btn" class="bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors duration-300">Update Video</button>
+                 <button id="member-btn" class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition-colors duration-300">Become a Member</button>
                  <button id="search-btn" class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition-colors duration-300">Search</button>
             </div>
             <!-- Mobile Menu Button -->
@@ -51,9 +55,40 @@
             <a href="#who-we-are" class="block px-4 py-2 text-lg text-slate-600 hover:bg-slate-100 transition-colors duration-300">Who we are</a>
             <a href="#clients" class="block px-4 py-2 text-lg text-slate-600 hover:bg-slate-100 transition-colors duration-300">Our Clients</a>
             <a href="#success-stories" class="block px-4 py-2 text-lg text-slate-600 hover:bg-slate-100 transition-colors duration-300">Success Stories</a>
-            <a href="#contact" class="block px-4 py-2 text-lg text-slate-600 hover:bg-slate-100 transition-colors duration-300">Contact</a>
+                <a href="#contact" class="block px-4 py-2 text-lg text-slate-600 hover:bg-slate-100 transition-colors duration-300">Contact</a>
         </div>
     </header>
+
+    <!-- User Info Section -->
+    <div class="fixed bottom-4 left-4 z-50 text-xs text-gray-500 bg-gray-100 rounded-lg p-2 shadow-lg">
+        <span id="user-id-display">Connecting...</span>
+    </div>
+
+    <!-- Video Uploader Modal (now a URL Input Modal) -->
+    <div id="video-uploader-modal" class="modal fixed inset-0 z-[100] flex items-center justify-center p-4 hidden">
+        <div class="w-full max-w-xl p-8 bg-white rounded-xl shadow-lg border border-gray-200">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Update Video URL</h2>
+                <button id="close-modal-btn" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="mb-4">
+                <label for="video-url-input" class="block text-sm font-medium text-gray-700 mb-2">Enter a Google Drive video URL:</label>
+                <input type="url" id="video-url-input" placeholder="e.g., https://drive.google.com/file/d/..." required class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sky-500 transition-colors duration-300">
+            </div>
+            
+            <button id="save-btn" class="w-full px-4 py-3 bg-sky-600 text-white font-semibold rounded-lg hover:bg-sky-700 transition-colors duration-300">
+                Save Video URL
+            </button>
+            
+            <!-- Status Area -->
+            <div id="status-area" class="mt-6">
+                <p id="status-message" class="text-sm text-gray-600 text-center"></p>
+            </div>
+        </div>
+    </div>
 
     <main>
         <!-- Hero Section -->
@@ -65,15 +100,34 @@
                 <p class="text-xl sm:text-xl font-light mb-8">
                     We provide data-driven analysis and personalized corporate coaching to transform your business and empower your people.
                 </p>
-                <!-- This button now scrolls to the contact section on the same page -->
                 <a href="#contact" class="inline-block bg-white text-sky-700 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
                     Schedule a Free Consultation
                 </a>
             </div>
         </section>
 
+        <!-- Video Demo Section -->
+        <section id="video-demo" class="py-24 bg-slate-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Watch a Demo</h2>
+                <p class="text-base text-slate-600 max-w-2xl mx-auto mb-10">
+                    See our approach in action and discover how we can help your business thrive with a brief video demonstration.
+                </p>
+                <!-- Video Player using an iframe for better reliability -->
+                <div class="mx-auto max-w-4xl aspect-video rounded-xl shadow-xl overflow-hidden">
+                    <iframe id="site-video-iframe"
+                            class="w-full h-full"
+                            src="https://drive.google.com/file/d/1chXTCDShBZ_Ql7HSN12vctsiB-BudQyX/preview"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
         <!-- Services Section -->
-        <section id="services" class="py-24 bg-slate-50">
+        <section id="services" class="py-24 bg-gray-100">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20">
                     <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Our Core Services</h2>
@@ -119,7 +173,7 @@
         </section>
 
         <!-- Learning Section -->
-        <section id="learning" class="py-24 bg-gray-100">
+        <section id="learning" class="py-24 bg-slate-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20">
                     <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Continuous Learning Center</h2>
@@ -145,7 +199,7 @@
         </section>
 
         <!-- About Us Section (Now "Who we are") -->
-        <section id="who-we-are" class="py-24 bg-slate-50">
+        <section id="who-we-are" class="py-24 bg-gray-100">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="lg:flex lg:items-center lg:space-x-12">
                     <div class="lg:w-1/2 mb-8 lg:mb-0">
@@ -165,7 +219,7 @@
         </section>
 
         <!-- Our Clients Section -->
-        <section id="clients" class="py-24 bg-gray-100">
+        <section id="clients" class="py-24 bg-slate-50">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-12">Trusted by Industry Leaders</h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-12 items-center justify-center">
@@ -179,7 +233,7 @@
         </section>
 
         <!-- Success Stories Section - Now a Testimonial Slider -->
-        <section id="success-stories" class="py-24 bg-slate-50">
+        <section id="success-stories" class="py-24 bg-gray-100">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12">
                     <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">Real Success Stories</h2>
@@ -226,32 +280,38 @@
             </div>
         </section>
 
-        <!-- A new Contact Section with an embedded Google Form -->
+        <!-- Contact Section with a native form -->
         <section id="contact" class="bg-sky-700 text-white py-24">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Grow Your Business?</h2>
                 <p class="text-lg font-light mb-8 max-w-2xl mx-auto">
                     Fill out the form below to schedule your free consultation.
                 </p>
-                <!-- Embedded Google Form -->
-                <div class="mx-auto w-full max-w-3xl bg-white rounded-lg shadow-xl overflow-hidden">
-                    <!--
-                        The Google Form is embedded using an iframe.
-                        The 'src' attribute points to the form's embed URL.
-                        The 'style' attributes ensure the iframe is responsive and fits within the container.
-                        The 'frameborder="0"' removes the border around the iframe.
-                        The 'marginheight="0"' and 'marginwidth="0"' remove any default margins.
-                    -->
-                    <iframe 
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSfueLOLphQB3q3nj9yfGGBUP6jbpN4ir5HOXgUdqQmeFIZRlg/viewform?embedded=true" 
-                        width="100%" 
-                        height="900" 
-                        frameborder="0" 
-                        marginheight="0" 
-                        marginwidth="0"
-                    >
-                        Loading…
-                    </iframe>
+                <div class="mx-auto w-full max-w-3xl bg-white rounded-lg shadow-xl overflow-hidden p-8">
+                    <!-- Form now submits to a Formspree endpoint -->
+                    <form action="https://formspree.io/f/your-unique-id" method="POST" class="space-y-6 text-left text-slate-800">
+                        <div>
+                            <label for="name" class="block text-lg font-medium text-slate-700">Name</label>
+                            <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-3 rounded-lg border-2 border-slate-300 focus:ring-sky-500 focus:border-sky-500 transition-colors duration-300">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-lg font-medium text-slate-700">Email Address</label>
+                            <input type="email" id="email" name="email" required class="mt-1 block w-full px-4 py-3 rounded-lg border-2 border-slate-300 focus:ring-sky-500 focus:border-sky-500 transition-colors duration-300">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-lg font-medium text-slate-700">Subject</label>
+                            <input type="text" id="subject" name="subject" required class="mt-1 block w-full px-4 py-3 rounded-lg border-2 border-slate-300 focus:ring-sky-500 focus:border-sky-500 transition-colors duration-300">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-lg font-medium text-slate-700">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-3 rounded-lg border-2 border-slate-300 focus:ring-sky-500 focus:border-sky-500 transition-colors duration-300"></textarea>
+                        </div>
+                        <div class="flex justify-center">
+                            <button type="submit" class="w-full sm:w-auto inline-block bg-sky-700 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow-md hover:bg-sky-800 transition-colors duration-300 transform hover:scale-105">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
@@ -285,23 +345,180 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu and Testimonial Slider -->
-    <script>
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // DOM Elements
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const testimonialContainer = document.getElementById('testimonial-container');
+        const testimonials = document.querySelectorAll('.testimonial-card');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const dotsContainer = document.getElementById('testimonial-dots');
+        const videoIframe = document.getElementById('site-video-iframe');
+        const updateVideoBtn = document.getElementById('update-video-btn');
+        const videoUploaderModal = document.getElementById('video-uploader-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const videoUrlInput = document.getElementById('video-url-input');
+        const saveBtn = document.getElementById('save-btn');
+        const statusMessage = document.getElementById('status-message');
+        const userIdDisplay = document.getElementById('user-id-display');
+
+        let currentIndex = 0;
+        const totalTestimonials = testimonials.length;
+        let autoSlideInterval;
+
+        // --- Firebase Setup ---
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : '';
+        let db, auth;
+
+        // Function to initialize Firebase and authenticate
+        const initializeFirebase = async () => {
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                // Listen for auth state changes and sign in
+                onAuthStateChanged(auth, async (user) => {
+                    if (user) {
+                        userIdDisplay.textContent = `User ID: ${user.uid}`;
+                        // Start listening for video URL updates once authenticated
+                        listenForVideoUrl();
+                    } else {
+                        userIdDisplay.textContent = 'User ID: N/A (Signed in anonymously)';
+                        // Sign in with custom token or anonymously if the token is not defined
+                        if (initialAuthToken) {
+                             await signInWithCustomToken(auth, initialAuthToken);
+                        } else {
+                             await signInAnonymously(auth);
+                        }
+                    }
+                });
+            } catch (error) {
+                console.error("Firebase initialization or authentication failed:", error);
+            }
+        };
+
+        // --- Video URL Firestore Logic ---
+        const PUBLIC_VIDEO_DOC_PATH = `artifacts/${appId}/public/data/video-url`;
+
+        // Function to listen for real-time video URL changes
+        const listenForVideoUrl = () => {
+            const videoDocRef = doc(db, PUBLIC_VIDEO_DOC_PATH);
+            onSnapshot(videoDocRef, (docSnap) => {
+                if (docSnap.exists() && docSnap.data().url) {
+                    const savedUrl = docSnap.data().url;
+                    const fileId = extractFileId(savedUrl);
+                    if (fileId) {
+                        const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+                        videoIframe.src = embedUrl;
+                    } else {
+                        console.error("Invalid video URL from Firestore:", savedUrl);
+                    }
+                } else {
+                    console.log("No video URL found in Firestore. Using default.");
+                }
+            }, (error) => {
+                console.error("Error listening to Firestore:", error);
+            });
+        };
+
+        // Function to extract the file ID from a Google Drive URL
+        const extractFileId = (url) => {
+            const regex = /(?:https?:\/\/drive\.google\.com\/(?:file\/d\/|open\?id=)|https?:\/\/docs\.google\.com\/file\/d\/)([a-zA-Z0-9_-]+)/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        };
+
+        // Function to handle saving the URL
+        const handleSave = async () => {
+            const url = videoUrlInput.value.trim();
+            if (!url) {
+                statusMessage.textContent = 'Please enter a Google Drive URL first!';
+                return;
+            }
+            const fileId = extractFileId(url);
+            if (!fileId) {
+                statusMessage.textContent = 'Invalid Google Drive URL. Please check the link!';
+                return;
+            }
+
+            try {
+                const videoDocRef = doc(db, PUBLIC_VIDEO_DOC_PATH);
+                await setDoc(videoDocRef, { url: url });
+                statusMessage.textContent = 'Video URL successfully updated!';
+            } catch (error) {
+                console.error("Error saving URL to Firestore:", error);
+                statusMessage.textContent = 'Failed to save URL. Please try again.';
+            }
+
+            // Close the modal and reset after a delay
+            setTimeout(() => {
+                videoUploaderModal.classList.add('hidden');
+                statusMessage.textContent = '';
+                videoUrlInput.value = '';
+            }, 1500);
+        };
+        
+        // --- Testimonial Slider Logic ---
+        const updateTestimonialDisplay = () => {
+            testimonials.forEach((card, index) => {
+                if (index === currentIndex) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            updateDots();
+        };
+
+        const updateDots = () => {
+            document.querySelectorAll('.dot').forEach((dot, index) => {
+                if (index === currentIndex) {
+                    dot.classList.add('bg-sky-500');
+                    dot.classList.remove('bg-slate-300');
+                } else {
+                    dot.classList.add('bg-slate-300');
+                    dot.classList.remove('bg-sky-500');
+                }
+            });
+        };
+        
+        const nextSlide = () => {
+            currentIndex = (currentIndex + 1) % totalTestimonials;
+            updateTestimonialDisplay();
+        };
+
+        const prevSlide = () => {
+            currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+            updateTestimonialDisplay();
+        };
+        
+        const startAutoSlide = () => {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        };
+
+        // --- Event Listeners ---
         document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const testimonialContainer = document.getElementById('testimonial-container');
-            const testimonials = document.querySelectorAll('.testimonial-card');
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const dotsContainer = document.getElementById('testimonial-dots');
-
-            let currentIndex = 0;
-            const totalTestimonials = testimonials.length;
-
+            initializeFirebase();
+            
             // Mobile Menu functionality
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Hide mobile menu when a link is clicked
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
             });
 
             // Smooth scrolling for navigation links
@@ -311,48 +528,46 @@
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
                     });
-                    // Close mobile menu after clicking a link
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
                 });
             });
+            
+            // Testimonial Slider buttons
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                startAutoSlide(); // Reset timer on manual click
+            });
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                startAutoSlide(); // Reset timer on manual click
+            });
 
-            // Testimonial Slider functionality
-            const showTestimonial = (index) => {
-                // Hide all testimonials and remove 'active' class from dots
-                testimonials.forEach(testimonial => testimonial.classList.add('hidden'));
-                document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('bg-sky-500', 'bg-slate-300'));
-                document.querySelectorAll('.dot').forEach(dot => dot.classList.add('bg-slate-300'));
-
-                // Show the selected testimonial and update dot color
-                testimonials[index].classList.remove('hidden');
-                document.querySelector(`.dot[data-index="${index}"]`).classList.add('bg-sky-500');
-                document.querySelector(`.dot[data-index="${index}"]`).classList.remove('bg-slate-300');
-            };
-
-            const nextTestimonial = () => {
-                currentIndex = (currentIndex + 1) % totalTestimonials;
-                showTestimonial(currentIndex);
-            };
-
-            const prevTestimonial = () => {
-                currentIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
-                showTestimonial(currentIndex);
-            };
-
-            nextBtn.addEventListener('click', nextTestimonial);
-            prevBtn.addEventListener('click', prevTestimonial);
-
+            // Testimonial Slider dots
             dotsContainer.addEventListener('click', (e) => {
                 if (e.target.classList.contains('dot')) {
-                    currentIndex = parseInt(e.target.dataset.index);
-                    showTestimonial(currentIndex);
+                    currentIndex = parseInt(e.target.dataset.index, 10);
+                    updateTestimonialDisplay();
+                    startAutoSlide(); // Reset timer on manual click
                 }
             });
 
-            // Initial state
-            showTestimonial(currentIndex);
+            // Video Uploader Modal functionality
+            updateVideoBtn.addEventListener('click', () => {
+                videoUploaderModal.classList.remove('hidden');
+            });
+            closeModalBtn.addEventListener('click', () => {
+                videoUploaderModal.classList.add('hidden');
+            });
+            // Close modal when clicking outside
+            videoUploaderModal.addEventListener('click', (e) => {
+                if (e.target === videoUploaderModal) {
+                    videoUploaderModal.classList.add('hidden');
+                }
+            });
+            saveBtn.addEventListener('click', handleSave);
+            
+            // Initial setup for the testimonial slider
+            updateTestimonialDisplay();
+            startAutoSlide();
         });
     </script>
 </body>
