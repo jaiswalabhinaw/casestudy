@@ -22,9 +22,7 @@
 
     <!-- Header & Navigation -->
     <header class="bg-white sticky top-0 z-50 shadow-md">
-        <!-- I've added space-x-8 to create a gap between the logo and the navigation links -->
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex items-center space-x-8">
-            <!-- I've added a simple SVG icon for branding -->
             <a href="#" class="text-2xl font-bold text-sky-700 flex items-center space-x-2">
                 <svg class="w-8 h-8 text-sky-500" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 22h20L12 2zm0 4.96L18.06 19H5.94L12 6.96z"/></svg>
                 <span>CASESTUDY</span>
@@ -37,10 +35,9 @@
                 <a href="#success-stories" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Success Stories</a>
                 <a href="#contact" class="text-base font-medium hover:text-sky-600 transition-colors duration-300">Contact</a>
             </div>
-            <!-- I've also moved these buttons and the mobile menu button to keep them separate -->
             <div class="ml-auto hidden md:flex space-x-4">
-                 <button class="bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors duration-300">Become a Member</button>
-                 <button class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition-colors duration-300">Search</button>
+                 <button id="member-btn" class="bg-sky-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-sky-600 transition-colors duration-300">Become a Member</button>
+                 <button id="search-btn" class="bg-slate-200 text-slate-800 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-300 transition-colors duration-300">Search</button>
             </div>
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-slate-600 hover:text-sky-600 focus:outline-none ml-auto">
@@ -68,6 +65,7 @@
                 <p class="text-xl sm:text-xl font-light mb-8">
                     We provide data-driven analysis and personalized corporate coaching to transform your business and empower your people.
                 </p>
+                <!-- This button now scrolls to the contact section on the same page -->
                 <a href="#contact" class="inline-block bg-white text-sky-700 px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
                     Schedule a Free Consultation
                 </a>
@@ -119,7 +117,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Learning Section -->
         <section id="learning" class="py-24 bg-gray-100">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,7 +163,7 @@
                 </div>
             </div>
         </section>
-        
+
         <!-- Our Clients Section -->
         <section id="clients" class="py-24 bg-gray-100">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -228,28 +226,35 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- A new Contact Section with an embedded Google Form -->
         <section id="contact" class="bg-sky-700 text-white py-24">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-4">Ready to Grow Your Business?</h2>
                 <p class="text-lg font-light mb-8 max-w-2xl mx-auto">
-                    Take the first step towards a more productive and prosperous future. Contact us today to schedule your free consultation.
+                    Fill out the form below to schedule your free consultation.
                 </p>
-                <!-- I've added a message box for form feedback -->
-                <div id="message-box" class="hidden bg-green-500 text-white p-4 rounded-lg shadow-md mb-4 max-w-xl mx-auto">
-                    <p id="message-text">Your inquiry has been submitted successfully!</p>
+                <!-- Embedded Google Form -->
+                <div class="mx-auto w-full max-w-3xl bg-white rounded-lg shadow-xl overflow-hidden">
+                    <!--
+                        The Google Form is embedded using an iframe.
+                        The 'src' attribute points to the form's embed URL.
+                        The 'style' attributes ensure the iframe is responsive and fits within the container.
+                        The 'frameborder="0"' removes the border around the iframe.
+                        The 'marginheight="0"' and 'marginwidth="0"' remove any default margins.
+                    -->
+                    <iframe 
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSfueLOLphQB3q3nj9yfGGBUP6jbpN4ir5HOXgUdqQmeFIZRlg/viewform?embedded=true" 
+                        width="100%" 
+                        height="900" 
+                        frameborder="0" 
+                        marginheight="0" 
+                        marginwidth="0"
+                    >
+                        Loading…
+                    </iframe>
                 </div>
-                <form id="contact-form" class="max-w-xl mx-auto space-y-4">
-                    <input type="text" id="name-input" name="name" placeholder="Your Name" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300" required>
-                    <input type="email" id="email-input" name="email" placeholder="Your Email Address" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300" required>
-                    <textarea id="message-input" name="message" placeholder="Tell us about your company and needs" rows="4" class="w-full p-3 rounded-lg text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-300 transition-all duration-300" required></textarea>
-                    <button type="submit" class="w-full bg-white text-sky-700 px-8 py-3 rounded-lg text-lg font-semibold shadow-md hover:bg-gray-100 transition-colors duration-300 transform hover:scale-105">
-                        Submit Inquiry
-                    </button>
-                </form>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
@@ -267,7 +272,7 @@
                 <!-- X (Twitter) Icon -->
                 <a href="#" class="text-white hover:text-sky-400 transition-colors duration-300" aria-label="X (Twitter)">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.064 7.645c-.322.143-1.428.618-2.618.914-1.285.312-2.315.424-2.887.424-.265 0-.419-.071-.419-.247 0-.071.014-.143.142-.286.071-.071.214-.214.357-.357.143-.143.214-.286.214-.429 0-.214-.143-.357-.357-.357-.143 0-.357.071-.5.214-.143.143-.286.357-.429.5-.143.143-.286.357-.357.5-1.285-.357-2.857-1.143-4.143-2.143-1.285-.999-2.357-2.142-2.857-2.571-.214-.143-.429-.214-.5-.214-.214 0-.429.143-.571.357-.143.214-.214.357-.214.5 0 .286.071.5.214.714.143.214.357.429.571.571.214.214.214.429 0 .571-.071.143-.143.286-.286.429-.143.143-.214.286-.214.429 0 .214.071.357.214.429.214.071.429.143.643.214.214.071.357.214.5.357.143.143.214.286.214.429 0 .214-.071.357-.214.429-.143.071-.286.214-.429.286-.143.071-.214.143-.214.214 0 .143.071.214.143.214.071 0 .214-.071.357-.143.143-.071.286-.143.357-.214.143-.143.286-.214.429-.214.143 0 .286.071.429.143.143.071.286.214.429.357.143.143.214.286.286.429-.357.214-.714.286-1.143.286-1.285 0-2.357-.999-2.857-1.999-.429-.999-.643-2.071-.643-3.214 0-1.071.286-2.143.857-3.071.571-.929 1.429-1.571 2.5-1.929 1.071-.357 2.143-.5 3.214-.5 1.071 0 2.143.143 3.214.429.999.286 1.929.857 2.714 1.714.786.857 1.286 1.857 1.429 3.071.143 1.214.071 2.357-.214 3.214-.286.857-.714 1.429-1.286 1.714-.571.286-1.143.429-1.857.429-1.071 0-2.143-.143-3.214-.429-1.143-.286-2.214-.999-3.214-2.143-1.071-1.143-1.857-2.429-2.357-3.857-.5-.929-.857-1.929-1.071-3.071-.214-1.143-.214-2.286 0-3.429.286-1.214.714-2.286 1.429 3.214.714.929 1.5 1.5 2.286 1.714.786.214 1.571.214 2.357 0 1.285-.286 2.5-.786 3.571-1.571.999-.786 1.714-1.786 2.071-2.929.357-1.143.429-2.357.214-3.643-.214-1.143-.714-2.143-1.429-2.857z"/>
+                        <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.064 7.645c-.322.143-1.428.618-2.618.914-1.285.312-2.315.424-2.887.424-.265 0-.419-.071-.419-.247 0-.071.014-.143.142-.286.071-.071.214-.214.357-.357.143-.143.214-.286.214-.429 0-.214-.143-.357-.357-.357-.143 0-.357.071-.5.214-.143.143-.286.357-.429.5-.143.143-.286.357-.357.5-1.285-.357-2.857-1.143-4.143-2.143-1.285-.999-2.357-2.142-2.857-2.571-.214-.143-.429-.214-.5-.214-.214 0-.429.143-.571.357-.143.214-.214.357-.214.5 0 .286.071.5.214.714.143.214.357.429.571.571.214.214.214.429 0 .571-.071.143-.143.286-.286.429-.143.143-.214.286-.214.429 0 .214.071.357.214.429.214.071.429.143.643.214.214.071.357.214.5.357.143.143.214.286.286.429-.357.214-.714.286-1.143.286-1.285 0-2.357-.999-2.857-1.999-.429-.999-.643-2.071-.643-3.214 0-1.071.286-2.143.857-3.071.571-.929 1.429-1.571 2.5-1.929 1.071-.357 2.143-.5 3.214-.5 1.071 0 2.143.143 3.214.429.999.286 1.929.857 2.714 1.714.786.857 1.286 1.857 1.429 3.071.143 1.214.071 2.357-.214 3.214-.286.857-.714 1.429-1.286 1.714-.571.286-1.143.429-1.857.429-1.071 0-2.143-.143-3.214-.429-1.143-.286-2.214-.999-3.214-2.143-1.071-1.143-1.857-2.429-2.357-3.857-.5-.929-.857-1.929-1.071-3.071-.214-1.143-.214-2.286 0-3.429.286-1.214.714-2.286 1.429 3.214.714.929 1.5 1.5 2.286 1.714.786.214 1.571.214 2.357 0 1.285-.286 2.5-.786 3.571-1.571.999-.786 1.714-1.786 2.071-2.929.357-1.143.429-2.357.214-3.643-.214-1.143-.714-2.143-1.429-2.857z"/>
                     </svg>
                 </a>
                 <!-- Facebook Icon -->
@@ -280,7 +285,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu, Testimonial Slider, and Form Validation -->
+    <!-- JavaScript for Mobile Menu and Testimonial Slider -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -290,9 +295,6 @@
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
             const dotsContainer = document.getElementById('testimonial-dots');
-            const contactForm = document.getElementById('contact-form');
-            const messageBox = document.getElementById('message-box');
-            const messageText = document.getElementById('message-text');
 
             let currentIndex = 0;
             const totalTestimonials = testimonials.length;
@@ -351,48 +353,7 @@
 
             // Initial state
             showTestimonial(currentIndex);
-
-            // Contact Form Validation
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                const nameInput = document.getElementById('name-input');
-                const emailInput = document.getElementById('email-input');
-                const messageInput = document.getElementById('message-input');
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                let isValid = true;
-                let errorMessage = '';
-
-                // Name validation
-                if (nameInput.value.trim() === '') {
-                    isValid = false;
-                    errorMessage = 'Please enter your name.';
-                }
-                // Email validation
-                else if (!emailRegex.test(emailInput.value.trim())) {
-                    isValid = false;
-                    errorMessage = 'Please enter a valid email address.';
-                }
-                // Message validation
-                else if (messageInput.value.trim() === '') {
-                    isValid = false;
-                    errorMessage = 'Please tell us about your needs.';
-                }
-
-                if (isValid) {
-                    messageBox.classList.remove('hidden', 'bg-red-500');
-                    messageBox.classList.add('bg-green-500');
-                    messageText.textContent = 'Thank you for your inquiry! We will get back to you shortly.';
-                    contactForm.reset();
-                } else {
-                    messageBox.classList.remove('hidden', 'bg-green-500');
-                    messageBox.classList.add('bg-red-500');
-                    messageText.textContent = errorMessage;
-                }
-            });
         });
     </script>
-
 </body>
 </html>
