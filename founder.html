@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +10,9 @@
     header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; }
     .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; }
     .menu-toggle { font-size:1.5em; cursor:pointer; float:right; color:#FFD700; }
-    main { max-width:900px; margin:2em auto; padding:2em; background:#1a1a1a; border-radius:8px; display:flex; align-items:flex-start; gap:2em; }
+    main { max-width:900px; margin:2em auto; padding:2em; background:#1a1a1a; border-radius:8px; }
     h1, h2, h3, h4 { color:#FFD700; }
-    .founder-photo { max-width:220px; border-radius:50%; border:4px solid #FFD700; box-shadow:0 4px 20px rgba(0,0,0,0.7); }
-    .founder-content { flex:1; }
+    blockquote { font-style:italic; color:#FFD700; margin:1em 0; padding:0.5em 1em; border-left:4px solid #FFD700; background:rgba(255,215,0,0.05); }
     footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
 
     /* Sidebar Styles */
@@ -23,6 +22,12 @@
     .sidebar a.show { opacity:1; transform:translateX(0); transition: all 0.5s ease; }
     .sidebar a:hover { background:#444; padding-left:30px; color:#fff; border-radius:4px; }
     .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
+
+    .timeline { border-left:3px solid #444; margin:2em 0; padding-left:1.5em; }
+    .timeline-item { margin-bottom:1.5em; position:relative; opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+    .timeline-item.visible { opacity:1; transform:translateY(0); }
+    .timeline-item::before { content:""; position:absolute; left:-10px; top:5px; width:14px; height:14px; border-radius:50%; background:#666; }
+    .timeline-year { font-weight:bold; color:#fff; margin-bottom:0.3em; font-size:1.1em; }
   </style>
 </head>
 <body>
@@ -48,53 +53,74 @@
 </div>
 
 <main>
-  <img src="3.jpg" alt="संस्थापक नवीन श्रीवास्तव" class="founder-photo">
+  <blockquote>“सेवा ही सबसे बड़ा धर्म है”</blockquote>
 
-  <div class="founder-content">
-    <p>
-      श्री नवीन श्रीवास्तव एक समर्पित समाजसेवी हैं जिन्होंने अपना जीवन असहाय, बेसहारा 
-      और जरूरतमंद लोगों की सेवा के लिए समर्पित किया। उनका विश्वास है कि 
-      <strong>“सेवा ही सबसे बड़ा धर्म है”</strong> और इसी सोच से उन्होंने 
-      <em>शताक्षी एनजीओ</em> की नींव रखी।
-    </p>
+  <h2>प्रारंभिक जीवन और शिक्षा</h2>
+  <p>
+    श्री नवीन रंजन श्रीवास्तव का जन्म गोपालगंज, बिहार के मणिकपुर गाँव में हुआ। 
+    बचपन से ही वे ग्रामीण जीवन की कठिनाइयों से गहराई से परिचित रहे। उनका सपना भारतीय प्रशासनिक सेवा (IAS) में जाने का था, 
+    जिसके लिए वे प्रयागराज (इलाहाबाद) पहुँचे।
+  </p>
 
-    <h3>🙏 अन्नपूर्णा रसोई</h3>
-    <p>
-      14 अगस्त 2024 से <em>“अन्नपूर्णा रसोई सेवा”</em> चल रही है। इसके अंतर्गत 
-      15 गाँवों में 42 बुजुर्गों और असहाय लोगों तक प्रतिदिन टिफिन में गरम भोजन 
-      पहुँचाया जाता है। विशेष बात यह है कि अब तक एक भी दिन यह सेवा बाधित नहीं हुई।
-    </p>
+  <h2>जीवन का मोड़</h2>
+  <p>
+    प्रयागराज में अध्ययन के दौरान उनके बड़े भाई का निधन हो गया। शव की तलाश में उन्होंने लावारिस और सड़े-गले शवों की पीड़ा देखी। 
+    इस त्रासदी और गुरु के संदेश ने उनके जीवन की दिशा बदल दी और उन्होंने समाज सेवा का मार्ग चुना।
+  </p>
 
-    <h3>🚑 शताक्षी निःशुल्क एंबुलेंस सेवा</h3>
-    <p>
-      बाढ़ के दौरान एक माँ और नवजात की साधन न मिलने से हुई मृत्यु ने उन्हें 
-      गहराई से प्रभावित किया। इसी घटना से प्रेरित होकर उन्होंने 
-      <em>“शताक्षी निःशुल्क एंबुलेंस सेवा”</em> की शुरुआत की। 
-      पिछले 5 वर्षों में यह सेवा 25 गाँवों तक पहुँचकर सैकड़ों लोगों की जान बचा चुकी है। 
-      यह सेवा आज भी 24×7 उपलब्ध है。
-    </p>
+  <h2>शताक्षी सेवा संस्थान की स्थापना</h2>
+  <p>
+    2011 में उन्होंने <strong>शताक्षी एजुकेशनल एंड वेलफेयर ट्रस्ट</strong> की स्थापना की, जिसे शताक्षी सेवा संस्थान के नाम से भी जाना जाता है। 
+    यह संस्था भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A एवं 80-G के अंतर्गत मान्यता प्राप्त है।
+  </p>
 
-    <h3>🦠 कोरोना काल की सेवा</h3>
-    <p>
-      कोविड-19 महामारी के समय, श्रीवास्तव जी अग्रिम पंक्ति में खड़े रहे। 
-      उनकी एंबुलेंस सेवा ने मरीजों को अस्पताल और ऑक्सीजन तक पहुँचाने में अहम भूमिका निभाई। 
-      <em>अन्नपूर्णा रसोई</em> ने लॉकडाउन में असहाय परिवारों तक भोजन पहुँचाकर राहत दी। 
-      प्रवासी मजदूरों तक राशन, मास्क और दवाइयाँ भी वितरित की गईं。
-    </p>
-
-    <h3>🌸 लावारिस शवों का सम्मानजनक संस्कार</h3>
-    <p>
-      उनका मानना है कि हर जीवन गरिमा का हकदार है। इसी सोच के तहत वे लावारिस शवों का 
-      सम्मानजनक अंतिम संस्कार करते हैं。
-    </p>
-
-    <h3>✨ व्यक्तित्व</h3>
-    <p>
-      श्री नवीन श्रीवास्तव का जीवन संवेदना, साहस और त्याग का प्रतीक है। 
-      वे कठिन से कठिन परिस्थितियों में भी समाज की सेवा करते हैं और 
-      <strong>मानवता के सच्चे पुजारी</strong> कहे जा सकते हैं।
-    </p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">2011</div>
+      <div>संस्थान की स्थापना और मानवता की सेवा की नींव रखी।</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2012</div>
+      <div>“अंतिम विदाई” सेवा शुरू, अब तक 900+ लावारिस शवों का सम्मानजनक अंतिम संस्कार।</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2019</div>
+      <div>“हथियार से कलम तक” अभियान शुरू, बाढ़ प्रभावित क्षेत्रों के 800+ बच्चों को शिक्षा से जोड़ा।</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2020</div>
+      <div>“वॉइस ऑफ साइलेंस” और “जल पाठशाला” की शुरुआत, महिलाओं, बालिकाओं और पर्यावरण पर कार्य।</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2020</div>
+      <div>शताक्षी हेल्पलाइन 24×7 शुरू, हजारों परिवारों को सरकारी योजनाओं और अधिकारों से जोड़ा।</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2021</div>
+      <div>कोविड-19 महामारी के दौरान निःशुल्क एंबुलेंस सेवा और भोजन वितरण द्वारा हजारों को राहत दी।</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2024</div>
+      <div>“अन्नपूर्णा रसोई सेवा” शुरू, 15 गाँवों में 42 असहायों तक प्रतिदिन भोजन पहुँचाया।</div>
+    </div>
   </div>
+
+  <h2>प्रमुख पहल और अभियान</h2>
+  <ul>
+    <li><strong>Mission Hathiyaar Se Kalam Tak:</strong> बाढ़ में डूबे घरों से निकलकर छोटे बच्चे जब पढ़ाई की रोशनी पाते हैं, उनकी आँखों की चमक ही इस अभियान की सबसे बड़ी जीत है।</li>
+    <li><strong>Voice of Silence:</strong> एक बेटी जब बाल विवाह से बचकर पढ़ाई और अपने सपनों की राह पकड़ती है, तो यह पहल उसकी मुस्कान में दिखाई देती है।</li>
+    <li><strong>Shatakshi Helpline:</strong> आधी रात को एक फोन, और किसी गरीब के हाथ में राशन का थैला – यही इस सेवा की पहचान है।</li>
+    <li><strong>Shatakshi Annapurna Rasoi:</strong> गरमागरम टिफिन जब किसी बुजुर्ग के दरवाज़े पर पहुँचता है और उनकी आँखों से आशीर्वाद छलकता है, वही सच्चा संतोष है।</li>
+    <li><strong>Antim Vidai:</strong> लावारिस शवों को कंधा देकर सम्मानजनक विदाई देना – मानो अपने ही परिवार के सदस्य को अंतिम संस्कार देना।</li>
+    <li><strong>Partnership for Education:</strong> मुफ़्त शिक्षा केंद्रों में बैठी बच्चियाँ जब पहली बार कॉपी-पेन पकड़ती हैं, तो उनके सपनों को उड़ान मिलती है।</li>
+  </ul>
+
+  <h2>✨ व्यक्तित्व</h2>
+  <p>
+    श्री नवीन रंजन श्रीवास्तव का जीवन संवेदना, साहस और त्याग का प्रतीक है। वे कठिन से कठिन परिस्थितियों में भी समाज की सेवा करते हैं। 
+    उनकी पत्नी श्रीमती शांति सेना का साथ, परिवार का मार्गदर्शन और समाज का विश्वास उन्हें निरंतर आगे बढ़ने की शक्ति देता है। 
+    वे सच में <strong>मानवता के सच्चे पुजारी</strong> हैं।
+  </p>
 </main>
 
 <footer class="site-footer">
@@ -116,6 +142,20 @@ function closeNav() {
   const links = sidebar.querySelectorAll("a");
   links.forEach(link => link.classList.remove("show"));
 }
+
+// Fade-in animation for timeline items
+const timelineItems = document.querySelectorAll('.timeline-item');
+function checkTimelineVisibility() {
+  const triggerBottom = window.innerHeight * 0.9;
+  timelineItems.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < triggerBottom) {
+      item.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', checkTimelineVisibility);
+window.addEventListener('load', checkTimelineVisibility);
 </script>
 
 </body>
