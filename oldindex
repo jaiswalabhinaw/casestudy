@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shatakshi NGO - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Shatakshi</a>
+  <span class="menu-toggle" onclick="openNav()">☰</span>
+</header>
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="about.html">About</a>
+  <a href="causes.html">Causes</a>
+  <a href="projects.html">Projects</a>
+  <a href="events.html">Events</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a href="donate.html">Donate</a>
+  <a href="contact.html">Contact</a>
+  <a href="blog.html">Blog</a>
+  <a href="founder.html">Founder</a>
+  <a href="creator.html">Creator</a>
+</div>
+
+<main>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Welcome to Shatakshi NGO</h1>
+    <p>Empowering communities, creating change together.</p>
+    <div class="cta-buttons">
+      <a href="donate.html" class="btn btn-primary">Donate Now</a>
+      <a href="volunteer.html" class="btn btn-secondary">Join Us</a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About Us</h2>
+    <p>Shatakshi NGO is dedicated to education, healthcare, and empowerment of underprivileged communities. 
+       We believe in sustainable change through collective action.</p>
+    <a href="about.html" class="btn-link">Read More →</a>
+  </section>
+
+  <!-- Causes Section -->
+  <section class="causes">
+    <h2>Our Causes</h2>
+    <div class="cause-list">
+      <div class="cause-card">Education</div>
+      <div class="cause-card">Healthcare</div>
+      <div class="cause-card">Women Empowerment</div>
+      <div class="cause-card">Environment</div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects">
+    <h2>Ongoing Projects</h2>
+    <p>Here are some initiatives we are working on to make a real difference.</p>
+    <a href="projects.html" class="btn-link">See All Projects →</a>
+  </section>
+
+  <!-- Events Section -->
+  <section class="events">
+    <h2>Upcoming Events</h2>
+    <p>🌱 Tree Plantation Drive – 15th Sept 2025</p>
+    <a href="events.html" class="btn-link">View All Events →</a>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta">
+    <h2>Get Involved</h2>
+    <p>Your support matters! Volunteer with us or make a donation.</p>
+    <div class="cta-buttons">
+      <a href="volunteer.html" class="btn btn-secondary">Volunteer</a>
+      <a href="donate.html" class="btn btn-primary">Donate</a>
+    </div>
+  </section>
+
+  <!-- Gallery Preview -->
+  <section class="gallery-preview">
+    <h2>Gallery</h2>
+    <p>A glimpse of our work and community activities.</p>
+    <a href="gallery.html" class="btn-link">View Gallery →</a>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h2>Get in Touch</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>© 2025 Shatakshi NGO. All rights reserved.</p>
+</footer>
+
+<script>
+function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+</script>
+</body>
+</html>

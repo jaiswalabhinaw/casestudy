@@ -34,7 +34,7 @@
 
     /* Timeline */
     .timeline-container { overflow:hidden; white-space:nowrap; position:relative; }
-    .timeline-track { display:inline-flex; animation: scrollTimeline 40s linear infinite; } /* faster */
+    .timeline-track { display:inline-flex; animation: scrollTimeline 80s linear infinite; }
     .timeline-item { flex:0 0 auto; background:#222; color:#fff; border-radius:8px; padding:1em; margin:0 1em; min-width:220px; max-width:240px; text-align:left; white-space:normal; }
     .timeline-year { font-size:1.1em; font-weight:bold; color:#FFD700; margin-bottom:0.5em; }
     @keyframes scrollTimeline { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
@@ -70,11 +70,9 @@
     /* Photo Gallery */
     .photo-gallery { text-align:center; padding:2em 0; }
     .photo-gallery h2 { color:#FFD700; }
-    .gallery-container { overflow:hidden; position:relative; width:100%; }
-    .gallery-track { display:flex; animation: scrollGallery 30s linear infinite; } /* faster */
-    .gallery-track img { max-height:220px; border-radius:8px; margin-right:1em; flex:0 0 auto; transition:transform 0.3s; }
+    .gallery-track { display:flex; overflow-x:auto; gap:1em; padding:1em; scroll-behavior:smooth; }
+    .gallery-track img { max-height:220px; border-radius:8px; flex:0 0 auto; transition:transform 0.3s; }
     .gallery-track img:hover { transform:scale(1.05); }
-    @keyframes scrollGallery { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
 
     /* Call to Action */
     .cta { text-align:center; }
@@ -117,58 +115,20 @@
     <p id="hero-text">Founded in 2011 in Gopalganj, Bihar.</p>
   </section>
 
- <!-- Journey -->
-<section class="story">
-  <h2>Our Journey Timeline</h2>
-  <div class="timeline-container">
-    <div class="timeline-track">
-      <div class="timeline-item"><div class="timeline-year">2011</div>Established as Shatakshi Educational & Welfare Trust.</div>
-      <div class="timeline-item"><div class="timeline-year">2019</div>Mission Hathiyaar Se Kalam Tak launched.</div>
-      <div class="timeline-item"><div class="timeline-year">2020</div>Shatakshi Helpline and Jal Pathshala initiatives.</div>
-      <div class="timeline-item"><div class="timeline-year">2021</div>Annapurna Rasoi meal service started.</div>
-      <div class="timeline-item"><div class="timeline-year">2022</div>Antim Vidai performed 900+ last rites.</div>
-      <div class="timeline-item"><div class="timeline-year">Founder</div>Naveen Srivastava transforms pain into purpose.</div>
-      <!-- Duplicate for seamless loop -->
-      <div class="timeline-item"><div class="timeline-year">2011</div>Established as Shatakshi Educational & Welfare Trust.</div>
-      <div class="timeline-item"><div class="timeline-year">2019</div>Mission Hathiyaar Se Kalam Tak launched.</div>
+  <!-- Journey -->
+  <section class="story">
+    <h2>Our Journey Timeline</h2>
+    <div class="timeline-container">
+      <div class="timeline-track">
+        <div class="timeline-item"><div class="timeline-year">2011</div>Established as Shatakshi Educational & Welfare Trust.</div>
+        <div class="timeline-item"><div class="timeline-year">2019</div>Mission Hathiyaar Se Kalam Tak launched.</div>
+        <div class="timeline-item"><div class="timeline-year">2020</div>Shatakshi Helpline and Jal Pathshala initiatives.</div>
+        <div class="timeline-item"><div class="timeline-year">2021</div>Annapurna Rasoi meal service started.</div>
+        <div class="timeline-item"><div class="timeline-year">2022</div>Antim Vidai performed 900+ last rites.</div>
+        <div class="timeline-item"><div class="timeline-year">Founder</div>Naveen Srivastava transforms pain into purpose.</div>
+      </div>
     </div>
-  </div>
-</section>
-
-<style>
-  .timeline-container {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    white-space: nowrap;
-  }
-  .timeline-track {
-    display: inline-flex;
-    animation: scrollTimeline 40s linear infinite;
-  }
-  .timeline-item {
-    flex: 0 0 auto;
-    background: #222;
-    color: #fff;
-    border-radius: 8px;
-    padding: 1em;
-    margin: 0 1em;
-    min-width: 220px;
-    max-width: 240px;
-    text-align: left;
-    white-space: normal;
-  }
-  .timeline-year {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #FFD700;
-    margin-bottom: 0.5em;
-  }
-  @keyframes scrollTimeline {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-</style>
-
+  </section>
 
   <!-- Heartfelt Missions -->
   <section class="missions-section">
@@ -190,56 +150,16 @@
   </section>
 
   <!-- Photo Gallery -->
-<section class="photo-gallery">
-  <h2>Moments of Service</h2>
-  <div class="gallery-container">
+  <section class="photo-gallery">
+    <h2>Moments of Service</h2>
     <div class="gallery-track">
-      <img src="1.jpg" alt="Service Image 1">
-      <img src="2.jpg" alt="Service Image 2">
-      <img src="3.jpg" alt="Service Image 3">
-      <img src="4.jpg" alt="Service Image 4">
-      <img src="5.jpg" alt="Service Image 5">
-      <img src="6.jpg" alt="Service Image 6">
-      <img src="7.jpg" alt="Service Image 7">
-      <img src="8.jpg" alt="Service Image 8">
-      <img src="9.jpg" alt="Service Image 9">
-      <img src="10.jpg" alt="Service Image 10">
-      <img src="11.jpg" alt="Service Image 11">
-      <img src="12.jpg" alt="Service Image 12">
-      <!-- Duplicate first few for seamless loop -->
-      <img src="1.jpg" alt="Service Image 1">
-      <img src="2.jpg" alt="Service Image 2">
+      <img src="/mnt/data/file-YDUoM7vpZg8MfgS3pGchV2" alt="Service Image 1">
+      <img src="/mnt/data/file-2C6ygaDh4XK4wdiCk2Yfec" alt="Service Image 2">
+      <img src="/mnt/data/file-NRPMqutfTcqEzpgBfJ5sWw" alt="Service Image 3">
+      <img src="/mnt/data/file-BjbAQrMqGFW6CNsWJ5BvcS" alt="Service Image 4">
+      <img src="/mnt/data/file-QnSHWSiD9F3MVuCFKRa8JG" alt="Service Image 5">
     </div>
-  </div>
-</section>
-
-<style>
-  .gallery-container {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    position: relative;
-    width: 100%;
-  }
-  .gallery-track {
-    display: flex;
-    animation: scrollGallery 30s linear infinite;
-  }
-  .gallery-track img {
-    max-height: 220px;
-    border-radius: 8px;
-    margin-right: 1em;
-    flex: 0 0 auto;
-    transition: transform 0.3s;
-  }
-  .gallery-track img:hover {
-    transform: scale(1.05);
-  }
-  @keyframes scrollGallery {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-</style>
-
+  </section>
 
   <!-- Impact -->
   <section class="impact-section">
@@ -295,9 +215,7 @@
   <p>© 2025 Shatakshi NGO. All rights reserved.</p>
   <p class="designer-credit">Website designed by <span style="color:#FFD700;">Abhinaw</span> | <span style="color:#FFD700;">+91 7992188234</span></p>
 </footer>
-
 <script>
-  // Sidebar animation
   function openNav() {
     const sidebar = document.getElementById("mySidebar");
     sidebar.style.width = "250px";
@@ -312,30 +230,7 @@
     const links = sidebar.querySelectorAll("a");
     links.forEach(link => link.classList.remove("show"));
   }
-
-  // Hero rotating text
-  const heroTexts = [
-    "Founded in 2011 in Gopalganj, Bihar.",
-    "Registered under Indian Trusts Act 1882 with 12A & 80G.",
-    "Mission Hathiyaar Se Kalam Tak connected 800+ children.",
-    "Voice of Silence empowering women & girls.",
-    "Jal Pathshala spreading awareness on water conservation.",
-    "Annapurna Rasoi serving daily meals with dignity.",
-    "Antim Vidai dignified last rites for 900+ unclaimed bodies.",
-    "Shatakshi Helpline supporting thousands in rural Bihar.",
-    "Transforming pain into purpose since 2011.",
-    "Education as the true power to fight poverty & ignorance.",
-    "Helping 5000+ families through awareness and service.",
-    "A community-driven movement led by compassion.",
-    "24x7 Ambulance support during crises and floods.",
-    "Strengthening women against exploitation and child marriage.",
-    "Children finding hope through Deep of Diyara centers.",
-    "An NGO inspired by struggle, rooted in humanity.",
-    "From IAS dreams to social impact by Naveen Srivastava.",
-    "Empowering rural Bihar through education and healthcare.",
-    "Building awareness on water and environment conservation.",
-    "A lasting journey of dignity and compassion."
-  ];
+  const heroTexts = ["Founded in 2011 in Gopalganj, Bihar.","Registered under Indian Trusts Act 1882 with 12A & 80G.","Mission Hathiyaar Se Kalam Tak connected 800+ children.","Voice of Silence empowering women & girls.","Jal Pathshala spreading awareness on water conservation.","Annapurna Rasoi serving daily meals with dignity.","Antim Vidai dignified last rites for 900+ unclaimed bodies.","Shatakshi Helpline supporting thousands in rural Bihar.","Transforming pain into purpose since 2011.","Education as the true power to fight poverty & ignorance.","Helping 5000+ families through awareness and service.","A community-driven movement led by compassion.","24x7 Ambulance support during crises and floods.","Strengthening women against exploitation and child marriage.","Children finding hope through Deep of Diyara centers.","An NGO inspired by struggle, rooted in humanity.","From IAS dreams to social impact by Naveen Srivastava.","Empowering rural Bihar through education and healthcare.","Building awareness on water and environment conservation.","A lasting journey of dignity and compassion."];
   let heroIndex = 0;
   const heroEl = document.getElementById("hero-text");
   setInterval(() => {
@@ -344,36 +239,3 @@
     heroEl.style.animation = "none";
     heroEl.offsetHeight;
     heroEl.style.animation = "bounce 1s";
-  }, 4000);
-
-  // Counter animation
-  function animateCounter(id, target, duration) {
-    let obj = document.getElementById(id);
-    let count = 0;
-    let step = Math.ceil(target / (duration / 16));
-    let interval = setInterval(() => {
-      count += step;
-      if (count >= target) {
-        count = target;
-        clearInterval(interval);
-      }
-      obj.innerText = count.toLocaleString();
-    }, 16);
-  }
-
-  // Trigger counters when section is visible
-  const impactSection = document.querySelector('.impact-section');
-  let started = false;
-  window.addEventListener('scroll', () => {
-    let pos = impactSection.getBoundingClientRect().top;
-    if (!started && pos < window.innerHeight) {
-      started = true;
-      animateCounter("counter1", 800, 2000);
-      animateCounter("counter2", 5000, 2000);
-      animateCounter("counter3", 10000, 2000);
-      animateCounter("counter4", 900, 2000);
-    }
-  });
-</script>
-</body>
-</html>

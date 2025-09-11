@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shatakshi NGO - Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
+    header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; }
+    .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; }
+    .menu-toggle { font-size:1.5em; cursor:pointer; float:right; color:#FFD700; }
+
+    /* Sidebar */
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:#222; overflow-x:hidden;
+                transition:0.5s; padding-top:60px; z-index:1000; }
+    .sidebar a { display:block; padding:12px 20px; text-decoration:none; color:#FFD700; transition:0.3s; }
+    .sidebar a:hover { background:#333; padding-left:30px; color:#fff; }
+    .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
+
+    /* Hero with cycling text */
+    .hero { text-align:center; padding:5em 1em; background:linear-gradient(270deg, #000, #FFD700, #ff5722); background-size:600% 600%; color:#fff; animation: gradientMove 12s ease infinite; }
+    .hero h1 { font-size:3em; margin-bottom:0.3em; color:#FFD700; }
+    .hero p { font-size:1.4em; min-height:2em; animation: fadeIn 2s ease; }
+
+    @keyframes gradientMove {
+      0% { background-position:0% 50%; }
+      50% { background-position:100% 50%; }
+      100% { background-position:0% 50%; }
+    }
+
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+    section { max-width:900px; margin:2em auto; padding:2em 1em; line-height:1.7; border-radius:8px; background:#1a1a1a; }
+    section h2 { color:#FFD700; margin-bottom:0.5em; text-align:center; position:relative; }
+    section h2::after { content:""; display:block; width:60px; height:3px; background:#FFD700; margin:0.5em auto; border-radius:2px; }
+
+    .story ul { list-style:none; padding:0; }
+    .story li { margin:0.8em 0; opacity:0; transform:translateX(-30px); transition:all 0.8s ease; }
+    .story li.visible { opacity:1; transform:translateX(0); }
+
+    .impact { text-align:center; background:#222; padding:2em; border-radius:8px; margin-top:2em; }
+    .impact .counter { font-size:2em; color:#FFD700; display:block; margin:0.5em 0; }
+
+    .cta { text-align:center; padding:3em 1em; background:linear-gradient(135deg, #FFD700, #ff5722); color:#000; border-radius:8px; }
+    .cta a { display:inline-block; margin:0.5em; padding:0.8em 1.8em; border-radius:25px; text-decoration:none; font-weight:bold; transition:0.3s; background:#000; color:#FFD700; }
+    .cta a:hover { background:#222; }
+
+    .contact-section { background:#111; text-align:center; }
+    .contact-form { max-width:400px; margin:1em auto; display:flex; flex-direction:column; gap:12px; }
+    .contact-form input, .contact-form textarea { padding:12px; border:1px solid #FFD700; border-radius:5px; font-size:1em; background:#222; color:#fff; }
+    .contact-form button { background:#FFD700; color:#000; padding:12px; border:none; border-radius:5px; cursor:pointer; font-weight:bold; transition:0.3s; }
+    .contact-form button:hover { background:#ffcc00; }
+
+    .testimonials { text-align:center; padding:3em 1em; background:#1a1a1a; }
+    .testimonial { display:none; font-style:italic; max-width:700px; margin:0 auto; color:#fff; }
+    .testimonial.active { display:block; animation:fadeIn 1.5s ease; }
+    .testimonial-author { margin-top:1em; font-weight:bold; color:#FFD700; }
+
+    footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Shatakshi</a>
+  <span class="menu-toggle" onclick="openNav()">☰</span>
+</header>
+
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="about.html">About</a>
+  <a href="causes.html">Causes</a>
+  <a href="projects.html">Projects</a>
+  <a href="events.html">Events</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="volunteer.html">Volunteer</a>
+  <a href="donate.html">Donate</a>
+  <a href="contact.html">Contact</a>
+  <a href="blog.html">Blog</a>
+  <a href="founder.html">Founder</a>
+  <a href="creator.html">Creator</a>
+</div>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Shatakshi NGO</h1>
+    <p id="hero-text">Empowering communities with education and care.</p>
+  </section>
+
+  <!-- Timeline Section -->
+  <section class="story">
+    <h2>Our Journey Timeline</h2>
+    <ul>
+      <li>📘 2011 – Established as Shatakshi Educational & Welfare Trust in Gopalganj, Bihar.</li>
+      <li>📜 2011 – Registered under Indian Trusts Act 1882; recognized under sections 12-A & 80-G.</li>
+      <li>🎯 Mission – Focused on education, healthcare, awareness & service to underprivileged communities.</li>
+      <li>✒️ 2019 – Mission Hathiyaar Se Kalam Tak: connected 800+ children to education through "Deep of Diyara" centers.</li>
+      <li>🙋‍♀️ Voice of Silence – Empowering women and girls in flood-affected areas with health & skills education.</li>
+      <li>💧 Jal Pathshala – Water conservation awareness initiative for flood-prone communities.</li>
+      <li>📞 Shatakshi Helpline – 24x7 support for public rights, essential documents & ambulance service.</li>
+      <li>🍲 Shatakshi Annapurna Rasoi – Daily meals for elderly, destitute, and differently-abled individuals.</li>
+      <li>⚰️ Antim Vidai – Last rites for 900+ unclaimed bodies, inspired by founder’s personal tragedy.</li>
+      <li>👤 Founder’s Journey – Naveen Srivastava, once an IAS aspirant, transformed pain into purpose, making his birthplace his Karmabhoomi.</li>
+    </ul>
+  </section>
+
+  <!-- Impact Counters -->
+  <section class="impact">
+    <h2>Our Impact</h2>
+    <span class="counter" data-target="5000">0</span> Families Supported
+    <span class="counter" data-target="800">0</span> Children Educated
+    <span class="counter" data-target="2000">0</span> Meals Served Daily
+  </section>
+
+  <!-- Founder -->
+  <section class="founder">
+    <h2>Our Founder</h2>
+    <p><strong>Mr. Naveen Srivastava</strong> is the heart and soul behind Shatakshi. Once an aspirant for the Indian Administrative Services, his personal struggles and tragedies transformed his path. Instead of pursuing power, he chose purpose — dedicating his life to serve those in need.</p>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What People Say</h2>
+    <div class="testimonial active">
+      <p>“Shatakshi NGO gave my children a chance to study when all hope was lost.”</p>
+      <div class="testimonial-author">– A Beneficiary</div>
+    </div>
+    <div class="testimonial">
+      <p>“The Annapurna Rasoi is a blessing for our community. Thank you for your service.”</p>
+      <div class="testimonial-author">– Local Resident</div>
+    </div>
+    <div class="testimonial">
+      <p>“Working as a volunteer here has changed my life forever.”</p>
+      <div class="testimonial-author">– Volunteer</div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <h2>Be a Part of Change</h2>
+    <p>Your support can turn hope into reality. Together, we can build a brighter tomorrow.</p>
+    <div>
+      <a href="donate.html">Donate</a>
+      <a href="volunteer.html">Volunteer</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Shatakshi NGO. All rights reserved.</p>
+</footer>
+
+<script>
+  // Sidebar menu toggle
+  function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
+  function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+
+  // Hero text cycling
+  const heroTexts = [
+    "Founded in 2011 in Gopalganj, Bihar.",
+    "Registered under Indian Trusts Act 1882 with 12A & 80G.",
+    "Mission Hathiyaar Se Kalam Tak connected 800+ children.",
+    "Voice of Silence empowering women & girls.",
+    "Jal Pathshala spreading awareness on water conservation.",
+    "Annapurna Rasoi serving daily meals with dignity.",
+    "Antim Vidai dignified last rites for 900+ unclaimed bodies.",
+    "Shatakshi Helpline supporting thousands in rural Bihar.",
+    "Transforming pain into purpose since 2011.",
+    "Education as the true power to fight poverty & ignorance."
+  ];
+  let heroIndex = 0;
+  const heroEl = document.getElementById("hero-text");
+  setInterval(() => {
+    heroIndex = (heroIndex + 1) % heroTexts.length;
+    heroEl.innerText = heroTexts[heroIndex];
+  }, 4000);
+
+  // Testimonial carousel
+  const testimonials = document.querySelectorAll('.testimonial');
+  let current = 0;
+  setInterval(() => {
+    testimonials[current].classList.remove('active');
+    current = (current + 1) % testimonials.length;
+    testimonials[current].classList.add('active');
+  }, 5000);
+
+  // Impact counters animation
+  const counters = document.querySelectorAll('.counter');
+  const speed = 200;
+
+  const animateCounters = () => {
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = Math.ceil(target / speed);
+
+        if(count < target) {
+          counter.innerText = count + increment;
+          setTimeout(updateCount, 30);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    });
+  };
+
+  window.addEventListener('scroll', () => {
+    const impact = document.querySelector('.impact');
+    const impactTop = impact.getBoundingClientRect().top;
+    if(impactTop < window.innerHeight * 0.85) {
+      animateCounters();
+    }
+
+    const storyItems = document.querySelectorAll('.story li');
+    storyItems.forEach(item => {
+      const itemTop = item.getBoundingClientRect().top;
+      if(itemTop < window.innerHeight * 0.9) {
+        item.classList.add('visible');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

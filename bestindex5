@@ -34,7 +34,7 @@
 
     /* Timeline */
     .timeline-container { overflow:hidden; white-space:nowrap; position:relative; }
-    .timeline-track { display:inline-flex; animation: scrollTimeline 40s linear infinite; } /* faster */
+    .timeline-track { display:inline-flex; animation: scrollTimeline 80s linear infinite; }
     .timeline-item { flex:0 0 auto; background:#222; color:#fff; border-radius:8px; padding:1em; margin:0 1em; min-width:220px; max-width:240px; text-align:left; white-space:normal; }
     .timeline-year { font-size:1.1em; font-weight:bold; color:#FFD700; margin-bottom:0.5em; }
     @keyframes scrollTimeline { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
@@ -71,10 +71,13 @@
     .photo-gallery { text-align:center; padding:2em 0; }
     .photo-gallery h2 { color:#FFD700; }
     .gallery-container { overflow:hidden; position:relative; width:100%; }
-    .gallery-track { display:flex; animation: scrollGallery 30s linear infinite; } /* faster */
+    .gallery-track { display:flex; animation: scrollGallery 60s linear infinite; }
     .gallery-track img { max-height:220px; border-radius:8px; margin-right:1em; flex:0 0 auto; transition:transform 0.3s; }
     .gallery-track img:hover { transform:scale(1.05); }
-    @keyframes scrollGallery { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+    @keyframes scrollGallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     /* Call to Action */
     .cta { text-align:center; }
@@ -117,58 +120,20 @@
     <p id="hero-text">Founded in 2011 in Gopalganj, Bihar.</p>
   </section>
 
- <!-- Journey -->
-<section class="story">
-  <h2>Our Journey Timeline</h2>
-  <div class="timeline-container">
-    <div class="timeline-track">
-      <div class="timeline-item"><div class="timeline-year">2011</div>Established as Shatakshi Educational & Welfare Trust.</div>
-      <div class="timeline-item"><div class="timeline-year">2019</div>Mission Hathiyaar Se Kalam Tak launched.</div>
-      <div class="timeline-item"><div class="timeline-year">2020</div>Shatakshi Helpline and Jal Pathshala initiatives.</div>
-      <div class="timeline-item"><div class="timeline-year">2021</div>Annapurna Rasoi meal service started.</div>
-      <div class="timeline-item"><div class="timeline-year">2022</div>Antim Vidai performed 900+ last rites.</div>
-      <div class="timeline-item"><div class="timeline-year">Founder</div>Naveen Srivastava transforms pain into purpose.</div>
-      <!-- Duplicate for seamless loop -->
-      <div class="timeline-item"><div class="timeline-year">2011</div>Established as Shatakshi Educational & Welfare Trust.</div>
-      <div class="timeline-item"><div class="timeline-year">2019</div>Mission Hathiyaar Se Kalam Tak launched.</div>
+  <!-- Journey -->
+  <section class="story">
+    <h2>Our Journey Timeline</h2>
+    <div class="timeline-container">
+      <div class="timeline-track">
+        <div class="timeline-item"><div class="timeline-year">2011</div>Established as Shatakshi Educational & Welfare Trust.</div>
+        <div class="timeline-item"><div class="timeline-year">2019</div>Mission Hathiyaar Se Kalam Tak launched.</div>
+        <div class="timeline-item"><div class="timeline-year">2020</div>Shatakshi Helpline and Jal Pathshala initiatives.</div>
+        <div class="timeline-item"><div class="timeline-year">2021</div>Annapurna Rasoi meal service started.</div>
+        <div class="timeline-item"><div class="timeline-year">2022</div>Antim Vidai performed 900+ last rites.</div>
+        <div class="timeline-item"><div class="timeline-year">Founder</div>Naveen Srivastava transforms pain into purpose.</div>
+      </div>
     </div>
-  </div>
-</section>
-
-<style>
-  .timeline-container {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    white-space: nowrap;
-  }
-  .timeline-track {
-    display: inline-flex;
-    animation: scrollTimeline 40s linear infinite;
-  }
-  .timeline-item {
-    flex: 0 0 auto;
-    background: #222;
-    color: #fff;
-    border-radius: 8px;
-    padding: 1em;
-    margin: 0 1em;
-    min-width: 220px;
-    max-width: 240px;
-    text-align: left;
-    white-space: normal;
-  }
-  .timeline-year {
-    font-size: 1.1em;
-    font-weight: bold;
-    color: #FFD700;
-    margin-bottom: 0.5em;
-  }
-  @keyframes scrollTimeline {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-</style>
-
+  </section>
 
   <!-- Heartfelt Missions -->
   <section class="missions-section">
@@ -190,56 +155,39 @@
   </section>
 
   <!-- Photo Gallery -->
-<section class="photo-gallery">
-  <h2>Moments of Service</h2>
-  <div class="gallery-container">
-    <div class="gallery-track">
-      <img src="1.jpg" alt="Service Image 1">
-      <img src="2.jpg" alt="Service Image 2">
-      <img src="3.jpg" alt="Service Image 3">
-      <img src="4.jpg" alt="Service Image 4">
-      <img src="5.jpg" alt="Service Image 5">
-      <img src="6.jpg" alt="Service Image 6">
-      <img src="7.jpg" alt="Service Image 7">
-      <img src="8.jpg" alt="Service Image 8">
-      <img src="9.jpg" alt="Service Image 9">
-      <img src="10.jpg" alt="Service Image 10">
-      <img src="11.jpg" alt="Service Image 11">
-      <img src="12.jpg" alt="Service Image 12">
-      <!-- Duplicate first few for seamless loop -->
-      <img src="1.jpg" alt="Service Image 1">
-      <img src="2.jpg" alt="Service Image 2">
+  <section class="photo-gallery">
+    <h2>Moments of Service</h2>
+    <div class="gallery-container">
+      <div class="gallery-track" id="gallery-track">
+        <!-- Original set -->
+        <img src="1.jpg" alt="Service Image 1">
+        <img src="2.jpg" alt="Service Image 2">
+        <img src="3.jpg" alt="Service Image 3">
+        <img src="4.jpg" alt="Service Image 4">
+        <img src="5.jpg" alt="Service Image 5">
+        <img src="6.jpg" alt="Service Image 6">
+        <img src="7.jpg" alt="Service Image 7">
+        <img src="8.jpg" alt="Service Image 8">
+        <img src="9.jpg" alt="Service Image 9">
+        <img src="10.jpg" alt="Service Image 10">
+        <img src="11.jpg" alt="Service Image 11">
+        <img src="12.jpg" alt="Service Image 12">
+        <!-- Duplicate set for smooth infinite scroll -->
+        <img src="1.jpg" alt="Service Image 1 duplicate">
+        <img src="2.jpg" alt="Service Image 2 duplicate">
+        <img src="3.jpg" alt="Service Image 3 duplicate">
+        <img src="4.jpg" alt="Service Image 4 duplicate">
+        <img src="5.jpg" alt="Service Image 5 duplicate">
+        <img src="6.jpg" alt="Service Image 6 duplicate">
+        <img src="7.jpg" alt="Service Image 7 duplicate">
+        <img src="8.jpg" alt="Service Image 8 duplicate">
+        <img src="9.jpg" alt="Service Image 9 duplicate">
+        <img src="10.jpg" alt="Service Image 10 duplicate">
+        <img src="11.jpg" alt="Service Image 11 duplicate">
+        <img src="12.jpg" alt="Service Image 12 duplicate">
+      </div>
     </div>
-  </div>
-</section>
-
-<style>
-  .gallery-container {
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    position: relative;
-    width: 100%;
-  }
-  .gallery-track {
-    display: flex;
-    animation: scrollGallery 30s linear infinite;
-  }
-  .gallery-track img {
-    max-height: 220px;
-    border-radius: 8px;
-    margin-right: 1em;
-    flex: 0 0 auto;
-    transition: transform 0.3s;
-  }
-  .gallery-track img:hover {
-    transform: scale(1.05);
-  }
-  @keyframes scrollGallery {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-</style>
-
+  </section>
 
   <!-- Impact -->
   <section class="impact-section">
