@@ -24,10 +24,13 @@
     .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
 
     .timeline { border-left:3px solid #444; margin:2em 0; padding-left:1.5em; }
-    .timeline-item { margin-bottom:1.5em; position:relative; opacity:0; transform:translateY(20px); transition:all 0.6s ease; }
+    .timeline-item { margin-bottom:1.5em; position:relative; opacity:0; transform:translateY(20px); transition:all 0.6s ease; cursor:pointer; }
     .timeline-item.visible { opacity:1; transform:translateY(0); }
-    .timeline-item::before { content:""; position:absolute; left:-10px; top:5px; width:14px; height:14px; border-radius:50%; background:#666; }
+    .timeline-item::before { content:""; position:absolute; left:-10px; top:5px; width:14px; height:14px; border-radius:50%; background:#333; transition:background 0.3s, transform 0.3s; }
+    .timeline-item:hover::before { background:#FFD700; transform:scale(1.2); }
+    .timeline-item:hover { background:#222; padding:0.5em; border-radius:6px; }
     .timeline-year { font-weight:bold; color:#fff; margin-bottom:0.3em; font-size:1.1em; }
+    .timeline-tag { font-size:0.9em; color:#bbb; margin-left:6px; }
   </style>
 </head>
 <body>
@@ -64,7 +67,7 @@
 
   <h2>जीवन का मोड़</h2>
   <p>
-    प्रयागराज में अध्ययन के दौरान उनके बड़े भाई का निधन हो गया। शव की तलाश में उन्होंने लावारिस और सड़े-गले शवों की पीड़ा देखी। 
+    प्रयागराज में अध्ययन के दौरान उनके छोटे भाई का निधन हो गया। शव की तलाश में उन्होंने लावारिस और सड़े-गले शवों की पीड़ा देखी। 
     इस त्रासदी और गुरु के संदेश ने उनके जीवन की दिशा बदल दी और उन्होंने समाज सेवा का मार्ग चुना।
   </p>
 
@@ -76,31 +79,31 @@
 
   <div class="timeline">
     <div class="timeline-item">
-      <div class="timeline-year">2011</div>
+      <div class="timeline-year">2011 <span class="timeline-tag">स्थापना</span></div>
       <div>संस्थान की स्थापना और मानवता की सेवा की नींव रखी।</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-year">2012</div>
+      <div class="timeline-year">2012 <span class="timeline-tag">अंतिम विदाई</span></div>
       <div>“अंतिम विदाई” सेवा शुरू, अब तक 900+ लावारिस शवों का सम्मानजनक अंतिम संस्कार।</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-year">2019</div>
+      <div class="timeline-year">2019 <span class="timeline-tag">शिक्षा अभियान</span></div>
       <div>“हथियार से कलम तक” अभियान शुरू, बाढ़ प्रभावित क्षेत्रों के 800+ बच्चों को शिक्षा से जोड़ा।</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-year">2020</div>
+      <div class="timeline-year">2020 <span class="timeline-tag">महिला सशक्तिकरण</span></div>
       <div>“वॉइस ऑफ साइलेंस” और “जल पाठशाला” की शुरुआत, महिलाओं, बालिकाओं और पर्यावरण पर कार्य।</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-year">2020</div>
+      <div class="timeline-year">2020 <span class="timeline-tag">हेल्पलाइन</span></div>
       <div>शताक्षी हेल्पलाइन 24×7 शुरू, हजारों परिवारों को सरकारी योजनाओं और अधिकारों से जोड़ा।</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-year">2021</div>
+      <div class="timeline-year">2021 <span class="timeline-tag">कोरोना सेवा</span></div>
       <div>कोविड-19 महामारी के दौरान निःशुल्क एंबुलेंस सेवा और भोजन वितरण द्वारा हजारों को राहत दी।</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-year">2024</div>
+      <div class="timeline-year">2024 <span class="timeline-tag">अन्नपूर्णा रसोई</span></div>
       <div>“अन्नपूर्णा रसोई सेवा” शुरू, 15 गाँवों में 42 असहायों तक प्रतिदिन भोजन पहुँचाया।</div>
     </div>
   </div>
@@ -118,7 +121,7 @@
   <h2>✨ व्यक्तित्व</h2>
   <p>
     श्री नवीन रंजन श्रीवास्तव का जीवन संवेदना, साहस और त्याग का प्रतीक है। वे कठिन से कठिन परिस्थितियों में भी समाज की सेवा करते हैं। 
-    उनकी पत्नी श्रीमती शांति सेना का साथ, परिवार का मार्गदर्शन और समाज का विश्वास उन्हें निरंतर आगे बढ़ने की शक्ति देता है। 
+    उनकी पत्नी <strong>श्रीमती शिप्ली सक्सेना</strong> का साथ, परिवार का मार्गदर्शन और समाज का विश्वास उन्हें निरंतर आगे बढ़ने की शक्ति देता है। 
     वे सच में <strong>मानवता के सच्चे पुजारी</strong> हैं।
   </p>
 </main>
