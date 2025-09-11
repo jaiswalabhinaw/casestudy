@@ -1,19 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Shatakshi NGO</title>
+  <title>हमारे बारे में - शताक्षी एनजीओ</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: Arial, sans-serif; background:#111; color:#f5f5f5; margin:0; line-height:1.8; }
+    header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; }
+    .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; }
+    .menu-toggle { font-size:1.5em; cursor:pointer; float:right; color:#FFD700; }
+    main { max-width:900px; margin:2em auto; padding:2em; background:#1a1a1a; border-radius:8px; }
+    h1, h2, h3 { color:#FFD700; }
+    blockquote { font-style:italic; color:#FFD700; margin:1em 0; padding:0.5em 1em; border-left:4px solid #FFD700; background:rgba(255,215,0,0.05); }
+    footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
+
+    /* Sidebar Styles */
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:rgba(34,34,34,0.95); backdrop-filter: blur(6px);
+               overflow-x:hidden; transition:0.5s; padding-top:60px; z-index:1000; }
+    .sidebar a { display:block; padding:12px 20px; text-decoration:none; color:#FFD700; transition:0.3s; opacity:0; transform:translateX(30px); font-size:1.1em; }
+    .sidebar a.show { opacity:1; transform:translateX(0); transition: all 0.5s ease; }
+    .sidebar a:hover { background:#444; padding-left:30px; color:#fff; border-radius:4px; }
+    .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
+  </style>
 </head>
 <body>
-  
+
 <header>
   <a href="index.html" class="logo">Shatakshi</a>
   <span class="menu-toggle" onclick="openNav()">☰</span>
 </header>
 
-  
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="about.html">About</a>
@@ -29,18 +46,107 @@
   <a href="creator.html">Creator</a>
 </div>
 
-  <main>
-    <h1>About</h1>
-    <p>This is the About page content.</p>
-  </main>
-  <footer class="site-footer">
+<main>
+  <h1>हमारे बारे में</h1>
+  <blockquote>“जब तक समाज का आख़िरी व्यक्ति मुस्कुरा नहीं देता, तब तक हमारी यात्रा अधूरी है।”</blockquote>
+
+  <p>
+    शताक्षी सेवा संस्थान की शुरुआत केवल एक संस्था की स्थापना नहीं थी, यह एक पीड़ा से जन्मा संकल्प था।
+    एक युवक जिसने अपने छोटे भाई को खो दिया और सड़कों पर पड़े लावारिस शवों की करुणा देखी, उसने तय कर लिया कि अब ज़िंदगी का अर्थ सिर्फ़ इंसानियत की सेवा होगा।
+    यही युवक आज हमारे संस्थापक, <strong>श्री नवीन रंजन श्रीवास्तव</strong> हैं।
+  </p>
+
+  <h2>🌱 शुरुआत की धरती</h2>
+  <p>
+    गोपालगंज, बिहार के मणिकपुर गाँव की मिट्टी में पैदा हुई यह सोच धीरे-धीरे एक आंदोलन बन गई।
+    2011 में शताक्षी एजुकेशनल एंड वेलफेयर ट्रस्ट की नींव रखी गई।
+    इस नींव में सिर्फ़ ईंट-पत्थर नहीं, बल्कि आँसू, संवेदनाएँ और करुणा की धड़कनें भी थीं।
+  </p>
+
+  <h2>🎓 शिक्षा की क्रांति – हथियार से कलम तक</h2>
+  <p>
+    जब बच्चे बाढ़ में घर खो देते हैं, किताबें बह जाती हैं और भविष्य अंधेरे में डूब जाता है,
+    तब “हथियार से कलम तक” मिशन ने उन हाथों में फिर से कलम थमाई।
+    आज सैकड़ों बच्चे सिर्फ़ पढ़ना नहीं सीख रहे, बल्कि उम्मीद करना सीख रहे हैं।
+  </p>
+
+  <h2>👧 बेटियों की आवाज़ – वॉइस ऑफ़ साइलेंस</h2>
+  <p>
+    कितनी ही बेटियाँ बाल विवाह, कुपोषण और शोषण की अंधेरी सुरंग में कैद थीं।
+    “वॉइस ऑफ़ साइलेंस” ने उनकी आवाज़ को तोड़ा, उन्हें पढ़ाई, पोषण और सम्मान का रास्ता दिया।
+    आज उनकी मुस्कान इस मिशन की सबसे बड़ी उपलब्धि है।
+  </p>
+
+  <h2>🚑 ज़िंदगी की दौड़ – शताक्षी निःशुल्क एंबुलेंस</h2>
+  <p>
+    एक बाढ़ की रात, जब साधन न होने से माँ और नवजात की जान चली गई,
+    उस दर्द ने जन्म दिया हमारी 24×7 निःशुल्क एंबुलेंस सेवा को।
+    आज सायरन की हर गूँज किसी परिवार के लिए जीवन का संगीत बन चुकी है।
+  </p>
+
+  <h2>🦠 कोरोना काल – जब दुनिया थम गई</h2>
+  <p>
+    कोविड-19 महामारी में जब सबकुछ बंद था, तब शताक्षी चल रहा था।
+    एंबुलेंस मरीजों को अस्पताल पहुँचा रही थी।
+    अन्नपूर्णा रसोई लॉकडाउन में भूखे परिवारों तक टिफ़िन पहुँचा रही थी।
+    प्रवासी मजदूरों तक राशन, मास्क और दवाइयाँ पहुँच रही थीं।
+    उस समय यह संस्थान सिर्फ़ सेवा नहीं, बल्कि उम्मीद का सहारा बन गया।
+  </p>
+
+  <h2>🍲 अन्नपूर्णा रसोई – भूख के ख़िलाफ़ युद्ध</h2>
+  <p>
+    14 अगस्त 2024 से अब तक एक भी दिन ऐसा नहीं गया जब यह सेवा रुकी हो।
+    हर दिन, 15 गाँवों में, 42 असहाय और बुजुर्गों तक गरम टिफ़िन पहुँचना…
+    यह केवल भोजन नहीं, बल्कि स्नेह और गरिमा का अहसास है।
+  </p>
+
+  <h2>🌸 अंतिम विदाई – गरिमा के साथ</h2>
+  <p>
+    जहाँ लावारिस शवों को कोई पूछता नहीं, वहाँ शताक्षी उन्हें कंधा देता है।
+    “अंतिम विदाई” मिशन के तहत अब तक 900+ लोगों का सम्मानजनक अंतिम संस्कार किया जा चुका है।
+    क्योंकि हम मानते हैं कि जीवन और मृत्यु दोनों गरिमा के हकदार हैं।
+  </p>
+
+  <h2>✨ शताक्षी की आत्मा</h2>
+  <p>
+    यह संस्था न नाम के लिए बनी है, न शोहरत के लिए।
+    यह बनी है ताकि हर इंसान की आँखों से आँसू पोंछे जा सकें।
+    यह बनी है ताकि किसी का पेट खाली न सोए।
+    यह बनी है ताकि बेटियाँ डर से नहीं, सपनों से बड़ी हों।
+  </p>
+
+  <h2>🤝 आपका आमंत्रण</h2>
+  <p>
+    शताक्षी सेवा संस्थान केवल हमारे संस्थापक या कुछ स्वयंसेवकों की कहानी नहीं…
+    यह उन सबकी कहानी है जो एक कदम बढ़ाते हैं।
+  </p>
+  <p>
+    अगर आप थोड़ा समय दे सकते हैं – तो आप किसी की मदद कर सकते हैं।<br>
+    अगर आप थोड़ा श्रम दे सकते हैं – तो आप बदलाव ला सकते हैं।<br>
+    अगर आप थोड़ा आर्थिक सहयोग दे सकते हैं – तो आप किसी की दुनिया बदल सकते हैं।
+  </p>
+  <blockquote>“असली संतोष नाम और शोहरत में नहीं, बल्कि उस मुस्कान में है जो आपकी वजह से किसी के चेहरे पर आती है।”</blockquote>
+</main>
+
+<footer class="site-footer">
   <p>© 2025 Shatakshi NGO. All rights reserved.</p>
 </footer>
 
-  
 <script>
-function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
-function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+function openNav() { 
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "250px";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach((link, i) => {
+    setTimeout(() => link.classList.add("show"), i * 100);
+  });
+}
+function closeNav() { 
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "0";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach(link => link.classList.remove("show"));
+}
 </script>
 
 </body>
