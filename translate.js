@@ -8,7 +8,7 @@ function googleTranslateElementInit() {
 }
 
 // Toggle script: switches between English and Hindi
-(function () {
+document.addEventListener("DOMContentLoaded", function () {
   const btn = document.getElementById('lang-btn');
   let current = 'en';
 
@@ -34,5 +34,7 @@ function googleTranslateElementInit() {
     current = next;
   }
 
-  btn.addEventListener('click', toggleLanguage);
-})();
+  if (btn) {
+    btn.addEventListener('click', toggleLanguage);
+  }
+});
