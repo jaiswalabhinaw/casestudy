@@ -1,47 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Events - Shatakshi NGO</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>हमारी टीम</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
+    header { background:#000; color:#FFD700; display:flex; justify-content:space-between; align-items:center; padding:10px 20px; position:relative; }
+    header .logo { font-weight:bold; font-size:18px; color:#FFD700; text-decoration:none; }
+    .menu-toggle { font-size:22px; cursor:pointer; color:#FFD700; }
+
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:#222; overflow-x:hidden; transition:0.4s; padding-top:60px; z-index:1000; }
+    .sidebar a { padding:10px 20px; text-decoration:none; font-size:16px; color:#FFD700; display:block; transition:0.3s; }
+    .sidebar a:hover { background:#444; }
+    .sidebar .closebtn { position:absolute; top:10px; right:20px; font-size:30px; }
+
+    main { padding:20px; max-width:1000px; margin:auto; text-align:center; }
+    h1 { color:#FFD700; margin-bottom:20px; }
+
+    .intro { background:#222; padding:20px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.5); margin-bottom:30px; }
+    .intro p { color:#ccc; font-size:18px; line-height:1.8; }
+
+    .team-card { background:#222; border-radius:10px; padding:20px; margin:20px 0; text-align:left; box-shadow:0 4px 10px rgba(0,0,0,0.5); }
+    .team-card h2 { color:#FFD700; margin-bottom:5px; }
+    .team-card h3 { color:#aaa; margin-top:0; font-weight:normal; }
+    .team-card p { color:#ccc; line-height:1.6; }
+
+    footer { background:#000; color:#aaa; text-align:center; padding:20px; margin-top:40px; font-size:14px; border-top:1px solid #333; }
+    footer a { color:#FFD700; text-decoration:none; margin:0 10px; }
+    footer a:hover { text-decoration:underline; }
+  </style>
 </head>
 <body>
-  
-<header>
-  <a href="index.html" class="logo">Shatakshi</a>
-  <span class="menu-toggle" onclick="openNav()">☰</span>
-</header>
+  <header>
+    <a href="index.html" class="logo">SHATAKSHI NGO</a>
+    <span class="menu-toggle" onclick="openNav()">☰</span>
+  </header>
 
-  
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="about.html">About</a>
-  <a href="causes.html">Causes</a>
-  <a href="projects.html">Projects</a>
-  <a href="events.html">Events</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="volunteer.html">Volunteer</a>
-  <a href="donate.html">Donate</a>
-  <a href="contact.html">Contact</a>
-  <a href="blog.html">Blog</a>
-  <a href="founder.html">Founder</a>
-  <a href="creator.html">Creator</a>
-</div>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="about.html">About</a>
+    <a href="causes.html">Causes</a>
+    <a href="projects.html">Projects</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="volunteer.html">Volunteer</a>
+    <a href="donate.html">Donate</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+    <a href="founder.html">Founder</a>
+    <a href="creator.html">Creator</a>
+  </div>
 
   <main>
-    <h1>Events</h1>
-    <p>This is the Events page content.</p>
+    <h1>हमारी टीम</h1>
+
+    <div class="intro">
+      <p>
+        शताक्षी केवल कुछ सदस्यों तक सीमित संस्था नहीं है। इसकी टीम का आकार गिनती में नहीं आ सकता, क्योंकि यह समाज से प्रेरणा लेकर आगे बढ़ने वाली अनगिनत आत्माओं की एकजुटता है। फिर भी, यहाँ हम उन कुछ स्तंभों का उल्लेख कर रहे हैं जिन्होंने स्वयं को पूरी निष्ठा और समर्पण के साथ इस मिशन के लिए अर्पित कर दिया है। वास्तव में, शताक्षी एक संस्था नहीं बल्कि पूरा समाज है, और इसकी ताक़त असीमित है।
+      </p>
+    </div>
+
+    <div class="team-card">
+      <h2>नवीन श्रीवास्तव</h2>
+      <h3>संस्थापक एवं सचिव</h3>
+      <p>ग्रामीण क्षेत्रों के वंचित बच्चों को नि:शुल्क शिक्षा प्रदान करने के मिशन में सचिव के रूप में मेरी यात्रा अत्यंत संतोषजनक रही है। हमने शिक्षा की उस शक्ति को देखा है जो गरीबी की बेड़ियों को तोड़ सकती है।</p>
+    </div>
+
+    <div class="team-card">
+      <h2>शिल्पी सक्सेना</h2>
+      <h3>कोषाध्यक्ष</h3>
+      <p>स्वयंसेवा मेरे जीवन का सबसे संतोषजनक अनुभव रहा है। समाज में हमारे कार्य का प्रत्यक्ष प्रभाव देखना और ऐसे दल का हिस्सा होना जो वास्तव में बदलाव लाने के लिए समर्पित है, अत्यधिक प्रेरणादायक है।</p>
+    </div>
+
+    <div class="team-card">
+      <h2>नीलेश त्रिपाठी</h2>
+      <h3>अध्यक्ष</h3>
+      <p>अध्यक्ष के रूप में मेरी भूमिका केवल दैनिक संचालन की देखरेख करना ही नहीं बल्कि इस बात को सुनिश्चित करना है कि हमारा मिशन हर बच्चे तक शिक्षा पहुँचाने पर केंद्रित रहे। यह नेतृत्व दूरदृष्टि के साथ-साथ सेवा की गहरी प्रतिबद्धता और समाज में ठोस बदलाव लाने की निरंतर प्रेरणा की माँग करता है।</p>
+    </div>
+
+    <div class="team-card">
+      <h2>अभिनव</h2>
+      <h3>आईटी एवं डिजिटल वॉलंटियर प्रमुख</h3>
+      <p>आईटी एवं डिजिटल वॉलंटियर प्रमुख के रूप में, मैंने शताक्षी संस्था के डिजिटल परिवर्तन को आगे बढ़ाया। ऑनलाइन प्लेटफ़ॉर्म विकसित करने और आधुनिक डिजिटल तकनीकों को अपनाने के ज़रिए, मेरा प्रयास हमेशा यही रहा है कि हमारा मिशन अधिक से अधिक लोगों तक प्रभावी ढंग से पहुँचे। इन पहलों ने पारदर्शिता बढ़ाने और वैश्विक स्तर पर समर्थकों को हमसे जोड़ने में महत्वपूर्ण भूमिका निभाई है।</p>
+    </div>
   </main>
-  <footer class="site-footer">
-  <p>© 2025 Shatakshi NGO. All rights reserved.</p>
-</footer>
 
-  
-<script>
-function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
-function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
-</script>
+  <footer>
+    <p>&copy; 2025 | सर्वाधिकार सुरक्षित</p>
+  </footer>
 
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+  </script>
 </body>
 </html>
