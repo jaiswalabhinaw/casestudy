@@ -1,0 +1,1 @@
+{ "educatedChildren": 850, "familiesServed": 5200, "mealsServed": 12000, "funeralServices": 950 }
