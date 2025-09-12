@@ -94,17 +94,20 @@ main {
 
 .donate-hero {
   display: flex;
-  justify-content: center;
+  justify-content: center;   /* center horizontally */
+  align-items: center;       /* center vertically inside its own section */
   margin: 3em 0;
-  padding: 2em 0;
-  background: #111;
 }
 
 .donate-hero a {
+  display: inline-block;
   background: #FFD700;
   color: #000;
-  padding: 1em 2em;
-  border-radius: 0;   /* 🔹 force square edges */
+  width: 200px;             /* 🔹 fixed width */
+  height: 60px;             /* 🔹 fixed height */
+  line-height: 60px;        /* 🔹 vertically centers text */
+  text-align: center;       /* 🔹 centers text horizontally */
+  border-radius: 0;         /* 🔹 sharp edges */
   font-size: 1.2em;
   font-weight: bold;
   text-decoration: none;
@@ -115,12 +118,4 @@ main {
 .donate-hero a:hover {
   background: #ffc107;
   transform: translateY(-3px);
-}
-
-@media (max-width: 768px) {
-  .donate-hero a {
-    font-size: 1.2em;
-    padding: 0.8em 2em;
-    border-radius: 0;  /* 🔹 ensure mobile also square */
-  }
 }
