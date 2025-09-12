@@ -28,7 +28,7 @@
     .donate-card h3 { color:#FFD700; }
     .donate-button { display:inline-block; margin-top:1em; padding:0.7em 1.5em; background:#FFD700; color:#000; border-radius:25px; text-decoration:none; font-weight:bold; cursor:pointer; }
     .qr-section { margin-top:2em; }
-    .qr-section img { max-width:250px; border:5px solid #FFD700; border-radius:12px; }
+    .qr-section img { max-width:250px; border:5px solid #FFD700; border-radius:12px; cursor:pointer; }
 
     /* Impact Counter */
     .impact-section { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:3em; }
@@ -36,11 +36,11 @@
     .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
     .impact-item span { display:block; font-size:0.9em; color:#bbb; }
 
-    /* Thank You Popup */
-    #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
-    #thankYouPopup .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; }
-    #thankYouPopup h2 { color:#FFD700; }
-    #thankYouPopup button { margin-top:1em; padding:0.5em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
+    /* Thank You & QR Popup */
+    #thankYouPopup, #qrPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
+    .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; }
+    .popup-content h2 { color:#FFD700; }
+    .popup-content button { margin-top:1em; padding:0.5em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
 
     .desktop-note { margin-top:1em; color:#bbb; font-size:0.9em; }
   </style>
@@ -83,7 +83,7 @@
     <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=2500">₹2500 – एक मरीज को 24×7 एंबुलेंस सुविधा</a><br><br>
     <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=5000">₹5000 – एक लावारिस शव का सम्मानजनक अंतिम संस्कार</a>
   </p>
-  <p class="desktop-note">💡 यदि आप डेस्कटॉप उपयोग कर रहे हैं, तो नीचे दिए QR को स्कैन करें क्योंकि UPI लिंक केवल मोबाइल ऐप्स में खुलते हैं।</p>
+  <p class="desktop-note">💡 यदि आप डेस्कटॉप उपयोग कर रहे हैं, तो नीचे दिए QR को क्लिक करें या स्कैन करें।</p>
 
   <div class="donate-options">
     <div class="donate-card">
@@ -112,8 +112,8 @@
 
   <div class="qr-section">
     <h2>📷 Scan & Donate</h2>
-    <p>UPI App से स्कैन करें और तुरंत दान करें:</p>
-    <a href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust"><img src="qr.png" alt="UPI QR Code"></a>
+    <p>UPI App से स्कैन करें और तुरंत दान करें (Desktop उपयोगकर्ता QR पर क्लिक करें):</p>
+    <img src="qr.png" alt="UPI QR Code" onclick="openQRPopup()">
   </div>
 
   <h2>🤝 क्यों जुड़ें?</h2>
@@ -145,6 +145,15 @@
   </div>
 </div>
 
+<div id="qrPopup">
+  <div class="popup-content">
+    <h2>📷 QR Code</h2>
+    <img src="qr.png" alt="UPI QR Code" style="max-width:100%; border:5px solid #FFD700; border-radius:12px;">
+    <p style="margin-top:1em;">मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
+    <button onclick="closeQRPopup()">बंद करें</button>
+  </div>
+</div>
+
 <footer class="site-footer">
   <p>© 2025 Shatakshi NGO. All rights reserved.</p>
 </footer>
@@ -169,6 +178,12 @@ function showThankYou() {
 }
 function closeThankYou() {
   document.getElementById("thankYouPopup").style.display = "none";
+}
+function openQRPopup() {
+  document.getElementById("qrPopup").style.display = "flex";
+}
+function closeQRPopup() {
+  document.getElementById("qrPopup").style.display = "none";
 }
 </script>
 
