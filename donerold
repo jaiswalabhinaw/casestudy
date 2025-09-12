@@ -15,9 +15,7 @@
     blockquote { font-style:italic; color:#FFD700; margin:1em 0; padding:0.5em 1em; border-left:4px solid #FFD700; background:rgba(255,215,0,0.05); text-align:left; }
     footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
 
-    /* Sidebar Styles */
-    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:rgba(34,34,34,0.95); backdrop-filter: blur(6px);
-               overflow-x:hidden; transition:0.5s; padding-top:60px; z-index:1000; }
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:rgba(34,34,34,0.95); backdrop-filter: blur(6px); overflow-x:hidden; transition:0.5s; padding-top:60px; z-index:1000; }
     .sidebar a { display:block; padding:12px 20px; text-decoration:none; color:#FFD700; transition:0.3s; opacity:0; transform:translateX(30px); font-size:1.1em; }
     .sidebar a.show { opacity:1; transform:translateX(0); transition: all 0.5s ease; }
     .sidebar a:hover { background:#444; padding-left:30px; color:#fff; border-radius:4px; }
@@ -30,18 +28,18 @@
     .qr-section { margin-top:2em; }
     .qr-section img { max-width:250px; border:5px solid #FFD700; border-radius:12px; cursor:pointer; }
 
-    /* Counters */
     .impact-section { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:3em; }
     .impact-item { flex:1 1 200px; margin:1em; background:#222; border-radius:8px; padding:1.5em; text-align:center; }
     .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
     .impact-item span { display:block; font-size:0.9em; color:#bbb; }
 
-    /* Popups */
-    #qrPopup, #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:3000; }
-    .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; }
+    #donorFormPopup, #qrPopup, #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
+    .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; width:100%; }
     .popup-content h2 { color:#FFD700; }
-    .popup-content img { max-width:400px; border:5px solid #FFD700; border-radius:12px; }
+    .popup-content input { width:100%; padding:0.5em; margin:0.5em 0; border-radius:6px; border:none; }
     .popup-content button { margin-top:1em; padding:0.5em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
+
+    .desktop-note { margin-top:1em; color:#bbb; font-size:0.9em; }
   </style>
 </head>
 <body>
@@ -70,68 +68,55 @@
   <h1>🙏 Donate Us</h1>
   <blockquote>“आपका हर योगदान किसी की ज़िंदगी में उम्मीद की लौ जला सकता है।”</blockquote>
 
-  <p>
-    शताक्षी सेवा संस्थान केवल सेवा का नहीं, बल्कि संवेदना और करुणा का आंदोलन है।
-    आपका छोटा सा सहयोग किसी भूखे को भोजन, किसी बीमार को एंबुलेंस, किसी बेटी को शिक्षा और किसी लावारिस शव को सम्मानजनक विदाई दिला सकता है।
-  </p>
+  <p>शताक्षी सेवा संस्थान केवल सेवा का नहीं, बल्कि संवेदना और करुणा का आंदोलन है।
+  आपका छोटा सा सहयोग किसी भूखे को भोजन, किसी बीमार को एंबुलेंस, किसी बेटी को शिक्षा और किसी लावारिस शव को सम्मानजनक विदाई दिला सकता है।</p>
 
   <h2>💛 आपके योगदान से होने वाला असर</h2>
-  <div class="donate-options">
-    <div class="donate-card">
-      <h3>🎓 शिक्षा</h3>
-      <p>₹500 – एक सप्ताह के लिए किसी बुजुर्ग तक गरम भोजन</p>
-      <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=500">Donate ₹500</a>
-    </div>
-    <div class="donate-card">
-      <h3>👧 बेटियाँ</h3>
-      <p>₹1000 – बाढ़ प्रभावित बच्चे के लिए शिक्षा सामग्री और कपड़े</p>
-      <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=1000">Donate ₹1000</a>
-    </div>
-    <div class="donate-card">
-      <h3>🚑 स्वास्थ्य</h3>
-      <p>₹2500 – एक मरीज को 24×7 एंबुलेंस सुविधा</p>
-      <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=2500">Donate ₹2500</a>
-    </div>
-    <div class="donate-card">
-      <h3>🌸 अंतिम विदाई</h3>
-      <p>₹5000 – एक लावारिस शव का सम्मानजनक अंतिम संस्कार</p>
-      <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=5000">Donate ₹5000</a>
-    </div>
-  </div>
+  <p>
+    <a class="donate-button" onclick="openDonorForm(500)">₹500 – एक सप्ताह के लिए भोजन</a><br><br>
+    <a class="donate-button" onclick="openDonorForm(1000)">₹1000 – शिक्षा सामग्री</a><br><br>
+    <a class="donate-button" onclick="openDonorForm(2500)">₹1500 – एंबुलेंस सुविधा</a><br><br>
+    <a class="donate-button" onclick="openDonorForm(5000)">₹2000 – अंतिम संस्कार</a>
+  </p>
+  <p class="desktop-note">💡 यदि आप डेस्कटॉप उपयोग कर रहे हैं, तो नीचे दिए QR को क्लिक करें या स्कैन करें। या सीधे <a href="https://paytm.com/upi/jaiswal.abhinaw-1@oksbi" target="_blank" style="color:#FFD700;">इस लिंक</a> से भी भुगतान करें।</p>
 
   <div class="qr-section">
     <h2>📷 Scan & Donate</h2>
     <p>UPI App से स्कैन करें और तुरंत दान करें (Desktop उपयोगकर्ता QR पर क्लिक करें):</p>
-    <img src="qr.jpeg" alt="UPI QR Code" onclick="openQRPopup()">
+    <img src="qr.png" alt="UPI QR Code" onclick="openQRPopup()">
   </div>
 
   <h2>📜 पारदर्शिता और विश्वास</h2>
-  <p>
-    शताक्षी सेवा संस्थान भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A और 80-G के तहत मान्यता प्राप्त है।
-    सभी दान पर टैक्स छूट उपलब्ध है। हर दान का रिकॉर्ड रखा जाता है और सालाना रिपोर्ट सार्वजनिक की जाती है ताकि पारदर्शिता बनी रहे।
-  </p>
+  <p>शताक्षी सेवा संस्थान भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A और 80-G के तहत मान्यता प्राप्त है। आपके सभी दान पर टैक्स छूट उपलब्ध है।</p>
 
-  <h2>📈 हमारी पहुँच</h2>
   <div class="impact-section">
-    <div class="impact-item"><h3 id="counter1">0</h3><span>Children Educated</span></div>
-    <div class="impact-item"><h3 id="counter2">0</h3><span>Families Benefited</span></div>
-    <div class="impact-item"><h3 id="counter3">0</h3><span>Meals Served</span></div>
-    <div class="impact-item"><h3 id="counter4">0</h3><span>Last Rites Performed</span></div>
+    <div class="impact-item"><h3>800+</h3><span>Children Educated</span></div>
+    <div class="impact-item"><h3>5000+</h3><span>Families Benefited</span></div>
+    <div class="impact-item"><h3>10000+</h3><span>Meals Served</span></div>
+    <div class="impact-item"><h3>900+</h3><span>Last Rites Performed</span></div>
   </div>
-
-  <h2>🤝 क्यों जुड़ें?</h2>
-  <p>
-    यह दान केवल किसी ज़रूरतमंद की मदद नहीं है, यह आपके आत्मा की तृप्ति है।
-    क्योंकि असली संतोष नाम या शोहरत में नहीं, बल्कि उस मुस्कान में है जो आपकी वजह से किसी के चेहरे पर आती है।
-  </p>
-
 </main>
+
+<div id="donorFormPopup">
+  <div class="popup-content">
+    <h2>📝 Donor Details</h2>
+    <form id="donorForm">
+      <input type="text" id="donorName" placeholder="आपका नाम" required>
+      <input type="text" id="donorPhone" placeholder="फ़ोन नंबर" required>
+      <input type="email" id="donorEmail" placeholder="ईमेल" required>
+      <input type="text" id="donorLocation" placeholder="स्थान" required>
+      <input type="hidden" id="donationAmount">
+      <button type="submit">योगदान दर्ज करें</button>
+    </form>
+    <button onclick="closeDonorForm()">बंद करें</button>
+  </div>
+</div>
 
 <div id="qrPopup">
   <div class="popup-content">
-    <h2>🙏 UPI QR Code</h2>
-    <img src="qr.jpeg" alt="UPI QR Code">
-    <p>मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
+    <h2>📷 QR Code</h2>
+    <img src="qr.png" alt="UPI QR Code" style="max-width:100%; border:5px solid #FFD700; border-radius:12px;">
+    <p style="margin-top:1em;">मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
     <button onclick="closeQRPopup()">बंद करें</button>
   </div>
 </div>
@@ -139,7 +124,7 @@
 <div id="thankYouPopup">
   <div class="popup-content">
     <h2>🙏 धन्यवाद!</h2>
-    <p>आपका योगदान सिर्फ़ धन नहीं है, यह किसी भूखे के लिए भोजन, किसी बीमार के लिए जीवन, और किसी लावारिस आत्मा के लिए गरिमा है। ❤️</p>
+    <p>आपका योगदान दर्ज हो गया है। अब UPI ऐप पर भुगतान करें।</p>
     <button onclick="closeThankYou()">ठीक है</button>
   </div>
 </div>
@@ -149,54 +134,44 @@
 </footer>
 
 <script>
-function openNav() { 
+function openNav() {
   const sidebar = document.getElementById("mySidebar");
   sidebar.style.width = "250px";
   const links = sidebar.querySelectorAll("a");
-  links.forEach((link, i) => {
-    setTimeout(() => link.classList.add("show"), i * 100);
-  });
+  links.forEach((link, i) => { setTimeout(() => link.classList.add("show"), i * 100); });
 }
-function closeNav() { 
+function closeNav() {
   const sidebar = document.getElementById("mySidebar");
   sidebar.style.width = "0";
   const links = sidebar.querySelectorAll("a");
   links.forEach(link => link.classList.remove("show"));
 }
-function showThankYou() {
+function openQRPopup() { document.getElementById("qrPopup").style.display = "flex"; }
+function closeQRPopup() { document.getElementById("qrPopup").style.display = "none"; }
+
+function openDonorForm(amount) {
+  document.getElementById("donationAmount").value = amount;
+  document.getElementById("donorFormPopup").style.display = "flex";
+}
+function closeDonorForm() {
+  document.getElementById("donorFormPopup").style.display = "none";
+}
+function closeThankYou() { document.getElementById("thankYouPopup").style.display = "none"; }
+
+// Handle donor form submission
+const donorForm = document.getElementById("donorForm");
+donorForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const amount = document.getElementById("donationAmount").value;
+  const upiUrl = `upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=${amount}&cu=INR`;
+
+  // Show thank you popup first
+  document.getElementById("donorFormPopup").style.display = "none";
   document.getElementById("thankYouPopup").style.display = "flex";
-}
-function closeThankYou() {
-  document.getElementById("thankYouPopup").style.display = "none";
-}
-function openQRPopup(){
-  document.getElementById("qrPopup").style.display = "flex";
-}
-function closeQRPopup(){
-  document.getElementById("qrPopup").style.display = "none";
-}
 
-// Animate counters (Static since GitHub Pages can't use backend directly)
-const targets = [800, 5000, 10000, 900];
-const ids = ["counter1", "counter2", "counter3", "counter4"];
-
-function animateCounters() {
-  ids.forEach((id, index) => {
-    let count = 0;
-    const target = targets[index];
-    const step = Math.ceil(target / 200);
-    const interval = setInterval(() => {
-      count += step;
-      if (count >= target) {
-        count = target;
-        clearInterval(interval);
-      }
-      document.getElementById(id).innerText = count + "+";
-    }, 20);
-  });
-}
-
-window.addEventListener("load", animateCounters);
+  // Redirect to UPI after 1 second
+  setTimeout(() => { window.location.href = upiUrl; }, 1000);
+});
 </script>
 
 </body>
