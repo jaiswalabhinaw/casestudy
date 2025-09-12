@@ -1,19 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Donate - Shatakshi NGO</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: Arial, sans-serif; background:#111; color:#f5f5f5; margin:0; line-height:1.8; }
+    header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; }
+    .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; }
+    .menu-toggle { font-size:1.5em; cursor:pointer; float:right; color:#FFD700; }
+    main { max-width:900px; margin:2em auto; padding:2em; background:#1a1a1a; border-radius:8px; text-align:center; }
+    h1, h2, h3 { color:#FFD700; }
+    blockquote { font-style:italic; color:#FFD700; margin:1em 0; padding:0.5em 1em; border-left:4px solid #FFD700; background:rgba(255,215,0,0.05); text-align:left; }
+    footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
+
+    /* Sidebar Styles */
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:rgba(34,34,34,0.95); backdrop-filter: blur(6px);
+               overflow-x:hidden; transition:0.5s; padding-top:60px; z-index:1000; }
+    .sidebar a { display:block; padding:12px 20px; text-decoration:none; color:#FFD700; transition:0.3s; opacity:0; transform:translateX(30px); font-size:1.1em; }
+    .sidebar a.show { opacity:1; transform:translateX(0); transition: all 0.5s ease; }
+    .sidebar a:hover { background:#444; padding-left:30px; color:#fff; border-radius:4px; }
+    .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
+
+    .donate-options { display:flex; flex-wrap:wrap; justify-content:center; margin-top:2em; }
+    .donate-card { flex:1 1 250px; margin:1em; padding:1.5em; background:#222; border-radius:8px; }
+    .donate-card h3 { color:#FFD700; }
+    .donate-button { display:inline-block; margin-top:1em; padding:0.7em 1.5em; background:#FFD700; color:#000; border-radius:25px; text-decoration:none; font-weight:bold; cursor:pointer; }
+    .qr-section { margin-top:2em; }
+    .qr-section img { max-width:250px; border:5px solid #FFD700; border-radius:12px; }
+
+    /* Impact Counter */
+    .impact-section { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:3em; }
+    .impact-item { flex:1 1 200px; margin:1em; background:#222; border-radius:8px; padding:1.5em; text-align:center; }
+    .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
+    .impact-item span { display:block; font-size:0.9em; color:#bbb; }
+
+    /* Thank You Popup */
+    #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
+    #thankYouPopup .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; }
+    #thankYouPopup h2 { color:#FFD700; }
+    #thankYouPopup button { margin-top:1em; padding:0.5em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
+
+    .desktop-note { margin-top:1em; color:#bbb; font-size:0.9em; }
+  </style>
 </head>
 <body>
-  
+
 <header>
   <a href="index.html" class="logo">Shatakshi</a>
   <span class="menu-toggle" onclick="openNav()">☰</span>
 </header>
 
-  
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="about.html">About</a>
@@ -29,18 +67,109 @@
   <a href="creator.html">Creator</a>
 </div>
 
-  <main>
-    <h1>Donate</h1>
-    <p>This is the Donate page content.</p>
-  </main>
-  <footer class="site-footer">
+<main>
+  <h1>🙏 Donate Us</h1>
+  <blockquote>“आपका हर योगदान किसी की ज़िंदगी में उम्मीद की लौ जला सकता है।”</blockquote>
+
+  <p>
+    शताक्षी सेवा संस्थान केवल सेवा का नहीं, बल्कि संवेदना और करुणा का आंदोलन है।
+    आपका छोटा सा सहयोग किसी भूखे को भोजन, किसी बीमार को एंबुलेंस, किसी बेटी को शिक्षा और किसी लावारिस शव को सम्मानजनक विदाई दिला सकता है।
+  </p>
+
+  <h2>💛 आपके योगदान से होने वाला असर</h2>
+  <p>
+    <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=500">₹500 – एक सप्ताह के लिए किसी बुजुर्ग तक गरम भोजन</a><br><br>
+    <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=1000">₹1000 – बाढ़ प्रभावित बच्चे के लिए शिक्षा सामग्री और कपड़े</a><br><br>
+    <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=2500">₹2500 – एक मरीज को 24×7 एंबुलेंस सुविधा</a><br><br>
+    <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=5000">₹5000 – एक लावारिस शव का सम्मानजनक अंतिम संस्कार</a>
+  </p>
+  <p class="desktop-note">💡 यदि आप डेस्कटॉप उपयोग कर रहे हैं, तो नीचे दिए QR को स्कैन करें क्योंकि UPI लिंक केवल मोबाइल ऐप्स में खुलते हैं।</p>
+
+  <div class="donate-options">
+    <div class="donate-card">
+      <h3>📱 Paytm / UPI</h3>
+      <p>आप सीधे Paytm या UPI से दान कर सकते हैं।<br>
+      UPI ID: <strong>jaiswal.abhinaw-1@oksbi</strong><br>
+      Paytm No.: <strong>9911172230</strong></p>
+      <a href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust" class="donate-button">Donate via Paytm / UPI</a>
+    </div>
+    <div class="donate-card">
+      <h3>🏦 Bank Transfer</h3>
+      <p>Name of Beneficiary: <strong>Shatakshi Educational and Welfare Trust</strong><br>
+         Bank: HDFC Bank<br>
+         Branch: Gopalganj<br>
+         Account No: <strong>50200016974317</strong><br>
+         IFSC: <strong>HDFC0002773</strong><br>
+         Type of Account: Current</p>
+      <a onclick="showThankYou()" class="donate-button">Donate via Bank</a>
+    </div>
+    <div class="donate-card">
+      <h3>🌐 Online Payment</h3>
+      <p>हमारे Payment Gateway के ज़रिए सुरक्षित रूप से दान करें।</p>
+      <a onclick="showThankYou()" class="donate-button">Donate Online</a>
+    </div>
+  </div>
+
+  <div class="qr-section">
+    <h2>📷 Scan & Donate</h2>
+    <p>UPI App से स्कैन करें और तुरंत दान करें:</p>
+    <a href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust"><img src="qr.png" alt="UPI QR Code"></a>
+  </div>
+
+  <h2>🤝 क्यों जुड़ें?</h2>
+  <p>
+    यह दान केवल किसी ज़रूरतमंद की मदद नहीं है, यह आपके आत्मा की तृप्ति है।
+    क्योंकि असली संतोष नाम या शोहरत में नहीं, बल्कि उस मुस्कान में है जो आपकी वजह से किसी के चेहरे पर आती है।
+  </p>
+
+  <h2>📜 पारदर्शिता और विश्वास</h2>
+  <p>
+    शताक्षी सेवा संस्थान भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A और 80-G के तहत मान्यता प्राप्त है।
+    आपके सभी दान पर टैक्स छूट उपलब्ध है। यह सुनिश्चित करता है कि आपका सहयोग पारदर्शी और विश्वसनीय रूप से उपयोग किया जाएगा।
+  </p>
+
+  <div class="impact-section">
+    <div class="impact-item"><h3>800+</h3><span>Children Educated</span></div>
+    <div class="impact-item"><h3>5000+</h3><span>Families Benefited</span></div>
+    <div class="impact-item"><h3>10000+</h3><span>Meals Served</span></div>
+    <div class="impact-item"><h3>900+</h3><span>Last Rites Performed</span></div>
+  </div>
+
+</main>
+
+<div id="thankYouPopup">
+  <div class="popup-content">
+    <h2>🙏 धन्यवाद!</h2>
+    <p>आपका योगदान किसी की ज़िंदगी बदल देगा।</p>
+    <button onclick="closeThankYou()">ठीक है</button>
+  </div>
+</div>
+
+<footer class="site-footer">
   <p>© 2025 Shatakshi NGO. All rights reserved.</p>
 </footer>
 
-  
 <script>
-function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
-function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+function openNav() { 
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "250px";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach((link, i) => {
+    setTimeout(() => link.classList.add("show"), i * 100);
+  });
+}
+function closeNav() { 
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "0";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach(link => link.classList.remove("show"));
+}
+function showThankYou() {
+  document.getElementById("thankYouPopup").style.display = "flex";
+}
+function closeThankYou() {
+  document.getElementById("thankYouPopup").style.display = "none";
+}
 </script>
 
 </body>
