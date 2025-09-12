@@ -22,8 +22,9 @@
     .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
 
     .donate-options { display:flex; flex-wrap:wrap; justify-content:center; margin-top:2em; }
-    .donate-card { flex:1 1 250px; margin:1em; padding:1.5em; background:#222; border-radius:8px; }
-    .donate-card h3 { color:#FFD700; }
+    .donate-card { flex:1 1 300px; margin:1em; padding:1.5em; background:#222; border-radius:8px; text-align:left; }
+    .donate-card h3 { color:#FFD700; margin-bottom:0.5em; }
+    .donate-card p { color:#ddd; }
     .donate-button { display:inline-block; margin-top:1em; padding:0.7em 1.5em; background:#FFD700; color:#000; border-radius:25px; text-decoration:none; font-weight:bold; cursor:pointer; }
     .qr-section { margin-top:2em; }
     .qr-section img { max-width:250px; border:5px solid #FFD700; border-radius:12px; cursor:pointer; }
@@ -33,8 +34,8 @@
     .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
     .impact-item span { display:block; font-size:0.9em; color:#bbb; }
 
-    #donorFormPopup, #qrPopup, #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
-    .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; width:100%; }
+    #donorFormPopup, #qrPopup, #thankYouPopup, #bankPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
+    .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:420px; width:92%; }
     .popup-content h2 { color:#FFD700; }
     .popup-content input { width:100%; padding:0.5em; margin:0.5em 0; border-radius:6px; border:none; }
     .popup-content button { margin-top:1em; padding:0.5em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
@@ -75,8 +76,8 @@
   <p>
     <a class="donate-button" onclick="openDonorForm(500)">₹500 – एक सप्ताह के लिए भोजन</a><br><br>
     <a class="donate-button" onclick="openDonorForm(1000)">₹1000 – शिक्षा सामग्री</a><br><br>
-    <a class="donate-button" onclick="openDonorForm(2500)">₹1500 – एंबुलेंस सुविधा</a><br><br>
-    <a class="donate-button" onclick="openDonorForm(5000)">₹2000 – अंतिम संस्कार</a>
+    <a class="donate-button" onclick="openDonorForm(2500)">₹2500 – एंबुलेंस सुविधा</a><br><br>
+    <a class="donate-button" onclick="openDonorForm(5000)">₹5000 – अंतिम संस्कार</a>
   </p>
   <p class="desktop-note">💡 यदि आप डेस्कटॉप उपयोग कर रहे हैं, तो नीचे दिए QR को क्लिक करें या स्कैन करें। या सीधे <a href="https://paytm.com/upi/jaiswal.abhinaw-1@oksbi" target="_blank" style="color:#FFD700;">इस लिंक</a> से भी भुगतान करें।</p>
 
@@ -84,6 +85,34 @@
     <h2>📷 Scan & Donate</h2>
     <p>UPI App से स्कैन करें और तुरंत दान करें (Desktop उपयोगकर्ता QR पर क्लिक करें):</p>
     <img src="qr.png" alt="UPI QR Code" onclick="openQRPopup()">
+  </div>
+
+  <!-- Bank details card -->
+  <div class="donate-options">
+    <div class="donate-card">
+      <h3>🏦 Bank Transfer</h3>
+      <p>
+        <strong>Name:</strong> Shatakshi Educational and Welfare Trust<br>
+        <strong>Bank:</strong> HDFC Bank, Gopalganj<br>
+        <strong>Account No:</strong> 50200016974317<br>
+        <strong>IFSC:</strong> HDFC0002773<br>
+        <strong>Account Type:</strong> Current<br>
+        <strong>Paytm / UPI No.:</strong> 9911172230
+n      </p>
+      <button class="donate-button" onclick="openBankPopup()">Donate via Bank (I will pay)</button>
+    </div>
+
+    <div class="donate-card">
+      <h3>📱 Paytm / UPI</h3>
+      <p>UPI ID: <strong>jaiswal.abhinaw-1@oksbi</strong><br>Paytm No.: <strong>9911172230</strong></p>
+      <button class="donate-button" onclick="openDonorForm(0)">Donate via UPI</button>
+    </div>
+
+    <div class="donate-card">
+      <h3>🌐 Online Payment</h3>
+      <p>हमारे Payment Gateway के ज़रिए सुरक्षित रूप से दान करें (आगे जोड़े जाएंगे)।</p>
+      <button class="donate-button" onclick="openDonorForm(0)">Donate Online</button>
+    </div>
   </div>
 
   <h2>📜 पारदर्शिता और विश्वास</h2>
@@ -112,11 +141,28 @@
   </div>
 </div>
 
+<div id="bankPopup">
+  <div class="popup-content">
+    <h2>🏦 Bank Transfer Details</h2>
+    <p style="text-align:left; color:#ddd;">
+      Name: <strong>Shatakshi Educational and Welfare Trust</strong><br>
+      Bank: <strong>HDFC Bank, Gopalganj</strong><br>
+      Account No: <strong>50200016974317</strong><br>
+      IFSC: <strong>HDFC0002773</strong><br>
+      Account Type: <strong>Current</strong><br>
+      Paytm / UPI No.: <strong>9911172230</strong>
+    </p>
+    <p style="color:#ddd;">बैंक ट्रांसफर करने के बाद कृपया हमे सूचना दें ताकि हम रिकॉर्ड में जोड़ सकें।</p>
+    <button onclick="markBankPaid()">मैंने भुगतान कर दिया है</button>
+    <button onclick="closeBankPopup()">बंद करें</button>
+  </div>
+</div>
+
 <div id="qrPopup">
   <div class="popup-content">
     <h2>📷 QR Code</h2>
     <img src="qr.png" alt="UPI QR Code" style="max-width:100%; border:5px solid #FFD700; border-radius:12px;">
-    <p style="margin-top:1em;">मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
+    <p style="margin-top:1em; color:#ddd;">मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
     <button onclick="closeQRPopup()">बंद करें</button>
   </div>
 </div>
@@ -124,7 +170,7 @@
 <div id="thankYouPopup">
   <div class="popup-content">
     <h2>🙏 धन्यवाद!</h2>
-    <p>आपका योगदान दर्ज हो गया है। अब UPI ऐप पर भुगतान करें।</p>
+    <p>आपका योगदान दर्ज हो गया है।</p>
     <button onclick="closeThankYou()">ठीक है</button>
   </div>
 </div>
@@ -157,6 +203,15 @@ function closeDonorForm() {
   document.getElementById("donorFormPopup").style.display = "none";
 }
 function closeThankYou() { document.getElementById("thankYouPopup").style.display = "none"; }
+
+function openBankPopup() { document.getElementById("bankPopup").style.display = "flex"; }
+function closeBankPopup() { document.getElementById("bankPopup").style.display = "none"; }
+
+function markBankPaid() {
+  // Here we just close bank popup and show thank you. In future we can capture txn details.
+  closeBankPopup();
+  document.getElementById("thankYouPopup").style.display = "flex";
+}
 
 // Handle donor form submission
 const donorForm = document.getElementById("donorForm");
