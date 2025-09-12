@@ -1,32 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Volunteer - Shatakshi NGO</title>
+  <title>गौरव यात्रा - Naveen</title>
   <style>
     body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
-    header { background:#000; color:#FFD700; padding:20px; text-align:center; }
-    header h1 { margin:0; font-size:2.5em; }
-    header p { margin:5px 0 0; }
-
-    nav { background:#222; display:flex; justify-content:center; padding:10px; }
-    nav a { color:#FFD700; text-decoration:none; margin:0 15px; font-weight:bold; }
+    nav { background:#222; display:flex; justify-content:flex-end; padding:10px 20px; }
+    nav a { color:#FFD700; text-decoration:none; margin-left:20px; font-weight:bold; }
     nav a:hover { text-decoration:underline; }
 
-    main { padding:20px; display:grid; gap:30px; max-width:1000px; margin:auto; }
-    section { background:#222; padding:20px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.6); }
+    main { padding:20px; max-width:900px; margin:auto; text-align:center; }
+    section { background:#222; padding:20px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.6); margin-bottom:30px; }
     h2 { color:#FFD700; margin-top:0; }
 
-    .upload-box { background: #333; padding: 20px; border-radius: 10px; max-width: 500px; margin:auto; }
-    input, button { margin-top: 10px; width: 100%; padding: 10px; border-radius: 5px; border: none; }
+    .upload-box { background:#333; padding: 20px; border-radius: 10px; max-width: 400px; margin:20px auto; font-size:14px; }
+    input, button { margin-top: 10px; width: 100%; padding: 8px; border-radius: 5px; border: none; font-size:14px; }
     button { background: #ffd700; color: #000; font-weight: bold; cursor: pointer; }
     button:hover { background: #ffea70; }
-    #tokenInput { margin-top: 10px; }
-    #preview { margin-top: 15px; max-width: 100%; border-radius: 8px; display: none; }
-    #runs { margin-top: 15px; font-size: 14px; }
+    #preview { margin-top: 10px; max-width: 120px; border-radius: 6px; display: none; }
+    #runs { margin-top: 10px; font-size: 12px; }
 
-    #gallery { margin-top: 30px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+    #gallery { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
     #gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid #444; transition: transform 0.2s; cursor: pointer; }
     #gallery img:hover { transform: scale(1.05); }
 
@@ -36,22 +31,28 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Shatakshi NGO</h1>
-    <p>“हथियार से कलम तक” - Volunteer Page</p>
-  </header>
-
   <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="volunteer.html">Volunteer</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
   </nav>
 
   <main>
     <section>
-      <h2>Upload Image to Gallery</h2>
+      <h2>गौरव की गाथा</h2>
+      <p style="line-height:1.8; text-align:justify; font-size:16px;">
+        यह केवल <strong>गैलरी</strong> नहीं है, यह <strong>नवीन जी के 17 वर्षों</strong> की संघर्ष और उपलब्धियों की <strong>जीवित गाथा</strong> है।<br><br>
+        उन्होंने अपने जीवन को वैभवशाली बनाने का अवसर ठुकरा दिया। वे <strong>IAS अधिकारी</strong> बन सकते थे, एक सुखद और सम्मानित जीवन जी सकते थे। लेकिन उन्होंने वह रास्ता नहीं चुना। उन्होंने चुना – <strong>निर्मम सच्चाई, संघर्ष, और समाज के लिए बलिदान</strong>।<br><br>
+        मृत शरीरों की अंतिम यात्रा, दर्द से भरे परिवार, और उपेक्षित आत्माओं के बीच उन्होंने सेवा का मार्ग अपनाया। यह तस्वीरें केवल चित्र नहीं हैं, यह उन <strong>बलिदानों, संघर्षों, और आंसुओं</strong> की पहचान हैं जिन्हें उन्होंने समाज के लिए जिया।<br><br>
+        यह उनकी <strong>महानता</strong> है कि उन्होंने अपने जीवन को त्याग और सेवा के मार्ग पर समर्पित कर दिया। यह गैलरी नहीं, बल्कि <strong>विजयों की श्रृंखला</strong> है — जहां हर तस्वीर एक कहानी है <strong>दर्द, संतोष और बलिदान</strong> की।
+      </p>
+    </section>
+
+    <section>
+      <h2>गौरव चित्रावली</h2>
+      <div id="gallery"></div>
+    </section>
+
+    <section>
+      <h2>चित्र अपलोड करें</h2>
       <div class="upload-box">
         <input type="file" id="fileInput" accept="image/*">
         <input type="password" id="tokenInput" placeholder="Enter your GitHub PAT">
@@ -62,15 +63,10 @@
       </div>
     </section>
 
-    <section>
-      <h2>Gallery</h2>
-      <div id="gallery"></div>
-    </section>
+    <footer>
+      <p>&copy; 2025 | गौरव यात्रा</p>
+    </footer>
   </main>
-
-  <footer>
-    <p>&copy; 2025 Shatakshi NGO | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Use</a></p>
-  </footer>
 
   <script>
     async function uploadImage() {
@@ -80,11 +76,11 @@
       const preview = document.getElementById('preview');
 
       if (!fileInput.files.length) {
-        status.textContent = "Please select a file.";
+        status.textContent = "कृपया एक फ़ाइल चुनें।";
         return;
       }
       if (!tokenInput.value) {
-        status.textContent = "Please enter your GitHub PAT.";
+        status.textContent = "कृपया अपना GitHub PAT दर्ज करें।";
         return;
       }
 
@@ -93,14 +89,12 @@
       reader.onload = async function() {
         const base64Content = reader.result.split(',')[1];
 
-        // Show preview immediately
         preview.src = reader.result;
         preview.style.display = 'block';
 
-        status.textContent = "Upload request sent!";
+        status.textContent = "अपलोड अनुरोध भेजा गया...";
 
         try {
-          // Check if file already exists to supply SHA for update
           let sha = null;
           const checkRes = await fetch(`https://api.github.com/repos/jaiswalabhinaw/casestudy/contents/gallery/${encodeURIComponent(file.name)}`);
           if (checkRes.ok) {
@@ -109,9 +103,9 @@
           }
 
           if (sha) {
-            const confirmReplace = confirm(`${file.name} already exists in the gallery. Do you want to replace it?`);
+            const confirmReplace = confirm(`${file.name} पहले से मौजूद है। क्या आप इसे बदलना चाहते हैं?`);
             if (!confirmReplace) {
-              status.textContent = "❌ Upload cancelled by user.";
+              status.textContent = "❌ अपलोड रद्द किया गया।";
               return;
             }
           }
@@ -131,15 +125,15 @@
           });
 
           if (response.ok) {
-            status.textContent = `✅ Image uploaded successfully! Refreshing gallery...`;
+            status.textContent = `✅ चित्र सफलतापूर्वक अपलोड हुआ!`;
             setTimeout(loadGallery, 1500);
           } else {
             let errorMsg = "";
             try { errorMsg = await response.json(); } catch { errorMsg = await response.text(); }
-            status.textContent = "❌ Upload failed: " + response.status + " - " + JSON.stringify(errorMsg);
+            status.textContent = "❌ अपलोड विफल: " + response.status + " - " + JSON.stringify(errorMsg);
           }
         } catch (err) {
-          status.textContent = "⚠️ Error: " + err.message;
+          status.textContent = "⚠️ त्रुटि: " + err.message;
         }
       };
 
@@ -167,10 +161,10 @@
             }
           });
         } else {
-          galleryDiv.innerHTML = "⚠️ Could not load gallery: " + JSON.stringify(data);
+          galleryDiv.innerHTML = "⚠️ गैलरी लोड नहीं हो सकी: " + JSON.stringify(data);
         }
       } catch (e) {
-        galleryDiv.innerHTML = "⚠️ Could not load gallery: " + e.message;
+        galleryDiv.innerHTML = "⚠️ गैलरी लोड नहीं हो सकी: " + e.message;
       }
     }
 
