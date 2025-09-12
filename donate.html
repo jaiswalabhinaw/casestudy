@@ -30,18 +30,19 @@
     .qr-section { margin-top:2em; }
     .qr-section img { max-width:250px; border:5px solid #FFD700; border-radius:12px; cursor:pointer; }
 
-    /* Counters */
+    /* Impact Counter */
     .impact-section { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:3em; }
     .impact-item { flex:1 1 200px; margin:1em; background:#222; border-radius:8px; padding:1.5em; text-align:center; }
     .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
     .impact-item span { display:block; font-size:0.9em; color:#bbb; }
 
-    /* Popups */
-    #qrPopup, #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:3000; }
+    /* Popup */
+    #thankYouPopup, #qrPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
     .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; }
     .popup-content h2 { color:#FFD700; }
-    .popup-content img { max-width:400px; border:5px solid #FFD700; border-radius:12px; }
     .popup-content button { margin-top:1em; padding:0.5em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
+
+    .desktop-note { margin-top:1em; color:#bbb; font-size:0.9em; }
   </style>
 </head>
 <body>
@@ -76,47 +77,43 @@
   </p>
 
   <h2>💛 आपके योगदान से होने वाला असर</h2>
+  <p>
+    <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=500&cu=INR&redirect_url=https://yourusername.github.io/yourrepo/thankyou.html">₹500 – एक सप्ताह के लिए भोजन</a><br><br>
+    <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=1000&cu=INR&redirect_url=https://yourusername.github.io/yourrepo/thankyou.html">₹1000 – शिक्षा सामग्री</a><br><br>
+    <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=2500&cu=INR&redirect_url=https://yourusername.github.io/yourrepo/thankyou.html">₹2500 – एंबुलेंस सुविधा</a><br><br>
+    <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=5000&cu=INR&redirect_url=https://yourusername.github.io/yourrepo/thankyou.html">₹5000 – अंतिम संस्कार</a>
+  </p>
+  <p class="desktop-note">💡 यदि आप डेस्कटॉप उपयोग कर रहे हैं, तो नीचे दिए QR को क्लिक करें या स्कैन करें।</p>
+
   <div class="donate-options">
     <div class="donate-card">
-      <h3>🎓 शिक्षा</h3>
-      <p>₹500 – एक सप्ताह के लिए किसी बुजुर्ग तक गरम भोजन</p>
-      <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=500">Donate ₹500</a>
+      <h3>📱 Paytm / UPI</h3>
+      <p>आप सीधे Paytm या UPI से दान कर सकते हैं।<br>
+      UPI ID: <strong>jaiswal.abhinaw-1@oksbi</strong><br>
+      Paytm No.: <strong>9911172230</strong></p>
+      <a href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust" class="donate-button">Donate via Paytm / UPI</a>
     </div>
     <div class="donate-card">
-      <h3>👧 बेटियाँ</h3>
-      <p>₹1000 – बाढ़ प्रभावित बच्चे के लिए शिक्षा सामग्री और कपड़े</p>
-      <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=1000">Donate ₹1000</a>
+      <h3>🏦 Bank Transfer</h3>
+      <p>Name of Beneficiary: <strong>Shatakshi Educational and Welfare Trust</strong><br>
+         Bank: HDFC Bank<br>
+         Branch: Gopalganj<br>
+         Account No: <strong>50200016974317</strong><br>
+         IFSC: <strong>HDFC0002773</strong><br>
+         Type of Account: Current</p>
+      <a onclick="showThankYou()" class="donate-button">Donate via Bank</a>
     </div>
     <div class="donate-card">
-      <h3>🚑 स्वास्थ्य</h3>
-      <p>₹2500 – एक मरीज को 24×7 एंबुलेंस सुविधा</p>
-      <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=2500">Donate ₹2500</a>
-    </div>
-    <div class="donate-card">
-      <h3>🌸 अंतिम विदाई</h3>
-      <p>₹5000 – एक लावारिस शव का सम्मानजनक अंतिम संस्कार</p>
-      <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=5000">Donate ₹5000</a>
+      <h3>🌐 Online Payment</h3>
+      <p>हमारे Payment Gateway के ज़रिए सुरक्षित रूप से दान करें।</p>
+      <a href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust" class="donate-button">Donate Online</a>
     </div>
   </div>
 
   <div class="qr-section">
     <h2>📷 Scan & Donate</h2>
     <p>UPI App से स्कैन करें और तुरंत दान करें (Desktop उपयोगकर्ता QR पर क्लिक करें):</p>
-    <img src="qr.jpeg" alt="UPI QR Code" onclick="openQRPopup()">
-  </div>
-
-  <h2>📜 पारदर्शिता और विश्वास</h2>
-  <p>
-    शताक्षी सेवा संस्थान भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A और 80-G के तहत मान्यता प्राप्त है।
-    सभी दान पर टैक्स छूट उपलब्ध है। हर दान का रिकॉर्ड रखा जाता है और सालाना रिपोर्ट सार्वजनिक की जाती है ताकि पारदर्शिता बनी रहे।
-  </p>
-
-  <h2>📈 हमारी पहुँच</h2>
-  <div class="impact-section">
-    <div class="impact-item"><h3 id="counter1">0</h3><span>Children Educated</span></div>
-    <div class="impact-item"><h3 id="counter2">0</h3><span>Families Benefited</span></div>
-    <div class="impact-item"><h3 id="counter3">0</h3><span>Meals Served</span></div>
-    <div class="impact-item"><h3 id="counter4">0</h3><span>Last Rites Performed</span></div>
+    <img src="qr.png" alt="UPI QR Code" onclick="openQRPopup()">
   </div>
 
   <h2>🤝 क्यों जुड़ें?</h2>
@@ -125,22 +122,27 @@
     क्योंकि असली संतोष नाम या शोहरत में नहीं, बल्कि उस मुस्कान में है जो आपकी वजह से किसी के चेहरे पर आती है।
   </p>
 
+  <h2>📜 पारदर्शिता और विश्वास</h2>
+  <p>
+    शताक्षी सेवा संस्थान भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A और 80-G के तहत मान्यता प्राप्त है।
+    आपके सभी दान पर टैक्स छूट उपलब्ध है। यह सुनिश्चित करता है कि आपका सहयोग पारदर्शी और विश्वसनीय रूप से उपयोग किया जाएगा।
+  </p>
+
+  <div class="impact-section">
+    <div class="impact-item"><h3>800+</h3><span>Children Educated</span></div>
+    <div class="impact-item"><h3>5000+</h3><span>Families Benefited</span></div>
+    <div class="impact-item"><h3>10000+</h3><span>Meals Served</span></div>
+    <div class="impact-item"><h3>900+</h3><span>Last Rites Performed</span></div>
+  </div>
+
 </main>
 
 <div id="qrPopup">
   <div class="popup-content">
-    <h2>🙏 UPI QR Code</h2>
-    <img src="qr.jpeg" alt="UPI QR Code">
-    <p>मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
+    <h2>📷 QR Code</h2>
+    <img src="qr.png" alt="UPI QR Code" style="max-width:100%; border:5px solid #FFD700; border-radius:12px;">
+    <p style="margin-top:1em;">मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
     <button onclick="closeQRPopup()">बंद करें</button>
-  </div>
-</div>
-
-<div id="thankYouPopup">
-  <div class="popup-content">
-    <h2>🙏 धन्यवाद!</h2>
-    <p>आपका योगदान सिर्फ़ धन नहीं है, यह किसी भूखे के लिए भोजन, किसी बीमार के लिए जीवन, और किसी लावारिस आत्मा के लिए गरिमा है। ❤️</p>
-    <button onclick="closeThankYou()">ठीक है</button>
   </div>
 </div>
 
@@ -163,40 +165,12 @@ function closeNav() {
   const links = sidebar.querySelectorAll("a");
   links.forEach(link => link.classList.remove("show"));
 }
-function showThankYou() {
-  document.getElementById("thankYouPopup").style.display = "flex";
-}
-function closeThankYou() {
-  document.getElementById("thankYouPopup").style.display = "none";
-}
-function openQRPopup(){
+function openQRPopup() {
   document.getElementById("qrPopup").style.display = "flex";
 }
-function closeQRPopup(){
+function closeQRPopup() {
   document.getElementById("qrPopup").style.display = "none";
 }
-
-// Animate counters (Static since GitHub Pages can't use backend directly)
-const targets = [800, 5000, 10000, 900];
-const ids = ["counter1", "counter2", "counter3", "counter4"];
-
-function animateCounters() {
-  ids.forEach((id, index) => {
-    let count = 0;
-    const target = targets[index];
-    const step = Math.ceil(target / 200);
-    const interval = setInterval(() => {
-      count += step;
-      if (count >= target) {
-        count = target;
-        clearInterval(interval);
-      }
-      document.getElementById(id).innerText = count + "+";
-    }, 20);
-  });
-}
-
-window.addEventListener("load", animateCounters);
 </script>
 
 </body>
