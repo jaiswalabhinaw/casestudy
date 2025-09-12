@@ -30,19 +30,12 @@
     .qr-section { margin-top:2em; }
     .qr-section img { max-width:250px; border:5px solid #FFD700; border-radius:12px; cursor:pointer; }
 
-    /* Impact Counter */
-    .impact-section { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:3em; }
-    .impact-item { flex:1 1 200px; margin:1em; background:#222; border-radius:8px; padding:1.5em; text-align:center; }
-    .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
-    .impact-item span { display:block; font-size:0.9em; color:#bbb; }
-
-    /* Thank You & QR Popup */
-    #thankYouPopup, #qrPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
+    /* Popups */
+    #qrPopup, #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:3000; }
     .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; }
     .popup-content h2 { color:#FFD700; }
+    .popup-content img { max-width:400px; border:5px solid #FFD700; border-radius:12px; }
     .popup-content button { margin-top:1em; padding:0.5em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
-
-    .desktop-note { margin-top:1em; color:#bbb; font-size:0.9em; }
   </style>
 </head>
 <body>
@@ -83,7 +76,6 @@
     <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=2500">₹2500 – एक मरीज को 24×7 एंबुलेंस सुविधा</a><br><br>
     <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=5000">₹5000 – एक लावारिस शव का सम्मानजनक अंतिम संस्कार</a>
   </p>
-  <p class="desktop-note">💡 यदि आप डेस्कटॉप उपयोग कर रहे हैं, तो नीचे दिए QR को क्लिक करें या स्कैन करें।</p>
 
   <div class="donate-options">
     <div class="donate-card">
@@ -103,17 +95,12 @@
          Type of Account: Current</p>
       <a onclick="showThankYou()" class="donate-button">Donate via Bank</a>
     </div>
-    <div class="donate-card">
-      <h3>🌐 Online Payment</h3>
-      <p>हमारे Payment Gateway के ज़रिए सुरक्षित रूप से दान करें।</p>
-      <a onclick="showThankYou()" class="donate-button">Donate Online</a>
-    </div>
   </div>
 
   <div class="qr-section">
     <h2>📷 Scan & Donate</h2>
     <p>UPI App से स्कैन करें और तुरंत दान करें (Desktop उपयोगकर्ता QR पर क्लिक करें):</p>
-    <img src="qr.png" alt="UPI QR Code" onclick="openQRPopup()">
+    <img src="qr.jpeg" alt="UPI QR Code" onclick="openQRPopup()">
   </div>
 
   <h2>🤝 क्यों जुड़ें?</h2>
@@ -122,35 +109,22 @@
     क्योंकि असली संतोष नाम या शोहरत में नहीं, बल्कि उस मुस्कान में है जो आपकी वजह से किसी के चेहरे पर आती है।
   </p>
 
-  <h2>📜 पारदर्शिता और विश्वास</h2>
-  <p>
-    शताक्षी सेवा संस्थान भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A और 80-G के तहत मान्यता प्राप्त है।
-    आपके सभी दान पर टैक्स छूट उपलब्ध है। यह सुनिश्चित करता है कि आपका सहयोग पारदर्शी और विश्वसनीय रूप से उपयोग किया जाएगा।
-  </p>
-
-  <div class="impact-section">
-    <div class="impact-item"><h3>800+</h3><span>Children Educated</span></div>
-    <div class="impact-item"><h3>5000+</h3><span>Families Benefited</span></div>
-    <div class="impact-item"><h3>10000+</h3><span>Meals Served</span></div>
-    <div class="impact-item"><h3>900+</h3><span>Last Rites Performed</span></div>
-  </div>
-
 </main>
+
+<div id="qrPopup">
+  <div class="popup-content">
+    <h2>🙏 UPI QR Code</h2>
+    <img src="qr.jpeg" alt="UPI QR Code">
+    <p>मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
+    <button onclick="closeQRPopup()">बंद करें</button>
+  </div>
+</div>
 
 <div id="thankYouPopup">
   <div class="popup-content">
     <h2>🙏 धन्यवाद!</h2>
-    <p>आपका योगदान किसी की ज़िंदगी बदल देगा।</p>
+    <p>आपका योगदान सिर्फ़ धन नहीं है, यह किसी भूखे के लिए भोजन, किसी बीमार के लिए जीवन, और किसी लावारिस आत्मा के लिए गरिमा है। ❤️</p>
     <button onclick="closeThankYou()">ठीक है</button>
-  </div>
-</div>
-
-<div id="qrPopup">
-  <div class="popup-content">
-    <h2>📷 QR Code</h2>
-    <img src="qr.png" alt="UPI QR Code" style="max-width:100%; border:5px solid #FFD700; border-radius:12px;">
-    <p style="margin-top:1em;">मोबाइल UPI App से स्कैन करें और भुगतान करें।</p>
-    <button onclick="closeQRPopup()">बंद करें</button>
   </div>
 </div>
 
@@ -179,10 +153,10 @@ function showThankYou() {
 function closeThankYou() {
   document.getElementById("thankYouPopup").style.display = "none";
 }
-function openQRPopup() {
+function openQRPopup(){
   document.getElementById("qrPopup").style.display = "flex";
 }
-function closeQRPopup() {
+function closeQRPopup(){
   document.getElementById("qrPopup").style.display = "none";
 }
 </script>
