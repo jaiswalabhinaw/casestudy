@@ -10,7 +10,7 @@
     header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; }
     .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; }
     .menu-toggle { font-size:1.5em; cursor:pointer; float:right; color:#FFD700; }
-    main { max-width:980px; margin:2em auto; padding:2em; background:#1a1a1a; border-radius:8px; text-align:center; }
+    main { max-width:900px; margin:2em auto; padding:2em; background:#1a1a1a; border-radius:8px; text-align:center; }
     h1, h2, h3 { color:#FFD700; }
     blockquote { font-style:italic; color:#FFD700; margin:1em 0; padding:0.5em 1em; border-left:4px solid #FFD700; background:rgba(255,215,0,0.05); text-align:left; }
     footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
@@ -24,33 +24,24 @@
     .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
 
     .donate-options { display:flex; flex-wrap:wrap; justify-content:center; margin-top:2em; }
-    .donate-card { flex:1 1 250px; margin:1em; padding:1.5em; background:#222; border-radius:8px; text-align:center; }
-    .donate-card h3 { color:#FFD700; margin-bottom:0.3em; }
+    .donate-card { flex:1 1 250px; margin:1em; padding:1.5em; background:#222; border-radius:8px; }
+    .donate-card h3 { color:#FFD700; }
     .donate-button { display:inline-block; margin-top:1em; padding:0.7em 1.5em; background:#FFD700; color:#000; border-radius:25px; text-decoration:none; font-weight:bold; cursor:pointer; }
     .qr-section { margin-top:2em; }
     .qr-section img { max-width:250px; border:5px solid #FFD700; border-radius:12px; cursor:pointer; }
 
-    /* Impact / Counters */
+    /* Counters */
     .impact-section { display:flex; flex-wrap:wrap; justify-content:space-around; margin-top:3em; }
     .impact-item { flex:1 1 200px; margin:1em; background:#222; border-radius:8px; padding:1.5em; text-align:center; }
     .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
-    .impact-item span { display:block; font-size:0.95em; color:#bbb; }
+    .impact-item span { display:block; font-size:0.9em; color:#bbb; }
 
     /* Popups */
-    #qrPopup, #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:3000; display:flex; justify-content:center; align-items:center; }
-    .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:480px; }
-    .popup-content h2 { color:#FFD700; margin-bottom:0.6em; }
-    .popup-content img { max-width:100%; border:5px solid #FFD700; border-radius:12px; }
-    .popup-content button { margin-top:1em; padding:0.6em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
-
-    .transparency { text-align:left; background:#111; padding:1.2em; margin-top:2em; border-radius:8px; }
-    .transparency h3 { color:#FFD700; }
-    .transparency p { color:#ddd; }
-
-    @media (max-width:700px) {
-      .impact-section { flex-direction:column; }
-      .donate-card { flex:1 1 100%; }
-    }
+    #qrPopup, #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:3000; }
+    .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; }
+    .popup-content h2 { color:#FFD700; }
+    .popup-content img { max-width:400px; border:5px solid #FFD700; border-radius:12px; }
+    .popup-content button { margin-top:1em; padding:0.5em 1.5em; border:none; background:#FFD700; color:#000; border-radius:25px; font-weight:bold; cursor:pointer; }
   </style>
 </head>
 <body>
@@ -88,43 +79,23 @@
   <div class="donate-options">
     <div class="donate-card">
       <h3>🎓 शिक्षा</h3>
-      <p>₹500 – स्कूल सामग्री और पोषण।</p>
+      <p>₹500 – एक सप्ताह के लिए किसी बुजुर्ग तक गरम भोजन</p>
       <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=500">Donate ₹500</a>
     </div>
     <div class="donate-card">
       <h3>👧 बेटियाँ</h3>
-      <p>₹1000 – बाढ़ प्रभावित बच्चे के लिए शिक्षा सामग्री और कपड़े।</p>
+      <p>₹1000 – बाढ़ प्रभावित बच्चे के लिए शिक्षा सामग्री और कपड़े</p>
       <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=1000">Donate ₹1000</a>
     </div>
     <div class="donate-card">
       <h3>🚑 स्वास्थ्य</h3>
-      <p>₹2500 – एंबुलेंस व आपातकालीन सहायता।</p>
+      <p>₹2500 – एक मरीज को 24×7 एंबुलेंस सुविधा</p>
       <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=2500">Donate ₹2500</a>
     </div>
     <div class="donate-card">
       <h3>🌸 अंतिम विदाई</h3>
-      <p>₹5000 – सम्मानजनक अंतिम संस्कार।</p>
+      <p>₹5000 – एक लावारिस शव का सम्मानजनक अंतिम संस्कार</p>
       <a class="donate-button" href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=5000">Donate ₹5000</a>
-    </div>
-  </div>
-
-  <div class="donate-options">
-    <div class="donate-card">
-      <h3>📱 Paytm / UPI</h3>
-      <p>आप सीधे Paytm या UPI से दान कर सकते हैं।<br>
-      UPI ID: <strong>jaiswal.abhinaw-1@oksbi</strong><br>
-      Paytm No.: <strong>9911172230</strong></p>
-      <a href="upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust" class="donate-button">Donate via Paytm / UPI</a>
-    </div>
-    <div class="donate-card">
-      <h3>🏦 Bank Transfer</h3>
-      <p>Name of Beneficiary: <strong>Shatakshi Educational and Welfare Trust</strong><br>
-         Bank: HDFC Bank<br>
-         Branch: Gopalganj<br>
-         Account No: <strong>50200016974317</strong><br>
-         IFSC: <strong>HDFC0002773</strong><br>
-         Type of Account: Current</p>
-      <a onclick="showThankYou()" class="donate-button">Donate via Bank</a>
     </div>
   </div>
 
@@ -135,19 +106,10 @@
   </div>
 
   <h2>📜 पारदर्शिता और विश्वास</h2>
-  <div class="transparency">
-    <h3>हम किस तरह से काम करते हैं</h3>
-    <p>
-      शताक्षी सेवा संस्थान भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A और 80-G के तहत मान्यता प्राप्त है।
-      हमारे खाते नियमित रूप से ऑडिट होते हैं और खर्च परियोजनाओं के हिसाब से श्रेणीबद्ध होते हैं।
-    </p>
-    <p>
-      हम दान की पारदर्शिता पर विश्वास करते हैं — हर छोटी और बड़ी देन के लिए पावती (receipt) उपलब्ध कराई जाती है। यदि आप किसी दान के प्रमाण पत्र या सालाना रिपोर्ट देखना चाहते हैं, तो कृपया हमारी <a href="contact.html" style="color:#FFD700; text-decoration:underline;">Contact</a> पेज से हमसे संपर्क करें।
-    </p>
-    <p>
-      भविष्य में आप चाहें तो हम इन काउंटर्स को सीधे भुगतान लॉग से जोड़कर रीयल-टाइम अपडेट भी दिखा सकते हैं — इसके लिए हमें एक छोटा बैकएंड (API) चाहिए होगा जो पेमेंट गेटवे/बैंक webhook से डेटा ले सके।
-    </p>
-  </div>
+  <p>
+    शताक्षी सेवा संस्थान भारतीय ट्रस्ट अधिनियम 1882 के अंतर्गत पंजीकृत है और आयकर अधिनियम की धारा 12-A और 80-G के तहत मान्यता प्राप्त है।
+    सभी दान पर टैक्स छूट उपलब्ध है। हर दान का रिकॉर्ड रखा जाता है और सालाना रिपोर्ट सार्वजनिक की जाती है ताकि पारदर्शिता बनी रहे।
+  </p>
 
   <h2>📈 हमारी पहुँच</h2>
   <div class="impact-section">
@@ -214,39 +176,27 @@ function closeQRPopup(){
   document.getElementById("qrPopup").style.display = "none";
 }
 
-// Animated counters when visible
-function animateCounter(id, target, duration){
-  const el = document.getElementById(id);
-  let start = 0;
-  let startTime = null;
-  function step(timestamp){
-    if (!startTime) startTime = timestamp;
-    const progress = Math.min((timestamp - startTime) / duration, 1);
-    const value = Math.floor(progress * (target - start) + start);
-    el.innerText = value.toLocaleString();
-    if (progress < 1) window.requestAnimationFrame(step);
-    else el.innerText = target.toLocaleString() + "+";
-  }
-  window.requestAnimationFrame(step);
-}
+// Animate counters (Static since GitHub Pages can't use backend directly)
+const targets = [800, 5000, 10000, 900];
+const ids = ["counter1", "counter2", "counter3", "counter4"];
 
-// Observe the impact section and trigger animation once
-const impactSection = document.querySelector('.impact-section');
-if (impactSection){
-  const obs = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting){
-        animateCounter('counter1', 800, 1600);
-        animateCounter('counter2', 5000, 1600);
-        animateCounter('counter3', 10000, 1600);
-        animateCounter('counter4', 900, 1600);
-        observer.unobserve(entry.target);
+function animateCounters() {
+  ids.forEach((id, index) => {
+    let count = 0;
+    const target = targets[index];
+    const step = Math.ceil(target / 200);
+    const interval = setInterval(() => {
+      count += step;
+      if (count >= target) {
+        count = target;
+        clearInterval(interval);
       }
-    });
-  }, {threshold:0.35});
-  obs.observe(impactSection);
+      document.getElementById(id).innerText = count + "+";
+    }, 20);
+  });
 }
 
+window.addEventListener("load", animateCounters);
 </script>
 
 </body>
