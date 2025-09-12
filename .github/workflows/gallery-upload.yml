@@ -1,32 +1,30 @@
-```yaml
-   name: Gallery Upload
+name: Gallery Upload
 
-   on:
-     workflow_dispatch:
-       inputs:
-         file_name:
-           description: 'File name for the image (e.g., photo1.jpg)'
-           required: true
-         file_content:
-           description: 'Base64 encoded image content'
-           required: true
+on:
+  workflow_dispatch:
+    inputs:
+      file_name:
+        description: 'File name for the image (e.g., photo1.jpg)'
+        required: true
+      file_content:
+        description: 'Base64 encoded image content'
+        required: true
 
-   jobs:
-     upload:
-       runs-on: ubuntu-latest
-       steps:
-         - name: Checkout repo
-           uses: actions/checkout@v3
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-         - name: Decode and save file
-           run: |
-             echo "${{ github.event.inputs.file_content }}" | base64 -d > gallery/${{ github.event.inputs.file_name }}
+      - name: Decode and save file
+        run: |
+          echo "${{ github.event.inputs.file_content }}" | base64 -d > gallery/${{ github.event.inputs.file_name }}
 
-         - name: Commit and push
-           run: |
-             git config --global user.name "github-actions"
-             git config --global user.email "github-actions@github.com"
-             git add gallery/${{ github.event.inputs.file_name }}
-             git commit -m "Add image ${{ github.event.inputs.file_name }}"
-             git push
-   ```
+      - name: Commit and push
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add gallery/${{ github.event.inputs.file_name }}
+          git commit -m "Add image ${{ github.event.inputs.file_name }}"
+          git push
