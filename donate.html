@@ -33,7 +33,7 @@
     .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
     .impact-item span { display:block; font-size:0.9em; color:#bbb; }
 
-    #donorFormPopup, #qrPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
+    #donorFormPopup, #qrPopup, #thankYouPopup { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; }
     .popup-content { background:#1a1a1a; padding:2em; border-radius:10px; text-align:center; max-width:400px; width:100%; }
     .popup-content h2 { color:#FFD700; }
     .popup-content input { width:100%; padding:0.5em; margin:0.5em 0; border-radius:6px; border:none; }
@@ -121,6 +121,14 @@
   </div>
 </div>
 
+<div id="thankYouPopup">
+  <div class="popup-content">
+    <h2>🙏 धन्यवाद!</h2>
+    <p>आपका योगदान दर्ज हो गया है। आपकी मदद से कई ज़िंदगियाँ बदलेंगी।</p>
+    <button onclick="closeThankYou()">ठीक है</button>
+  </div>
+</div>
+
 <footer class="site-footer">
   <p>© 2025 Shatakshi NGO. All rights reserved.</p>
 </footer>
@@ -148,6 +156,7 @@ function openDonorForm(amount) {
 function closeDonorForm() {
   document.getElementById("donorFormPopup").style.display = "none";
 }
+function closeThankYou() { document.getElementById("thankYouPopup").style.display = "none"; }
 
 // Handle donor form submission
 const donorForm = document.getElementById("donorForm");
@@ -155,7 +164,13 @@ donorForm.addEventListener("submit", function(e) {
   e.preventDefault();
   const amount = document.getElementById("donationAmount").value;
   const upiUrl = `upi://pay?pa=jaiswal.abhinaw-1@oksbi&pn=Shatakshi%20Trust&am=${amount}&cu=INR`;
-  window.location.href = upiUrl;
+
+  // Show thank you popup first
+  document.getElementById("donorFormPopup").style.display = "none";
+  document.getElementById("thankYouPopup").style.display = "flex";
+
+  // Redirect to UPI after 2 seconds
+  setTimeout(() => { window.location.href = upiUrl; }, 2000);
 });
 </script>
 
