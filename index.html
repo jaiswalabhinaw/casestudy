@@ -32,35 +32,32 @@
     section { max-width:1000px; margin:2em auto; padding:2em 1em; line-height:1.7; border-radius:8px; background:#1a1a1a; }
     section h2 { color:#FFD700; margin-bottom:0.5em; text-align:center; position:relative; }
     section h2::after { content:""; display:block; width:60px; height:3px; background:#FFD700; margin:0.5em auto; border-radius:2px; }
+   
+    /* Timeline */
+    .timeline-container { overflow:hidden; white-space:nowrap; position:relative; }
+    .timeline-track { display:inline-flex; animation: scrollTimeline 40s linear infinite; } /* faster */
+    .timeline-item { flex:0 0 auto; background:#222; color:#fff; border-radius:8px; padding:1em; margin:0 1em; min-width:220px; max-width:240px; text-align:left; white-space:normal; }
+    .timeline-year { font-size:1.1em; font-weight:bold; color:#FFD700; margin-bottom:0.5em; }
+    @keyframes scrollTimeline { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+    .timeline-container:hover .timeline-track { animation-play-state: paused; }
 
-    .donate-hero { display:flex; justify-content:center; align-items:center; margin:2em 0; }
-    .donate-hero a { display:inline-block; padding:1em 3em; border-radius:30px; background:#FFD700; color:#000; font-weight:bold; text-decoration:none; font-size:1.5em; box-shadow:0 4px 12px rgba(0,0,0,0.3); transition:transform 0.3s ease; }
-    .donate-hero a:hover { transform:scale(1.08); }
-
-    /* Responsive adjustments */
-    @media(max-width:768px) {
-      .donate-hero a { font-size:1.2em; padding:0.8em 2em; }
-    }
-
+    /* Heartfelt Missions */
     .missions { display:flex; flex-wrap:wrap; justify-content:space-around; text-align:center; }
     .mission-card { flex:1 1 250px; margin:1em; background:#222; border-radius:8px; padding:1.5em; transition:transform 0.3s; }
     .mission-card:hover { transform:scale(1.05); }
     .mission-card h3 { color:#FFD700; margin-bottom:0.5em; }
 
+    /* Impact */
     .impact { display:flex; flex-wrap:wrap; justify-content:space-around; text-align:center; }
     .impact-item { flex:1 1 200px; margin:1em; background:#222; border-radius:8px; padding:1.5em; }
     .impact-item h3 { color:#FFD700; font-size:2em; margin-bottom:0.3em; }
     .impact-item span { display:block; font-size:0.9em; color:#bbb; }
 
-    .timeline-container, .gallery-container { overflow:hidden; white-space:nowrap; position:relative; }
-    .timeline-track, .gallery-track { display:inline-flex; animation: scrollAnim 30s linear infinite; }
-    .timeline-item, .gallery-track img { flex:0 0 auto; margin:0 1em; }
-    .timeline-item { background:#222; color:#fff; border-radius:8px; padding:1em; min-width:220px; max-width:240px; }
-    .gallery-track img { max-height:220px; border-radius:8px; transition:transform 0.3s; }
-    .gallery-track img:hover { transform:scale(1.05); }
+    /* Founder Section */
+    .founder { text-align:center; }
+    .founder img { max-width:150px; border-radius:50%; margin-bottom:1em; }
 
-    @keyframes scrollAnim { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
-
+    /* Testimonials */
     .testimonials { display:flex; overflow:hidden; }
     .testimonial { flex:0 0 100%; background:#222; padding:1em; border-radius:8px; font-style:italic; animation: slideTestimonial 18s infinite; }
     @keyframes slideTestimonial {
@@ -70,6 +67,26 @@
       75%, 95% { transform:translateX(-300%); }
       100% { transform:translateX(0%); }
     }
+
+    /* Photo Gallery */
+    .photo-gallery { text-align:center; padding:2em 0; }
+    .photo-gallery h2 { color:#FFD700; }
+    .gallery-container { overflow:hidden; position:relative; width:100%; }
+    .gallery-track { display:flex; animation: scrollGallery 30s linear infinite; } /* faster */
+    .gallery-track img { max-height:220px; border-radius:8px; margin-right:1em; flex:0 0 auto; transition:transform 0.3s; }
+    .gallery-track img:hover { transform:scale(1.05); }
+    @keyframes scrollGallery { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+
+    /* Call to Action */
+    .cta { text-align:center; }
+    .cta-buttons a { display:inline-block; margin:0.5em; padding:0.7em 1.5em; border-radius:25px; text-decoration:none; }
+    .btn-primary { background:#FFD700; color:#000; }
+    .btn-secondary { background:#444; color:#fff; }
+
+    /* Contact */
+    .contact-form { display:flex; flex-direction:column; max-width:400px; margin:0 auto; }
+    .contact-form input, .contact-form textarea { margin:0.5em 0; padding:0.8em; border:none; border-radius:5px; }
+    .contact-form button { padding:0.8em; background:#FFD700; border:none; border-radius:5px; cursor:pointer; }
 
     footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
     .designer-credit { font-weight:bold; color:#FFD700; margin-top:0.5em; }
@@ -98,41 +115,144 @@
   <!-- Hero -->
   <section class="hero">
     <h1> SHATAKSHI </h1>
+    <h1>  </h1>
+    <h1>  </h1>
+    <h1>  </h1>
     <p id="hero-text">Founded in 2011 in Gopalganj, Bihar.</p>
   </section>
 
   <!-- Donate Hero Section -->
-  <section class="donate-hero">
-    <a href="donate.html">Donate Now</a>
-  </section>
+<section class="donate-hero">
+  <a href="donate.html">Donate Now</a>
+</section>
 
-  <!-- Journey -->
-  <section>
-    <h2>Our Journey Timeline</h2>
-    <div class="timeline-container">
-      <div class="timeline-track">
-        <div class="timeline-item"><div class="timeline-year">2011</div> Established as Shatakshi Educational & Welfare Trust</div>
-        <div class="timeline-item"><div class="timeline-year">2019</div> Mission Hathiyaar Se Kalam Tak launched</div>
-        <div class="timeline-item"><div class="timeline-year">2020</div> Shatakshi Helpline and Jal Pathshala initiatives</div>
-        <div class="timeline-item"><div class="timeline-year">2021</div> Annapurna Rasoi meal service started</div>
-        <div class="timeline-item"><div class="timeline-year">2022</div> Antim Vidai performed 900+ last rites</div>
-        <div class="timeline-item"><div class="timeline-year">Founder</div> Naveen Srivastava transforms pain into purpose</div>
+
+ <!-- Journey -->
+<section class="story">
+  <h2>Our Journey Timeline</h2>
+  <div class="timeline-container">
+    <div class="timeline-track">
+      <div class="timeline-item"><div class="timeline-year">2011</div>Established as Shatakshi Educational & Welfare Trust.</div>
+      <div class="timeline-item"><div class="timeline-year">2019</div>Mission Hathiyaar Se Kalam Tak launched.</div>
+      <div class="timeline-item"><div class="timeline-year">2020</div>Shatakshi Helpline and Jal Pathshala initiatives.</div>
+      <div class="timeline-item"><div class="timeline-year">2021</div>Annapurna Rasoi meal service started.</div>
+      <div class="timeline-item"><div class="timeline-year">2022</div>Antim Vidai performed 900+ last rites.</div>
+      <div class="timeline-item"><div class="timeline-year">Founder</div>Naveen Srivastava transforms pain into purpose.</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="timeline-item"><div class="timeline-year">2011</div>Established as Shatakshi Educational & Welfare Trust.</div>
+      <div class="timeline-item"><div class="timeline-year">2019</div>Mission Hathiyaar Se Kalam Tak launched.</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .timeline-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+  }
+  .timeline-track {
+    display: inline-flex;
+    animation: scrollTimeline 40s linear infinite;
+  }
+  .timeline-item {
+    flex: 0 0 auto;
+    background: #222;
+    color: #fff;
+    border-radius: 8px;
+    padding: 1em;
+    margin: 0 1em;
+    min-width: 220px;
+    max-width: 240px;
+    text-align: left;
+    white-space: normal;
+  }
+  .timeline-year {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 0.5em;
+  }
+  @keyframes scrollTimeline {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+
+  <!-- Heartfelt Missions -->
+  <section class="missions-section">
+    <h2>Heartfelt Missions</h2>
+    <div class="missions">
+      <div class="mission-card">
+        <h3>Mission Hathiyaar Se Kalam Tak</h3>
+        <p>Turning weapons into pens by bringing education and hope to children in flood-affected regions.</p>
+      </div>
+      <div class="mission-card">
+        <h3>Annapurna Rasoi</h3>
+        <p>Providing daily meals to the elderly, destitute, and disabled, ensuring dignity and care for all.</p>
+      </div>
+      <div class="mission-card">
+        <h3>Antim Vidai</h3>
+        <p>Offering dignity in death through last rites for over 900 unclaimed bodies, inspired by personal tragedy.</p>
       </div>
     </div>
   </section>
 
-  <!-- Heartfelt Missions -->
-  <section>
-    <h2>Heartfelt Missions</h2>
-    <div class="missions">
-      <div class="mission-card"><h3>Mission Hathiyaar Se Kalam Tak</h3><p>Turning weapons into pens by bringing education and hope to children in flood-affected regions.</p></div>
-      <div class="mission-card"><h3>Annapurna Rasoi</h3><p>Providing daily meals to the elderly, destitute, and disabled, ensuring dignity and care for all.</p></div>
-      <div class="mission-card"><h3>Antim Vidai</h3><p>Offering dignity in death through last rites for over 900 unclaimed bodies, inspired by personal tragedy.</p></div>
+  <!-- Photo Gallery -->
+<section class="photo-gallery">
+  <h2>Moments of Service</h2>
+  <div class="gallery-container">
+    <div class="gallery-track">
+      <img src="1.jpg" alt="Service Image 1">
+      <img src="2.jpg" alt="Service Image 2">
+      <img src="3.jpg" alt="Service Image 3">
+      <img src="4.jpg" alt="Service Image 4">
+      <img src="5.jpg" alt="Service Image 5">
+      <img src="6.jpg" alt="Service Image 6">
+      <img src="7.jpg" alt="Service Image 7">
+      <img src="8.jpg" alt="Service Image 8">
+      <img src="9.jpg" alt="Service Image 9">
+      <img src="10.jpg" alt="Service Image 10">
+      <img src="11.jpg" alt="Service Image 11">
+      <img src="12.jpg" alt="Service Image 12">
+      <!-- Duplicate first few for seamless loop -->
+      <img src="1.jpg" alt="Service Image 1">
+      <img src="2.jpg" alt="Service Image 2">
     </div>
-  </section>
+  </div>
+</section>
+
+<style>
+  .gallery-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    position: relative;
+    width: 100%;
+  }
+  .gallery-track {
+    display: flex;
+    animation: scrollGallery 30s linear infinite;
+  }
+  .gallery-track img {
+    max-height: 220px;
+    border-radius: 8px;
+    margin-right: 1em;
+    flex: 0 0 auto;
+    transition: transform 0.3s;
+  }
+  .gallery-track img:hover {
+    transform: scale(1.05);
+  }
+  @keyframes scrollGallery {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
 
   <!-- Impact -->
-  <section>
+  <section class="impact-section">
     <h2>Our Impact</h2>
     <div class="impact">
       <div class="impact-item"><h3 id="counter1">0</h3><p>Children Educated</p><span>since 2019</span></div>
@@ -143,14 +263,14 @@
   </section>
 
   <!-- Founder -->
-  <section>
+  <section class="founder">
     <h2>Our Founder</h2>
-    <img src="founder.jpg" alt="Founder Naveen Srivastava" style="max-width:150px; border-radius:50%; margin-bottom:1em;">
+    <img src="founder.jpg" alt="Founder Naveen Srivastava">
     <p>Naveen Srivastava, once an IAS aspirant, turned his personal tragedy into a mission for humanity. He established Shatakshi NGO to serve education, healthcare, and dignity to the underprivileged.</p>
   </section>
 
   <!-- Testimonials -->
-  <section>
+  <section class="testimonials-section">
     <h2>What People Say</h2>
     <div class="testimonials">
       <div class="testimonial">“Shatakshi has changed the lives of children in my village. Education has given them new hope.”</div>
@@ -160,21 +280,26 @@
     </div>
   </section>
 
-  <!-- Photo Gallery -->
-  <section>
-    <h2>Moments of Service</h2>
-    <div class="gallery-container">
-      <div class="gallery-track">
-        <img src="1.jpg" alt="Service 1">
-        <img src="2.jpg" alt="Service 2">
-        <img src="3.jpg" alt="Service 3">
-        <img src="4.jpg" alt="Service 4">
-        <img src="5.jpg" alt="Service 5">
-        <img src="6.jpg" alt="Service 6">
-      </div>
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Be the Part of Change</h2>
+    <p>Your support matters. Join hands with Shatakshi to make a lasting impact.</p>
+    <div class="cta-buttons">
+      <a href="volunteer.html" class="btn-secondary">Volunteer</a>
+      <a href="donate.html" class="btn-primary">Donate</a>
     </div>
   </section>
 
+  <!-- Contact Form -->
+  <section class="contact-section">
+    <h2>Get in Touch</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
 </main>
 <footer>
   <p>© 2025 Shatakshi NGO. All rights reserved.</p>
@@ -207,7 +332,19 @@
     "Jal Pathshala spreading awareness on water conservation.",
     "Annapurna Rasoi serving daily meals with dignity.",
     "Antim Vidai dignified last rites for 900+ unclaimed bodies.",
-    "Shatakshi Helpline supporting thousands in rural Bihar."
+    "Shatakshi Helpline supporting thousands in rural Bihar.",
+    "Transforming pain into purpose since 2011.",
+    "Education as the true power to fight poverty & ignorance.",
+    "Helping 5000+ families through awareness and service.",
+    "A community-driven movement led by compassion.",
+    "24x7 Ambulance support during crises and floods.",
+    "Strengthening women against exploitation and child marriage.",
+    "Children finding hope through Deep of Diyara centers.",
+    "An NGO inspired by struggle, rooted in humanity.",
+    "From IAS dreams to social impact by Naveen Srivastava.",
+    "Empowering rural Bihar through education and healthcare.",
+    "Building awareness on water and environment conservation.",
+    "A lasting journey of dignity and compassion."
   ];
   let heroIndex = 0;
   const heroEl = document.getElementById("hero-text");
@@ -234,7 +371,8 @@
     }, 16);
   }
 
-  const impactSection = document.querySelector('.impact');
+  // Trigger counters when section is visible
+  const impactSection = document.querySelector('.impact-section');
   let started = false;
   window.addEventListener('scroll', () => {
     let pos = impactSection.getBoundingClientRect().top;
