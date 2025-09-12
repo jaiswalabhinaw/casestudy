@@ -1,19 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Creator - Shatakshi NGO</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
+    header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; margin-left:1em; }
+    .menu-toggle { font-size:1.5em; cursor:pointer; color:#FFD700; margin-left:1em; }
+
+    /* Sidebar */
+    .sidebar { height:100%; width:0; position:fixed; top:0; left:0; background:#222; overflow-x:hidden;
+                transition:0.5s; padding-top:60px; z-index:1000; }
+    .sidebar a { display:block; padding:12px 20px; text-decoration:none; color:#FFD700; transition:0.3s; opacity:0; transform:translateX(-30px); }
+    .sidebar a.show { opacity:1; transform:translateX(0); transition: all 0.5s ease; }
+    .sidebar a:hover { background:#333; padding-left:30px; color:#fff; }
+    .sidebar .closebtn { position:absolute; top:10px; right:15px; font-size:2em; text-decoration:none; color:#FFD700; }
+
+    main { max-width: 900px; margin: 2em auto; padding: 1.5em; background: #1a1a1a; color: #f5f5f5; border-radius: 8px; line-height: 1.8; }
+    main h1 { text-align: center; color: #FFD700; margin-bottom: 1em; }
+    .creator-contact { margin-top: 1.5em; padding: 0.8em; background: rgba(255,215,0,0.1); border-radius: 6px; display: inline-block; color: #FFD700; font-weight: bold; }
+
+    footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
+  </style>
 </head>
 <body>
-  
+
 <header>
-  <a href="index.html" class="logo">Shatakshi</a>
   <span class="menu-toggle" onclick="openNav()">☰</span>
+  <a href="index.html" class="logo">Shatakshi</a>
 </header>
 
-  
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="about.html">About</a>
@@ -54,19 +72,26 @@
     किसी भी प्रकार की मदद और सहयोग के लिए मुझसे सीधे संपर्क करें: 📞 +91 7992188234
   </div>
 </main>
-  
-  <main>
-    <h1>Creator</h1>
-    <p>This is the Creator page content.</p>
-  </main>
-  <footer class="site-footer">
+
+<footer>
   <p>© 2025 Shatakshi NGO. All rights reserved.</p>
 </footer>
 
-  
 <script>
-function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
-function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+function openNav() {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "250px";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach((link, i) => {
+    setTimeout(() => link.classList.add("show"), i * 100);
+  });
+}
+function closeNav() {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "0";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach(link => link.classList.remove("show"));
+}
 </script>
 
 </body>
