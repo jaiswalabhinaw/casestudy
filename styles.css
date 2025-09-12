@@ -93,8 +93,9 @@ main {
 }
 
 .donate-hero {
-  text-align: center;
-  margin: 2em 0;  /* space above & below */
+  display: flex;
+  justify-content: center; /* center horizontally */
+  margin: 2em 0;
 }
 
 .donate-hero a {
