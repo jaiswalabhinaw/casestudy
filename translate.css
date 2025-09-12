@@ -1,0 +1,16 @@
+/* translate.css */
+
+/* Hide the Google Translate top banner */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+/* Remove space Google Translate sometimes adds */
+.goog-te-banner-frame {
+  display: none !important;
+}
