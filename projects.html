@@ -1,47 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects - Shatakshi NGO</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Projects - Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
+    header { background:#000; color:#FFD700; display:flex; justify-content:space-between; align-items:center; padding:10px 20px; position:relative; }
+    header .logo { font-weight:bold; font-size:18px; color:#FFD700; text-decoration:none; }
+    .menu-toggle { font-size:22px; cursor:pointer; color:#FFD700; }
+
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:#222; overflow-x:hidden; transition:0.4s; padding-top:60px; z-index:1000; }
+    .sidebar a { padding:10px 20px; text-decoration:none; font-size:16px; color:#FFD700; display:block; transition:0.3s; }
+    .sidebar a:hover { background:#444; }
+    .sidebar .closebtn { position:absolute; top:10px; right:20px; font-size:30px; }
+
+    main { padding:20px; max-width:1000px; margin:auto; text-align:center; }
+    .project-card { background:#222; border-radius:10px; padding:20px; margin:20px 0; text-align:left; box-shadow:0 4px 10px rgba(0,0,0,0.5); }
+    .project-card h2 { color:#FFD700; margin-bottom:10px; }
+    .project-card p { color:#ccc; }
+
+    footer { background:#000; color:#aaa; text-align:center; padding:20px; margin-top:40px; font-size:14px; border-top:1px solid #333; }
+    footer a { color:#FFD700; text-decoration:none; margin:0 10px; }
+    footer a:hover { text-decoration:underline; }
+  </style>
 </head>
 <body>
-  
-<header>
-  <a href="index.html" class="logo">Shatakshi</a>
-  <span class="menu-toggle" onclick="openNav()">☰</span>
-</header>
+  <header>
+    <a href="index.html" class="logo">SHATAKSHI NGO</a>
+    <span class="menu-toggle" onclick="openNav()">☰</span>
+  </header>
 
-  
-<div id="mySidebar" class="sidebar">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="about.html">About</a>
-  <a href="causes.html">Causes</a>
-  <a href="projects.html">Projects</a>
-  <a href="events.html">Events</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="volunteer.html">Volunteer</a>
-  <a href="donate.html">Donate</a>
-  <a href="contact.html">Contact</a>
-  <a href="blog.html">Blog</a>
-  <a href="founder.html">Founder</a>
-  <a href="creator.html">Creator</a>
-</div>
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="about.html">About</a>
+    <a href="causes.html">Causes</a>
+    <a href="projects.html">Projects</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="volunteer.html">Volunteer</a>
+    <a href="donate.html">Donate</a>
+    <a href="contact.html">Contact</a>
+    <a href="blog.html">Blog</a>
+    <a href="founder.html">Founder</a>
+    <a href="creator.html">Creator</a>
+  </div>
 
   <main>
-    <h1>Projects</h1>
-    <p>This is the Projects page content.</p>
+    <h1>हमारे प्रोजेक्ट्स</h1>
+
+    <div class="project-card">
+      <h2>शिक्षा सबके लिए</h2>
+      <p>इस प्रोजेक्ट के अंतर्गत वंचित बच्चों को मुफ्त शिक्षा और अध्ययन सामग्री प्रदान की जाती है ताकि वे उज्ज्वल भविष्य की ओर बढ़ सकें।</p>
+    </div>
+
+    <div class="project-card">
+      <h2>स्वच्छता और स्वास्थ्य</h2>
+      <p>ग्रामीण और शहरी क्षेत्रों में स्वच्छता अभियान और मुफ्त स्वास्थ्य जांच शिविर आयोजित किए जाते हैं।</p>
+    </div>
+
+    <div class="project-card">
+      <h2>महिला सशक्तिकरण</h2>
+      <p>महिलाओं को आत्मनिर्भर बनाने के लिए सिलाई, कढ़ाई और कंप्यूटर ट्रेनिंग जैसे कार्यक्रम चलाए जाते हैं।</p>
+    </div>
+
+    <div class="project-card">
+      <h2>पर्यावरण संरक्षण</h2>
+      <p>पेड़-पौधे लगाने और जागरूकता अभियान के माध्यम से पर्यावरण को संरक्षित करने की दिशा में कार्य।</p>
+    </div>
   </main>
-  <footer class="site-footer">
-  <p>© 2025 Shatakshi NGO. All rights reserved.</p>
-</footer>
 
-  
-<script>
-function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
-function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
-</script>
+  <footer>
+    <p>&copy; 2025 | All Rights Reserved</p>
+  </footer>
 
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+    }
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+  </script>
 </body>
 </html>
