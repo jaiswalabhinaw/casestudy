@@ -106,7 +106,7 @@
       <input type="email" id="donorEmail" placeholder="ईमेल" required>
       <input type="text" id="donorLocation" placeholder="स्थान" required>
       <input type="hidden" id="donationAmount">
-      <button type="submit">Proceed to Payment</button>
+      <button type="submit">योगदान दर्ज करें</button>
     </form>
     <button onclick="closeDonorForm()">बंद करें</button>
   </div>
@@ -124,7 +124,7 @@
 <div id="thankYouPopup">
   <div class="popup-content">
     <h2>🙏 धन्यवाद!</h2>
-    <p>आपका योगदान दर्ज हो गया है। आपकी मदद से कई ज़िंदगियाँ बदलेंगी।</p>
+    <p>आपका योगदान दर्ज हो गया है। अब UPI ऐप पर भुगतान करें।</p>
     <button onclick="closeThankYou()">ठीक है</button>
   </div>
 </div>
@@ -169,8 +169,8 @@ donorForm.addEventListener("submit", function(e) {
   document.getElementById("donorFormPopup").style.display = "none";
   document.getElementById("thankYouPopup").style.display = "flex";
 
-  // Redirect to UPI after 2 seconds
-  setTimeout(() => { window.location.href = upiUrl; }, 2000);
+  // Redirect to UPI after 1 second
+  setTimeout(() => { window.location.href = upiUrl; }, 1000);
 });
 </script>
 
