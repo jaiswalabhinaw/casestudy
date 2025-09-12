@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>गौरव यात्रा - Naveen</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
+    nav { background:#222; display:flex; justify-content:flex-end; padding:10px 20px; }
+    nav a { color:#FFD700; text-decoration:none; margin-left:20px; font-weight:bold; }
+    nav a:hover { text-decoration:underline; }
+
+    main { padding:20px; max-width:900px; margin:auto; text-align:center; }
+    section { background:#222; padding:20px; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.6); margin-bottom:30px; }
+    h2 { color:#FFD700; margin-top:0; }
+
+    .upload-box { background:#333; padding: 20px; border-radius: 10px; max-width: 400px; margin:20px auto; font-size:14px; }
+    input, button { margin-top: 10px; width: 100%; padding: 8px; border-radius: 5px; border: none; font-size:14px; }
+    button { background: #ffd700; color: #000; font-weight: bold; cursor: pointer; }
+    button:hover { background: #ffea70; }
+    #preview { margin-top: 10px; max-width: 120px; border-radius: 6px; display: none; }
+    #runs { margin-top: 10px; font-size: 12px; }
+
+    #gallery { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+    #gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; border: 2px solid #444; transition: transform 0.2s; cursor: pointer; }
+    #gallery img:hover { transform: scale(1.05); }
+
+    footer { background:#000; color:#aaa; text-align:center; padding:15px; margin-top:40px; font-size:14px; }
+    footer a { color:#FFD700; text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>गौरव की गाथा</h2>
+      <p style="line-height:1.8; text-align:justify; font-size:16px;">
+        यह केवल <strong>गैलरी</strong> नहीं है, यह <strong>नवीन जी के 17 वर्षों</strong> की संघर्ष और उपलब्धियों की <strong>जीवित गाथा</strong> है।<br><br>
+        उन्होंने अपने जीवन को वैभवशाली बनाने का अवसर ठुकरा दिया। वे <strong>IAS अधिकारी</strong> बन सकते थे, एक सुखद और सम्मानित जीवन जी सकते थे। लेकिन उन्होंने वह रास्ता नहीं चुना। उन्होंने चुना – <strong>निर्मम सच्चाई, संघर्ष, और समाज के लिए बलिदान</strong>।<br><br>
+        मृत शरीरों की अंतिम यात्रा, दर्द से भरे परिवार, और उपेक्षित आत्माओं के बीच उन्होंने सेवा का मार्ग अपनाया। यह तस्वीरें केवल चित्र नहीं हैं, यह उन <strong>बलिदानों, संघर्षों, और आंसुओं</strong> की पहचान हैं जिन्हें उन्होंने समाज के लिए जिया।<br><br>
+        यह उनकी <strong>महानता</strong> है कि उन्होंने अपने जीवन को त्याग और सेवा के मार्ग पर समर्पित कर दिया। यह गैलरी नहीं, बल्कि <strong>विजयों की श्रृंखला</strong> है — जहां हर तस्वीर एक कहानी है <strong>दर्द, संतोष और बलिदान</strong> की।
+      </p>
+    </section>
+
+    <section>
+      <h2>गौरव चित्रावली</h2>
+      <div id="gallery"></div>
+
+      <h2>चित्र अपलोड करें</h2>
+      <div class="upload-box">
+        <input type="file" id="fileInput" accept="image/*" multiple>
+        <input type="password" id="tokenInput" placeholder="Enter your GitHub PAT">
+        <button onclick="uploadImages()">Upload</button>
+        <p id="status"></p>
+        <div id="runs"></div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 | गौरव यात्रा</p>
+    </footer>
+  </main>
+
+  <script>
+    async function uploadImages() {
+      const fileInput = document.getElementById('fileInput');
+      const tokenInput = document.getElementById('tokenInput');
+      const status = document.getElementById('status');
+
+      if (!fileInput.files.length) {
+        status.textContent = "कृपया कम से कम एक फ़ाइल चुनें।";
+        return;
+      }
+      if (!tokenInput.value) {
+        status.textContent = "कृपया अपना GitHub PAT दर्ज करें।";
+        return;
+      }
+
+      for (const file of fileInput.files) {
+        await uploadSingleImage(file, tokenInput.value, status);
+      }
+
+      setTimeout(loadGallery, 1500);
+    }
+
+    async function uploadSingleImage(file, token, status) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = async function() {
+          const base64Content = reader.result.split(',')[1];
+          status.textContent = `${file.name} अपलोड हो रहा है...`;
+
+          try {
+            let sha = null;
+            const checkRes = await fetch(`https://api.github.com/repos/jaiswalabhinaw/casestudy/contents/gallery/${encodeURIComponent(file.name)}`);
+            if (checkRes.ok) {
+              const checkData = await checkRes.json();
+              if (checkData.sha) sha = checkData.sha;
+            }
+
+            if (sha) {
+              const confirmReplace = confirm(`${file.name} पहले से मौजूद है। क्या आप इसे बदलना चाहते हैं?`);
+              if (!confirmReplace) {
+                status.textContent = `${file.name} ❌ अपलोड रद्द किया गया।`;
+                return resolve();
+              }
+            }
+
+            const response = await fetch(`https://api.github.com/repos/jaiswalabhinaw/casestudy/contents/gallery/${encodeURIComponent(file.name)}`, {
+              method: "PUT",
+              headers: {
+                "Accept": "application/vnd.github+json",
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json; charset=utf-8"
+              },
+              body: JSON.stringify({
+                message: sha ? `Update ${file.name} in gallery` : `Add ${file.name} to gallery`,
+                content: base64Content,
+                sha: sha
+              })
+            });
+
+            if (response.ok) {
+              status.textContent = `✅ ${file.name} सफलतापूर्वक अपलोड हुआ!`;
+            } else {
+              let errorMsg = "";
+              try { errorMsg = await response.json(); } catch { errorMsg = await response.text(); }
+              status.textContent = `❌ ${file.name} अपलोड विफल: ${response.status} - ${JSON.stringify(errorMsg)}`;
+            }
+          } catch (err) {
+            status.textContent = `⚠️ ${file.name} त्रुटि: ${err.message}`;
+          }
+
+          resolve();
+        };
+
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function loadGallery() {
+      const galleryDiv = document.getElementById('gallery');
+      galleryDiv.innerHTML = "";
+      try {
+        const res = await fetch("https://api.github.com/repos/jaiswalabhinaw/casestudy/contents/gallery");
+        const data = await res.json();
+        if (Array.isArray(data)) {
+          data.forEach(file => {
+            if (file.download_url) {
+              const link = document.createElement('a');
+              link.href = file.download_url;
+              link.target = "_blank";
+
+              const img = document.createElement('img');
+              img.src = file.download_url;
+              link.appendChild(img);
+
+              galleryDiv.appendChild(link);
+            }
+          });
+        } else {
+          galleryDiv.innerHTML = "⚠️ गैलरी लोड नहीं हो सकी: " + JSON.stringify(data);
+        }
+      } catch (e) {
+        galleryDiv.innerHTML = "⚠️ गैलरी लोड नहीं हो सकी: " + e.message;
+      }
+    }
+
+    loadGallery();
+    setInterval(loadGallery, 30000);
+  </script>
+</body>
+</html>
