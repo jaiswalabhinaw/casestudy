@@ -32,13 +32,42 @@
     section { max-width:1000px; margin:2em auto; padding:2em 1em; line-height:1.7; border-radius:8px; background:#1a1a1a; }
     section h2 { color:#FFD700; margin-bottom:0.5em; text-align:center; position:relative; }
     section h2::after { content:""; display:block; width:60px; height:3px; background:#FFD700; margin:0.5em auto; border-radius:2px; }
+   
+     /* Donate Hero Button */
+.donate-hero { 
+  display:flex; 
+  justify-content:center; 
+  align-items:center; 
+  margin:2em 0; 
+}
+.donate-hero a { 
+  display:inline-block; 
+  padding:1em 3em; 
+  border-radius:30px; 
+  background:#FFD700; 
+  color:#000; 
+  font-weight:bold; 
+  text-decoration:none; 
+  font-size:1.5em; 
+  box-shadow:0 4px 12px rgba(0,0,0,0.3); 
+  transition:transform 0.3s ease; 
+}
+.donate-hero a:hover { 
+  transform:scale(1.08); 
+}
 
-    .donate-hero { text-align:center; margin:2em 0; }
-    .donate-hero a { display:inline-block; padding:0.8em 2em; border-radius:25px; background:#FFD700; color:#000; font-weight:bold; text-decoration:none; font-size:1.2em; margin:auto; }
+/* Responsive for smaller devices */
+@media(max-width:768px) {
+  .donate-hero a { 
+    font-size:1.2em; 
+    padding:0.8em 2em; 
+  }
+}
+
 
     /* Timeline */
     .timeline-container { overflow:hidden; white-space:nowrap; position:relative; }
-    .timeline-track { display:inline-flex; animation: scrollTimeline 40s linear infinite; }
+    .timeline-track { display:inline-flex; animation: scrollTimeline 40s linear infinite; } /* faster */
     .timeline-item { flex:0 0 auto; background:#222; color:#fff; border-radius:8px; padding:1em; margin:0 1em; min-width:220px; max-width:240px; text-align:left; white-space:normal; }
     .timeline-year { font-size:1.1em; font-weight:bold; color:#FFD700; margin-bottom:0.5em; }
     @keyframes scrollTimeline { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
@@ -75,7 +104,7 @@
     .photo-gallery { text-align:center; padding:2em 0; }
     .photo-gallery h2 { color:#FFD700; }
     .gallery-container { overflow:hidden; position:relative; width:100%; }
-    .gallery-track { display:flex; animation: scrollGallery 30s linear infinite; }
+    .gallery-track { display:flex; animation: scrollGallery 30s linear infinite; } /* faster */
     .gallery-track img { max-height:220px; border-radius:8px; margin-right:1em; flex:0 0 auto; transition:transform 0.3s; }
     .gallery-track img:hover { transform:scale(1.05); }
     @keyframes scrollGallery { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
@@ -118,13 +147,17 @@
   <!-- Hero -->
   <section class="hero">
     <h1> SHATAKSHI </h1>
+    <h1>  </h1>
+    <h1>  </h1>
+    <h1>  </h1>
     <p id="hero-text">Founded in 2011 in Gopalganj, Bihar.</p>
   </section>
 
   <!-- Donate Hero Section -->
-  <section class="donate-hero">
-    <a href="donate.html">Donate Now</a>
-  </section>
+<section class="donate-hero">
+  <a href="donate.html">Donate Now</a>
+</section>
+
 
  <!-- Journey -->
 <section class="story">
@@ -143,6 +176,41 @@
     </div>
   </div>
 </section>
+
+<style>
+  .timeline-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+  }
+  .timeline-track {
+    display: inline-flex;
+    animation: scrollTimeline 40s linear infinite;
+  }
+  .timeline-item {
+    flex: 0 0 auto;
+    background: #222;
+    color: #fff;
+    border-radius: 8px;
+    padding: 1em;
+    margin: 0 1em;
+    min-width: 220px;
+    max-width: 240px;
+    text-align: left;
+    white-space: normal;
+  }
+  .timeline-year {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 0.5em;
+  }
+  @keyframes scrollTimeline {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
 
   <!-- Heartfelt Missions -->
   <section class="missions-section">
@@ -187,6 +255,34 @@
   </div>
 </section>
 
+<style>
+  .gallery-container {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    position: relative;
+    width: 100%;
+  }
+  .gallery-track {
+    display: flex;
+    animation: scrollGallery 30s linear infinite;
+  }
+  .gallery-track img {
+    max-height: 220px;
+    border-radius: 8px;
+    margin-right: 1em;
+    flex: 0 0 auto;
+    transition: transform 0.3s;
+  }
+  .gallery-track img:hover {
+    transform: scale(1.05);
+  }
+  @keyframes scrollGallery {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+
   <!-- Impact -->
   <section class="impact-section">
     <h2>Our Impact</h2>
@@ -219,3 +315,107 @@
   <!-- CTA -->
   <section class="cta">
     <h2>Be the Part of Change</h2>
+    <p>Your support matters. Join hands with Shatakshi to make a lasting impact.</p>
+    <div class="cta-buttons">
+      <a href="volunteer.html" class="btn-secondary">Volunteer</a>
+      <a href="donate.html" class="btn-primary">Donate</a>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="contact-section">
+    <h2>Get in Touch</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
+<footer>
+  <p>© 2025 Shatakshi NGO. All rights reserved.</p>
+  <p class="designer-credit">Website designed by <span style="color:#FFD700;">Abhinaw</span> | <span style="color:#FFD700;">+91 7992188234</span></p>
+</footer>
+
+<script>
+  // Sidebar animation
+  function openNav() {
+    const sidebar = document.getElementById("mySidebar");
+    sidebar.style.width = "250px";
+    const links = sidebar.querySelectorAll("a");
+    links.forEach((link, i) => {
+      setTimeout(() => link.classList.add("show"), i * 100);
+    });
+  }
+  function closeNav() {
+    const sidebar = document.getElementById("mySidebar");
+    sidebar.style.width = "0";
+    const links = sidebar.querySelectorAll("a");
+    links.forEach(link => link.classList.remove("show"));
+  }
+
+  // Hero rotating text
+  const heroTexts = [
+    "Founded in 2011 in Gopalganj, Bihar.",
+    "Registered under Indian Trusts Act 1882 with 12A & 80G.",
+    "Mission Hathiyaar Se Kalam Tak connected 800+ children.",
+    "Voice of Silence empowering women & girls.",
+    "Jal Pathshala spreading awareness on water conservation.",
+    "Annapurna Rasoi serving daily meals with dignity.",
+    "Antim Vidai dignified last rites for 900+ unclaimed bodies.",
+    "Shatakshi Helpline supporting thousands in rural Bihar.",
+    "Transforming pain into purpose since 2011.",
+    "Education as the true power to fight poverty & ignorance.",
+    "Helping 5000+ families through awareness and service.",
+    "A community-driven movement led by compassion.",
+    "24x7 Ambulance support during crises and floods.",
+    "Strengthening women against exploitation and child marriage.",
+    "Children finding hope through Deep of Diyara centers.",
+    "An NGO inspired by struggle, rooted in humanity.",
+    "From IAS dreams to social impact by Naveen Srivastava.",
+    "Empowering rural Bihar through education and healthcare.",
+    "Building awareness on water and environment conservation.",
+    "A lasting journey of dignity and compassion."
+  ];
+  let heroIndex = 0;
+  const heroEl = document.getElementById("hero-text");
+  setInterval(() => {
+    heroIndex = (heroIndex + 1) % heroTexts.length;
+    heroEl.innerText = heroTexts[heroIndex];
+    heroEl.style.animation = "none";
+    heroEl.offsetHeight;
+    heroEl.style.animation = "bounce 1s";
+  }, 4000);
+
+  // Counter animation
+  function animateCounter(id, target, duration) {
+    let obj = document.getElementById(id);
+    let count = 0;
+    let step = Math.ceil(target / (duration / 16));
+    let interval = setInterval(() => {
+      count += step;
+      if (count >= target) {
+        count = target;
+        clearInterval(interval);
+      }
+      obj.innerText = count.toLocaleString();
+    }, 16);
+  }
+
+  // Trigger counters when section is visible
+  const impactSection = document.querySelector('.impact-section');
+  let started = false;
+  window.addEventListener('scroll', () => {
+    let pos = impactSection.getBoundingClientRect().top;
+    if (!started && pos < window.innerHeight) {
+      started = true;
+      animateCounter("counter1", 800, 2000);
+      animateCounter("counter2", 5000, 2000);
+      animateCounter("counter3", 10000, 2000);
+      animateCounter("counter4", 900, 2000);
+    }
+  });
+</script>
+</body>
+</html>
