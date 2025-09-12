@@ -1,19 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Volunteer - Shatakshi NGO</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#111; color:#f5f5f5; overflow-x:hidden; }
+    header { background:#000; color:#FFD700; padding:1em; position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-weight:bold; font-size:1.2em; text-decoration:none; color:#FFD700; margin-right:1em; }
+    .menu-toggle { font-size:1.5em; cursor:pointer; color:#FFD700; margin-left:1em; }
+
+    /* Sidebar */
+    .sidebar { height:100%; width:0; position:fixed; top:0; right:0; background:#222; overflow-x:hidden;
+                transition:0.5s; padding-top:60px; z-index:1000; }
+    .sidebar a { display:block; padding:12px 20px; text-decoration:none; color:#FFD700; transition:0.3s; opacity:0; transform:translateX(30px); }
+    .sidebar a.show { opacity:1; transform:translateX(0); transition: all 0.5s ease; }
+    .sidebar a:hover { background:#333; padding-left:30px; color:#fff; }
+    .sidebar .closebtn { position:absolute; top:10px; left:15px; font-size:2em; text-decoration:none; color:#FFD700; }
+
+    main { max-width: 900px; margin: 2em auto; padding: 1.5em; background: #1a1a1a; color: #f5f5f5; border-radius: 8px; line-height: 1.8; }
+    main h1 { text-align: center; color: #FFD700; margin-bottom: 1em; }
+    .volunteer-info { margin:1.5em 0; }
+    .highlight { color:#FFD700; font-weight:bold; }
+    .volunteer-contact { margin-top: 1.5em; padding: 1em; background: rgba(255,215,0,0.1); border-radius: 6px; color: #FFD700; font-weight: bold; text-align:center; }
+    .cta-button { display:inline-block; margin-top:1em; padding:0.6em 1.2em; background:#FFD700; color:#000; font-weight:bold; border-radius:4px; text-decoration:none; }
+
+    footer { background:#000; color:#FFD700; text-align:center; padding:1em; margin-top:2em; }
+  </style>
 </head>
 <body>
-  
+
 <header>
   <a href="index.html" class="logo">Shatakshi</a>
   <span class="menu-toggle" onclick="openNav()">☰</span>
 </header>
 
-  
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="about.html">About</a>
@@ -29,18 +50,56 @@
   <a href="creator.html">Creator</a>
 </div>
 
-  <main>
-    <h1>Volunteer</h1>
-    <p>This is the Volunteer page content.</p>
-  </main>
-  <footer class="site-footer">
+<main>
+  <h1>🙏 स्वयंसेवक बनें</h1>
+
+  <p>
+    यदि आप समाज में बदलाव लाना चाहते हैं और <span class="highlight">शताक्षी</span> के मिशन का हिस्सा बनना चाहते हैं, तो आपके लिए यह सही अवसर है।
+    स्वयंसेवक (Volunteer) के रूप में आप शिक्षा, स्वास्थ्य, भोजन सेवा, महिला सशक्तिकरण और पर्यावरण संरक्षण जैसे कार्यों में योगदान दे सकते हैं।
+  </p>
+
+  <div class="volunteer-info">
+    <h2>आप कैसे मदद कर सकते हैं?</h2>
+    <ul>
+      <li>बच्चों को पढ़ाने और उन्हें नई दिशा देने में सहयोग करें।</li>
+      <li>“अन्नपूर्णा रसोई” के माध्यम से जरूरतमंदों तक भोजन पहुँचाने में मदद करें।</li>
+      <li>ग्रामीण क्षेत्रों में जागरूकता अभियान का हिस्सा बनें।</li>
+      <li>महिला और बालिकाओं के सशक्तिकरण के लिए काम करें।</li>
+      <li>आपातकालीन सेवाओं और हेल्पलाइन में सहयोग दें।</li>
+    </ul>
+  </div>
+
+  <p>
+    आपका <span class="highlight">थोड़ा सा समय और प्रयास</span> किसी के जीवन में बड़ी रोशनी ला सकता है। हमारे साथ जुड़कर आप भी इस परिवर्तन यात्रा का हिस्सा बन सकते हैं।
+  </p>
+
+  <div class="volunteer-contact">
+    🙌 यदि आपके समाज या क्षेत्र में कोई काम हो, तो हमें मदद करने का अवसर दें। चलिए मिलकर बदलाव की एक नई शुरुआत करते हैं।<br><br>
+    📞 स्वयंसेवक बनने या किसी भी प्रकार की जानकारी के लिए संपर्क करें: <span class="highlight">+91 7992188234</span>
+    <br>
+    <a href="contact.html" class="cta-button">हमसे जुड़ें</a>
+  </div>
+</main>
+
+<footer>
   <p>© 2025 Shatakshi NGO. All rights reserved.</p>
 </footer>
 
-  
 <script>
-function openNav() { document.getElementById("mySidebar").style.width = "250px"; }
-function closeNav() { document.getElementById("mySidebar").style.width = "0"; }
+function openNav() {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "250px";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach((link, i) => {
+    setTimeout(() => link.classList.add("show"), i * 100);
+  });
+}
+function closeNav() {
+  const sidebar = document.getElementById("mySidebar");
+  sidebar.style.width = "0";
+  const links = sidebar.querySelectorAll("a");
+  links.forEach(link => link.classList.remove("show"));
+}
 </script>
 
 </body>
