@@ -1,0 +1,198 @@
+/* Global Reset */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header + Navigation */
+header {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* allow wrapping on small screens */
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #fff;
+  margin: 5px 10px;
+  text-decoration: none;
+}
+
+/* Hamburger menu toggle button */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  padding: 40px 20px;
+  text-align: center;
+  background: #eee;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Cart Items */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cart-item img {
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+.btn, button {
+  background: #333;
+  color: #fff;
+  padding: 8px 15px;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #333;
+  color: #fff;
+  margin-top: 20px;
+}
+
+/* ========================
+   Responsive Breakpoints
+   ======================== */
+
+/* Mobile (max 600px) */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Hide nav by default */
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #333;
+    text-align: center;
+  }
+
+  nav a {
+    padding: 10px;
+    border-top: 1px solid #444;
+  }
+
+  /* Show hamburger */
+  .menu-toggle {
+    display: block;
+  }
+
+  /* When menu is toggled open */
+  nav.show {
+    display: flex;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+/* Tablets (>=600px) */
+@media (min-width: 600px) and (max-width: 1023px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* Desktop (>=1024px) */
+@media (min-width: 1024px) {
+  body {
+    max-width: 1200px;
+    margin: auto;
+  }
+  header, footer {
+    padding: 20px;
+  }
+}
+
+/* ========================
+   Bottom Navigation (Mobile)
+   ======================== */
+@media (max-width: 768px) {
+  header nav, .menu-toggle {
+    display: none !important; /* Hide top nav & hamburger */
+  }
+
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #333;
+    border-top: 1px solid #444;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 0;
+    z-index: 1000;
+  }
+
+  .bottom-nav a {
+    color: #fff;
+    text-align: center;
+    font-size: 0.8rem;
+    text-decoration: none;
+    flex: 1;
+  }
+
+  .bottom-nav a:hover {
+    background: #444;
+  }
+
+  main {
+    padding-bottom: 60px; /* avoid content under nav */
+  }
+}

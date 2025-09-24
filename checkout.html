@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Checkout - Ecomm</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1 id="siteName">Ecomm</h1>
+  <div class="menu-toggle" id="menuToggle">☰</div>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="product.html">Products</a>
+    <a href="cart.html">Cart 🛒</a>
+    <a href="admin.html">Admin</a>
+    <span id="userArea"></span>
+    <a href="#" id="logoutLink" style="display:none;">Logout</a>
+  </nav>
+</header>
+
+  <main>
+    
+    <form id="checkoutForm">
+      <label>Name: <input type="text" required></label><br>
+      <label>Email: <input type="email" required></label><br>
+      <label>Address: <textarea required></textarea></label><br>
+      <label>Payment: 
+        <select>
+          <option>Cash on Delivery</option>
+          <option>Card (Demo)</option>
+        </select>
+      </label><br>
+      <button type="submit">Place Order</button>
+    </form>
+    <p id="orderMsg"></p>
+    
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyCj6ua2x-QAEDL7c96rUi7NWSPE5U6BIzQ",
+  authDomain: "ecomm-61af0.firebaseapp.com",
+  projectId: "ecomm-61af0",
+  storageBucket: "ecomm-61af0.appspot.com",
+  messagingSenderId: "122401834834",
+  appId: "1:122401834834:web:9f98cfdbc2eb5b3603dc8b"
+};
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "login.html";
+  } else {
+    document.getElementById("userArea").innerHTML = `
+      <img src="${user.photoURL}" width="30" style="border-radius:50%;vertical-align:middle;margin-right:5px;">
+      ${user.displayName}
+    `;
+    document.getElementById("logoutLink").style.display = "inline-block";
+  }
+});
+
+document.getElementById("logoutLink").addEventListener("click", (e) => {
+  e.preventDefault();
+  signOut(auth).then(() => {
+    window.location.href = "login.html";
+  });
+});
+
+
+    
+    document.getElementById("checkoutForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const user = auth.currentUser;
+      const cart = JSON.parse(sessionStorage.getItem("cart") || "[]");
+      if (cart.length === 0) {
+        document.getElementById("orderMsg").innerText = "Cart is empty!";
+        return;
+      }
+      try {
+        await addDoc(collection(db, "orders"), {
+          userId: user.uid,
+          email: user.email,
+          items: cart,
+          status: "Pending",
+          createdAt: new Date()
+        });
+        sessionStorage.removeItem("cart");
+        document.getElementById("orderMsg").innerText = "✅ Order placed successfully!";
+      } catch (error) {
+        console.error("Order failed:", error);
+        document.getElementById("orderMsg").innerText = "❌ Failed to place order.";
+      }
+    });
+    
+  </script>
+
+<!-- ✅ Bottom Nav for Mobile -->
+<div class="bottom-nav">
+  <a href="index.html">🏠<br>Home</a>
+  <a href="product.html">📂<br>Products</a>
+  <a href="cart.html">🛒<br>Cart</a>
+  <a href="admin.html">⚙️<br>Admin</a>
+  <a href="#">👤<br>Account</a>
+</div>
+
+</body>
+</html>

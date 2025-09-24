@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecomm Login</title>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 50px; background: #f5f5f5; }
+    h1 { margin-bottom: 20px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; margin: 10px; border: none; border-radius: 5px; color: white; }
+    #loginBtn { background-color: #4285F4; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Ecomm</h1>
+  <p>Please login with your Google account to continue</p>
+  <button id="loginBtn">Login with Google</button>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { 
+      getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, 
+      getRedirectResult, onAuthStateChanged, setPersistence, browserSessionPersistence 
+    } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+    import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCj6ua2x-QAEDL7c96rUi7NWSPE5U6BIzQ",
+      authDomain: "ecomm-61af0.firebaseapp.com",
+      projectId: "ecomm-61af0",
+      storageBucket: "ecomm-61af0.appspot.com",
+      messagingSenderId: "122401834834",
+      appId: "1:122401834834:web:9f98cfdbc2eb5b3603dc8b"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+
+    setPersistence(auth, browserSessionPersistence);
+
+    getRedirectResult(auth)
+      .then(async (result) => {
+        if (result && result.user) {
+          const user = result.user;
+          await setDoc(doc(db, "users", user.uid), {
+            name: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            lastLogin: new Date()
+          }, { merge: true });
+          window.location.href = "index.html";
+        }
+      })
+      .catch(err => console.error("Redirect error:", err));
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        window.location.href = "index.html";
+      }
+    });
+
+    document.getElementById("loginBtn").addEventListener("click", () => {
+      signInWithPopup(auth, provider)
+        .then(async (result) => {
+          const user = result.user;
+          await setDoc(doc(db, "users", user.uid), {
+            name: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+            lastLogin: new Date()
+          }, { merge: true });
+          window.location.href = "index.html";
+        })
+        .catch(() => {
+          signInWithRedirect(auth, provider);
+        });
+    });
+  </script>
+</body>
+</html>
